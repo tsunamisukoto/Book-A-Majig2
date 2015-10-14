@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0363e635a7a040eb9fc8f9403e8c42c3" Name="Diagram1" ZoomLevel="82" >
+        <EntityTypeShape EntityType="BookingModel.Booking" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="BookingModel.Employee" Width="1.5" PointX="5.25" PointY="2.625" />
+        <EntityTypeShape EntityType="BookingModel.AccessLevel" Width="1.5" PointX="7.5" PointY="2.75" />
+        <EntityTypeShape EntityType="BookingModel.BookingNotes" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="BookingModel.BookingClasification" Width="1.5" PointX="10.5" PointY="5.25" />
+        <EntityTypeShape EntityType="BookingModel.BookingConfirmation" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="BookingModel.Restaurant" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="BookingModel.LockOutDate" Width="1.5" PointX="7.375" PointY="9.375" />
+        <EntityTypeShape EntityType="BookingModel.LockOutTime" Width="1.5" PointX="9.875" PointY="10.375" />
+        <AssociationConnector Association="BookingModel.BookingNotesBooking" />
+        <AssociationConnector Association="BookingModel.BookingConfirmationBooking" />
+        <AssociationConnector Association="BookingModel.EmployeeAccessLevel" />
+        <AssociationConnector Association="BookingModel.LockOutDateLockOutTime" />
+        <AssociationConnector Association="BookingModel.LockOutDateBookingClasification" />
+        <AssociationConnector Association="BookingModel.LockOutDateAccessLevel" />
+        <AssociationConnector Association="BookingModel.EmployeeBooking" />
+        <AssociationConnector Association="BookingModel.BookingBookingClasification" />
+        <AssociationConnector Association="BookingModel.RestaurantBooking" />
+        <AssociationConnector Association="BookingModel.RestaurantLockOutDate" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

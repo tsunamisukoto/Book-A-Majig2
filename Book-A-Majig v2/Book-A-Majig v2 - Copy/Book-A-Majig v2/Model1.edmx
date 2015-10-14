@@ -1,0 +1,759 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Bookings" EntityType="Model1.Store.Bookings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees" EntityType="Model1.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AccessLevels" EntityType="Model1.Store.AccessLevels" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookingNotes" EntityType="Model1.Store.BookingNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookingClasifications" EntityType="Model1.Store.BookingClasifications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookingConfirmations" EntityType="Model1.Store.BookingConfirmations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Restaurants" EntityType="Model1.Store.Restaurants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LockOutDates" EntityType="Model1.Store.LockOutDates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LockOutTimes" EntityType="Model1.Store.LockOutTimes" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="EmployeeAccessLevel" Association="Model1.Store.EmployeeAccessLevel">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="AccessLevel" EntitySet="AccessLevels" />
+    </AssociationSet>
+    <AssociationSet Name="BookingEmployee" Association="Model1.Store.BookingEmployee">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="BookingNotesBooking" Association="Model1.Store.BookingNotesBooking">
+      <End Role="BookingNotes" EntitySet="BookingNotes" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="BookingNotesEmployee" Association="Model1.Store.BookingNotesEmployee">
+      <End Role="BookingNotes" EntitySet="BookingNotes" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="BookingBookingClasification" Association="Model1.Store.BookingBookingClasification">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="BookingClasification" EntitySet="BookingClasifications" />
+    </AssociationSet>
+    <AssociationSet Name="BookingConfirmationBooking" Association="Model1.Store.BookingConfirmationBooking">
+      <End Role="BookingConfirmation" EntitySet="BookingConfirmations" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeBookingConfirmation" Association="Model1.Store.EmployeeBookingConfirmation">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="BookingConfirmation" EntitySet="BookingConfirmations" />
+    </AssociationSet>
+    <AssociationSet Name="BookingRestaurant" Association="Model1.Store.BookingRestaurant">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Restaurant" EntitySet="Restaurants" />
+    </AssociationSet>
+    <AssociationSet Name="LockOutDateLockOutTime" Association="Model1.Store.LockOutDateLockOutTime">
+      <End Role="LockOutDate" EntitySet="LockOutDates" />
+      <End Role="LockOutTime" EntitySet="LockOutTimes" />
+    </AssociationSet>
+    <AssociationSet Name="LockOutDateBookingClasification" Association="Model1.Store.LockOutDateBookingClasification">
+      <End Role="LockOutDate" EntitySet="LockOutDates" />
+      <End Role="BookingClasification" EntitySet="BookingClasifications" />
+    </AssociationSet>
+    <AssociationSet Name="LockOutDateAccessLevel" Association="Model1.Store.LockOutDateAccessLevel">
+      <End Role="LockOutDate" EntitySet="LockOutDates" />
+      <End Role="AccessLevel" EntitySet="AccessLevels" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="ContactNumber" Type="nvarchar" Nullable="true" />
+    <Property Name="BookingClasificationId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" />
+    <Property Name="ArrivedDate" Type="datetime" Nullable="true" />
+    <Property Name="DateInactive" Type="datetime" Nullable="true" />
+    <Property Name="RestaurantId" Type="int" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" />
+    <Property Name="DateInactive" Type="datetime" Nullable="true" />
+    <Property Name="AccessLevel_Id" Type="int" Nullable="false" />
+    <Property Name="BookingConfirmation_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccessLevels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookingNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="Booking_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookingClasifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassificationName" Type="nvarchar" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+    <Property Name="LockOutDateId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="BookingConfirmations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConfirmationDate" Type="datetime" Nullable="true" />
+    <Property Name="Booking_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Restaurants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LockOutDates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="AccessLevel_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="LockOutTimes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartTime" Type="nvarchar" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="LockOutDate_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="EmployeeAccessLevel">
+    <End Role="Employee" Type="Model1.Store.Employees" Multiplicity="*" />
+    <End Role="AccessLevel" Type="Model1.Store.AccessLevels" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AccessLevel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="AccessLevel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingEmployee">
+    <End Role="Booking" Type="Model1.Store.Bookings" Multiplicity="*" />
+    <End Role="Employee" Type="Model1.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingNotesBooking">
+    <End Role="BookingNotes" Type="Model1.Store.BookingNotes" Multiplicity="*" />
+    <End Role="Booking" Type="Model1.Store.Bookings" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingNotes">
+        <PropertyRef Name="Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingNotesEmployee">
+    <End Role="BookingNotes" Type="Model1.Store.BookingNotes" Multiplicity="*" />
+    <End Role="Employee" Type="Model1.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingNotes">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingBookingClasification">
+    <End Role="Booking" Type="Model1.Store.Bookings" Multiplicity="*" />
+    <End Role="BookingClasification" Type="Model1.Store.BookingClasifications" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="BookingClasification">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="BookingClasificationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingConfirmationBooking">
+    <End Role="BookingConfirmation" Type="Model1.Store.BookingConfirmations" Multiplicity="*" />
+    <End Role="Booking" Type="Model1.Store.Bookings" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingConfirmation">
+        <PropertyRef Name="Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeBookingConfirmation">
+    <End Role="Employee" Type="Model1.Store.Employees" Multiplicity="*" />
+    <End Role="BookingConfirmation" Type="Model1.Store.BookingConfirmations" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="BookingConfirmation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="BookingConfirmation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingRestaurant">
+    <End Role="Booking" Type="Model1.Store.Bookings" Multiplicity="*" />
+    <End Role="Restaurant" Type="Model1.Store.Restaurants" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="RestaurantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LockOutDateLockOutTime">
+    <End Role="LockOutDate" Type="Model1.Store.LockOutDates" Multiplicity="1" />
+    <End Role="LockOutTime" Type="Model1.Store.LockOutTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LockOutDate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LockOutTime">
+        <PropertyRef Name="LockOutDate_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LockOutDateBookingClasification">
+    <End Role="LockOutDate" Type="Model1.Store.LockOutDates" Multiplicity="0..1" />
+    <End Role="BookingClasification" Type="Model1.Store.BookingClasifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LockOutDate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingClasification">
+        <PropertyRef Name="LockOutDateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LockOutDateAccessLevel">
+    <End Role="LockOutDate" Type="Model1.Store.LockOutDates" Multiplicity="*" />
+    <End Role="AccessLevel" Type="Model1.Store.AccessLevels" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AccessLevel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LockOutDate">
+        <PropertyRef Name="AccessLevel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bookings" EntityType="Model1.Booking" />
+          <EntitySet Name="Employees" EntityType="Model1.Employee" />
+          <EntitySet Name="AccessLevels" EntityType="Model1.AccessLevel" />
+          <AssociationSet Name="EmployeeAccessLevel" Association="Model1.EmployeeAccessLevel">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="AccessLevel" EntitySet="AccessLevels" />
+          </AssociationSet>
+          <AssociationSet Name="BookingEmployee" Association="Model1.BookingEmployee">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <EntitySet Name="BookingNotes" EntityType="Model1.BookingNotes" />
+          <AssociationSet Name="BookingNotesBooking" Association="Model1.BookingNotesBooking">
+            <End Role="BookingNotes" EntitySet="BookingNotes" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="BookingNotesEmployee" Association="Model1.BookingNotesEmployee">
+            <End Role="BookingNotes" EntitySet="BookingNotes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <EntitySet Name="BookingClasifications" EntityType="Model1.BookingClasification" />
+          <AssociationSet Name="BookingBookingClasification" Association="Model1.BookingBookingClasification">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="BookingClasification" EntitySet="BookingClasifications" />
+          </AssociationSet>
+          <EntitySet Name="BookingConfirmations" EntityType="Model1.BookingConfirmation" />
+          <AssociationSet Name="BookingConfirmationBooking" Association="Model1.BookingConfirmationBooking">
+            <End Role="BookingConfirmation" EntitySet="BookingConfirmations" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeBookingConfirmation" Association="Model1.EmployeeBookingConfirmation">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="BookingConfirmation" EntitySet="BookingConfirmations" />
+          </AssociationSet>
+          <EntitySet Name="Restaurants" EntityType="Model1.Restaurant" />
+          <AssociationSet Name="BookingRestaurant" Association="Model1.BookingRestaurant">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <EntitySet Name="LockOutDates" EntityType="Model1.LockOutDate" />
+          <EntitySet Name="LockOutTimes" EntityType="Model1.LockOutTime" />
+          <AssociationSet Name="LockOutDateLockOutTime" Association="Model1.LockOutDateLockOutTime">
+            <End Role="LockOutDate" EntitySet="LockOutDates" />
+            <End Role="LockOutTime" EntitySet="LockOutTimes" />
+          </AssociationSet>
+          <AssociationSet Name="LockOutDateBookingClasification" Association="Model1.LockOutDateBookingClasification">
+            <End Role="LockOutDate" EntitySet="LockOutDates" />
+            <End Role="BookingClasification" EntitySet="BookingClasifications" />
+          </AssociationSet>
+          <AssociationSet Name="LockOutDateAccessLevel" Association="Model1.LockOutDateAccessLevel">
+            <End Role="LockOutDate" EntitySet="LockOutDates" />
+            <End Role="AccessLevel" EntitySet="AccessLevels" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee" Relationship="Model1.BookingEmployee" FromRole="Booking" ToRole="Employee" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <NavigationProperty Name="BookingNotes" Relationship="Model1.BookingNotesBooking" FromRole="Booking" ToRole="BookingNotes" />
+          <Property Type="String" Name="ContactNumber" Nullable="true" />
+          <NavigationProperty Name="BookingClasification" Relationship="Model1.BookingBookingClasification" FromRole="Booking" ToRole="BookingClasification" />
+          <Property Type="Int32" Name="BookingClasificationId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" />
+          <Property Type="DateTime" Name="ArrivedDate" Nullable="true" />
+          <NavigationProperty Name="BookingConfirmation" Relationship="Model1.BookingConfirmationBooking" FromRole="Booking" ToRole="BookingConfirmation" />
+          <Property Type="DateTime" Name="DateInactive" Nullable="true" />
+          <NavigationProperty Name="Restaurant" Relationship="Model1.BookingRestaurant" FromRole="Booking" ToRole="Restaurant" />
+          <Property Type="Int32" Name="RestaurantId" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <NavigationProperty Name="AccessLevel" Relationship="Model1.EmployeeAccessLevel" FromRole="Employee" ToRole="AccessLevel" />
+          <NavigationProperty Name="Bookings" Relationship="Model1.BookingEmployee" FromRole="Employee" ToRole="Booking" />
+          <NavigationProperty Name="BookingNotes" Relationship="Model1.BookingNotesEmployee" FromRole="Employee" ToRole="BookingNotes" />
+          <NavigationProperty Name="BookingConfirmation" Relationship="Model1.EmployeeBookingConfirmation" FromRole="Employee" ToRole="BookingConfirmation" />
+          <Property Type="DateTime" Name="DateInactive" Nullable="true" />
+        </EntityType>
+        <EntityType Name="AccessLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Level" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Model1.EmployeeAccessLevel" FromRole="AccessLevel" ToRole="Employee" />
+        </EntityType>
+        <Association Name="EmployeeAccessLevel">
+          <End Type="Model1.Employee" Role="Employee" Multiplicity="*" />
+          <End Type="Model1.AccessLevel" Role="AccessLevel" Multiplicity="1" />
+        </Association>
+        <Association Name="BookingEmployee">
+          <End Type="Model1.Booking" Role="Booking" Multiplicity="*" />
+          <End Type="Model1.Employee" Role="Employee" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BookingNotes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Note" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="Model1.BookingNotesBooking" FromRole="BookingNotes" ToRole="Booking" />
+          <NavigationProperty Name="Employee" Relationship="Model1.BookingNotesEmployee" FromRole="BookingNotes" ToRole="Employee" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+        </EntityType>
+        <Association Name="BookingNotesBooking">
+          <End Type="Model1.BookingNotes" Role="BookingNotes" Multiplicity="*" />
+          <End Type="Model1.Booking" Role="Booking" Multiplicity="1" />
+        </Association>
+        <Association Name="BookingNotesEmployee">
+          <End Type="Model1.BookingNotes" Role="BookingNotes" Multiplicity="*" />
+          <End Type="Model1.Employee" Role="Employee" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingNotes">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BookingClasification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ClassificationName" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Model1.BookingBookingClasification" FromRole="BookingClasification" ToRole="Booking" />
+          <Property Type="Int32" Name="DisplayOrder" Nullable="false" />
+          <NavigationProperty Name="LockOutDate" Relationship="Model1.LockOutDateBookingClasification" FromRole="BookingClasification" ToRole="LockOutDate" />
+          <Property Type="Int32" Name="LockOutDateId" Nullable="true" />
+        </EntityType>
+        <Association Name="BookingBookingClasification">
+          <End Type="Model1.Booking" Role="Booking" Multiplicity="*" />
+          <End Type="Model1.BookingClasification" Role="BookingClasification" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="BookingClasification">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="BookingClasificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BookingConfirmation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Booking" Relationship="Model1.BookingConfirmationBooking" FromRole="BookingConfirmation" ToRole="Booking" />
+          <Property Type="DateTime" Name="ConfirmationDate" Nullable="true" />
+          <NavigationProperty Name="Employee" Relationship="Model1.EmployeeBookingConfirmation" FromRole="BookingConfirmation" ToRole="Employee" />
+        </EntityType>
+        <Association Name="BookingConfirmationBooking">
+          <End Type="Model1.BookingConfirmation" Role="BookingConfirmation" Multiplicity="0..1" />
+          <End Type="Model1.Booking" Role="Booking" Multiplicity="1" />
+        </Association>
+        <Association Name="EmployeeBookingConfirmation">
+          <End Type="Model1.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="Model1.BookingConfirmation" Role="BookingConfirmation" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Bookings" Relationship="Model1.BookingRestaurant" FromRole="Restaurant" ToRole="Booking" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Location" Nullable="false" />
+          <Property Type="Int32" Name="Capacity" Nullable="false" />
+        </EntityType>
+        <Association Name="BookingRestaurant">
+          <End Type="Model1.Booking" Role="Booking" Multiplicity="*" />
+          <End Type="Model1.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LockOutDate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Reason" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" />
+          <NavigationProperty Name="LockOutTime" Relationship="Model1.LockOutDateLockOutTime" FromRole="LockOutDate" ToRole="LockOutTime" />
+          <NavigationProperty Name="BookingClasifications" Relationship="Model1.LockOutDateBookingClasification" FromRole="LockOutDate" ToRole="BookingClasification" />
+          <NavigationProperty Name="AccessLevel" Relationship="Model1.LockOutDateAccessLevel" FromRole="LockOutDate" ToRole="AccessLevel" />
+        </EntityType>
+        <EntityType Name="LockOutTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StartTime" Nullable="false" />
+          <Property Type="DateTime" Name="EndTime" Nullable="false" />
+          <NavigationProperty Name="LockOutDate" Relationship="Model1.LockOutDateLockOutTime" FromRole="LockOutTime" ToRole="LockOutDate" />
+        </EntityType>
+        <Association Name="LockOutDateLockOutTime">
+          <End Type="Model1.LockOutDate" Role="LockOutDate" Multiplicity="1" />
+          <End Type="Model1.LockOutTime" Role="LockOutTime" Multiplicity="0..1" />
+        </Association>
+        <Association Name="LockOutDateBookingClasification">
+          <End Type="Model1.LockOutDate" Role="LockOutDate" Multiplicity="0..1" />
+          <End Type="Model1.BookingClasification" Role="BookingClasification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LockOutDate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingClasification">
+              <PropertyRef Name="LockOutDateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LockOutDateAccessLevel">
+          <End Type="Model1.LockOutDate" Role="LockOutDate" Multiplicity="*" />
+          <End Type="Model1.AccessLevel" Role="AccessLevel" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Booking)">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="BookingClasificationId" ColumnName="BookingClasificationId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
+          <ScalarProperty Name="DateInactive" ColumnName="DateInactive" />
+          <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateInactive" ColumnName="DateInactive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccessLevels">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.AccessLevel)">
+        <MappingFragment StoreEntitySet="AccessLevels">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingNotes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.BookingNotes)">
+        <MappingFragment StoreEntitySet="BookingNotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingClasifications">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.BookingClasification)">
+        <MappingFragment StoreEntitySet="BookingClasifications">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassificationName" ColumnName="ClassificationName" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="LockOutDateId" ColumnName="LockOutDateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingConfirmations">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.BookingConfirmation)">
+        <MappingFragment StoreEntitySet="BookingConfirmations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ConfirmationDate" ColumnName="ConfirmationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Restaurant)">
+        <MappingFragment StoreEntitySet="Restaurants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LockOutDates">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.LockOutDate)">
+        <MappingFragment StoreEntitySet="LockOutDates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LockOutTimes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.LockOutTime)">
+        <MappingFragment StoreEntitySet="LockOutTimes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EmployeeAccessLevel" TypeName="Model1.EmployeeAccessLevel" StoreEntitySet="Employees">
+      <EndProperty Name="AccessLevel">
+        <ScalarProperty Name="Id" ColumnName="AccessLevel_Id" />
+      </EndProperty>
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BookingNotesBooking" TypeName="Model1.BookingNotesBooking" StoreEntitySet="BookingNotes">
+      <EndProperty Name="Booking">
+        <ScalarProperty Name="Id" ColumnName="Booking_Id" />
+      </EndProperty>
+      <EndProperty Name="BookingNotes">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BookingConfirmationBooking" TypeName="Model1.BookingConfirmationBooking" StoreEntitySet="BookingConfirmations">
+      <EndProperty Name="Booking">
+        <ScalarProperty Name="Id" ColumnName="Booking_Id" />
+      </EndProperty>
+      <EndProperty Name="BookingConfirmation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeBookingConfirmation" TypeName="Model1.EmployeeBookingConfirmation" StoreEntitySet="Employees">
+      <EndProperty Name="BookingConfirmation">
+        <ScalarProperty Name="Id" ColumnName="BookingConfirmation_Id" />
+      </EndProperty>
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LockOutDateLockOutTime" TypeName="Model1.LockOutDateLockOutTime" StoreEntitySet="LockOutTimes">
+      <EndProperty Name="LockOutDate">
+        <ScalarProperty Name="Id" ColumnName="LockOutDate_Id" />
+      </EndProperty>
+      <EndProperty Name="LockOutTime">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LockOutDateAccessLevel" TypeName="Model1.LockOutDateAccessLevel" StoreEntitySet="LockOutDates">
+      <EndProperty Name="AccessLevel">
+        <ScalarProperty Name="Id" ColumnName="AccessLevel_Id" />
+      </EndProperty>
+      <EndProperty Name="LockOutDate">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="AccessLevel_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Model1" >
+        <EntityTypeShape EntityType="Model1.Booking" Width="1.5" PointX="3.75" PointY="0.5" Height="3.9033007812499996" />
+        <EntityTypeShape EntityType="Model1.Employee" Width="1.5" PointX="0.75" PointY="3.375" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="Model1.AccessLevel" Width="1.5" PointX="0.875" PointY="6.875" Height="1.7879850260416665" />
+        <AssociationConnector Association="Model1.EmployeeAccessLevel">
+          <ConnectorPoint PointX="1.5625" PointY="5.9321907552083326" />
+          <ConnectorPoint PointX="1.5625" PointY="6.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model1.BookingEmployee">
+          <ConnectorPoint PointX="3.75" PointY="3.889150390625" />
+          <ConnectorPoint PointX="2.25" PointY="3.889150390625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model1.BookingNotes" Width="1.5" PointX="8.625" PointY="1.875" Height="1.9802864583333335" />
+        <AssociationConnector Association="Model1.BookingNotesBooking">
+          <ConnectorPoint PointX="8.625" PointY="3.3576871744791665" />
+          <ConnectorPoint PointX="5.25" PointY="3.3576871744791665" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model1.BookingNotesEmployee">
+          <ConnectorPoint PointX="8.96875" PointY="3.8552864583333335" />
+          <ConnectorPoint PointX="8.96875" PointY="4.8011457747395827" />
+          <ConnectorPoint PointX="2.25" PointY="4.8011457747395827" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model1.BookingClasification" Width="1.5" PointX="6.5" PointY="0.625" Height="2.172587890625" />
+        <AssociationConnector Association="Model1.BookingBookingClasification">
+          <ConnectorPoint PointX="5.25" PointY="1.7112939453125" />
+          <ConnectorPoint PointX="6.5" PointY="1.7112939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model1.BookingConfirmation" Width="1.5" PointX="1" PointY="0.75" Height="1.7879850260416665" />
+        <AssociationConnector Association="Model1.BookingConfirmationBooking">
+          <ConnectorPoint PointX="2.5" PointY="1.6439925130208333" />
+          <ConnectorPoint PointX="3.75" PointY="1.6439925130208333" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model1.EmployeeBookingConfirmation">
+          <ConnectorPoint PointX="1.625" PointY="3.375" />
+          <ConnectorPoint PointX="1.625" PointY="2.5379850260416665" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model1.Restaurant" Width="1.5" PointX="10.25" PointY="1.125" Height="1.9802864583333339" />
+        <AssociationConnector Association="Model1.BookingRestaurant">
+          <ConnectorPoint PointX="5.25" PointY="4.1605436197916665" />
+          <ConnectorPoint PointX="8.8854166666666661" PointY="4.1605436197916656" />
+          <ConnectorPoint PointX="9.0520833333333339" PointY="4.1605436197916665" />
+          <ConnectorPoint PointX="10.96875" PointY="4.1605436197916665" />
+          <ConnectorPoint PointX="10.96875" PointY="3.1052864583333339" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model1.LockOutDate" Width="1.5" PointX="11.75" PointY="3.75" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="Model1.LockOutTime" Width="1.5" PointX="9.375" PointY="5.875" Height="1.5956835937499996" />
+        <AssociationConnector Association="Model1.LockOutDateLockOutTime">
+          <ConnectorPoint PointX="11.75" PointY="6.0910953776041659" />
+          <ConnectorPoint PointX="10.875" PointY="6.0910953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model1.LockOutDateBookingClasification">
+          <ConnectorPoint PointX="12.53125" PointY="3.75" />
+          <ConnectorPoint PointX="12.53125" PointY="0.84374999999999989" />
+          <ConnectorPoint PointX="8" PointY="0.84374999999999989" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model1.LockOutDateAccessLevel">
+          <ConnectorPoint PointX="12.5" PointY="6.3071907552083326" />
+          <ConnectorPoint PointX="12.5" PointY="8.1942350260416674" />
+          <ConnectorPoint PointX="2.375" PointY="8.1942350260416674" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

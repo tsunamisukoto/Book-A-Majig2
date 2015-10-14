@@ -1,0 +1,1625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="AccessLevels" EntityType="DatabaseModel.Store.AccessLevels" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookingClasifications" EntityType="DatabaseModel.Store.BookingClasifications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookingConfirmations" EntityType="DatabaseModel.Store.BookingConfirmations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookingNotes" EntityType="DatabaseModel.Store.BookingNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bookings" EntityType="DatabaseModel.Store.Bookings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees" EntityType="DatabaseModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LockOutDates" EntityType="DatabaseModel.Store.LockOutDates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LockOutTimes" EntityType="DatabaseModel.Store.LockOutTimes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Restaurants" EntityType="DatabaseModel.Store.Restaurants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PresetNotes" EntityType="DatabaseModel.Store.PresetNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeAvailabilityDays" EntityType="DatabaseModel.Store.EmployeeAvailabilityDays" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeNAs" EntityType="DatabaseModel.Store.EmployeeNAs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Shifts" EntityType="DatabaseModel.Store.Shifts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeShifts" EntityType="DatabaseModel.Store.EmployeeShifts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeAvailabilityHoursRequests" EntityType="DatabaseModel.Store.EmployeeAvailabilityHoursRequests" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Permissions" EntityType="DatabaseModel.Store.Permissions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Rosters" EntityType="DatabaseModel.Store.Rosters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeCommendations" EntityType="DatabaseModel.Store.EmployeeCommendations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeCommendationClassifications" EntityType="DatabaseModel.Store.EmployeeCommendationClassifications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BookingClasificationLockOutDate" EntityType="DatabaseModel.Store.BookingClasificationLockOutDate" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeRestaurant" EntityType="DatabaseModel.Store.EmployeeRestaurant" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeCommendationEmployee" EntityType="DatabaseModel.Store.EmployeeCommendationEmployee" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_EmployeeAccessLevel" Association="DatabaseModel.Store.FK_EmployeeAccessLevel">
+      <End Role="AccessLevels" EntitySet="AccessLevels" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LockOutDateAccessLevel" Association="DatabaseModel.Store.FK_LockOutDateAccessLevel">
+      <End Role="AccessLevels" EntitySet="AccessLevels" />
+      <End Role="LockOutDates" EntitySet="LockOutDates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingBookingClasification" Association="DatabaseModel.Store.FK_BookingBookingClasification">
+      <End Role="BookingClasifications" EntitySet="BookingClasifications" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingConfirmationBooking" Association="DatabaseModel.Store.FK_BookingConfirmationBooking">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="BookingConfirmations" EntitySet="BookingConfirmations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingNotesBooking" Association="DatabaseModel.Store.FK_BookingNotesBooking">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="BookingNotes" EntitySet="BookingNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeBooking" Association="DatabaseModel.Store.FK_EmployeeBooking">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestaurantBooking" Association="DatabaseModel.Store.FK_RestaurantBooking">
+      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LockOutDateLockOutTime" Association="DatabaseModel.Store.FK_LockOutDateLockOutTime">
+      <End Role="LockOutDates" EntitySet="LockOutDates" />
+      <End Role="LockOutTimes" EntitySet="LockOutTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestaurantLockOutDate" Association="DatabaseModel.Store.FK_RestaurantLockOutDate">
+      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="LockOutDates" EntitySet="LockOutDates" />
+    </AssociationSet>
+    <AssociationSet Name="BookingNoteEmployee" Association="DatabaseModel.Store.BookingNoteEmployee">
+      <End Role="BookingNote" EntitySet="BookingNotes" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingClasificationLockOutDate_BookingClasification" Association="DatabaseModel.Store.FK_BookingClasificationLockOutDate_BookingClasification">
+      <End Role="BookingClasification" EntitySet="BookingClasifications" />
+      <End Role="BookingClasificationLockOutDate" EntitySet="BookingClasificationLockOutDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookingClasificationLockOutDate_LockOutDate" Association="DatabaseModel.Store.FK_BookingClasificationLockOutDate_LockOutDate">
+      <End Role="LockOutDate" EntitySet="LockOutDates" />
+      <End Role="BookingClasificationLockOutDate" EntitySet="BookingClasificationLockOutDate" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeAvailabilityDayEmployee" Association="DatabaseModel.Store.EmployeeAvailabilityDayEmployee">
+      <End Role="EmployeeAvailabilityDay" EntitySet="EmployeeAvailabilityDays" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeNAEmployee" Association="DatabaseModel.Store.EmployeeNAEmployee">
+      <End Role="EmployeeNA" EntitySet="EmployeeNAs" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="ShiftEmployeeShift" Association="DatabaseModel.Store.ShiftEmployeeShift">
+      <End Role="Shift" EntitySet="Shifts" />
+      <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeShiftEmployee" Association="DatabaseModel.Store.EmployeeShiftEmployee">
+      <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeRestaurant_Employee" Association="DatabaseModel.Store.FK_EmployeeRestaurant_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeRestaurant" EntitySet="EmployeeRestaurant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeRestaurant_Restaurant" Association="DatabaseModel.Store.FK_EmployeeRestaurant_Restaurant">
+      <End Role="Restaurant" EntitySet="Restaurants" />
+      <End Role="EmployeeRestaurant" EntitySet="EmployeeRestaurant" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeAvailabilityHoursRequestEmployee" Association="DatabaseModel.Store.EmployeeAvailabilityHoursRequestEmployee">
+      <End Role="EmployeeAvailabilityHoursRequest" EntitySet="EmployeeAvailabilityHoursRequests" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="PermissionsAccessLevel" Association="DatabaseModel.Store.PermissionsAccessLevel">
+      <End Role="Permissions" EntitySet="Permissions" />
+      <End Role="AccessLevel" EntitySet="AccessLevels" />
+    </AssociationSet>
+    <AssociationSet Name="RosterShift" Association="DatabaseModel.Store.RosterShift">
+      <End Role="Roster" EntitySet="Rosters" />
+      <End Role="Shift" EntitySet="Shifts" />
+    </AssociationSet>
+    <AssociationSet Name="RosterRestaurant" Association="DatabaseModel.Store.RosterRestaurant">
+      <End Role="Roster" EntitySet="Rosters" />
+      <End Role="Restaurant" EntitySet="Restaurants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeCommendationEmployee_EmployeeCommendation" Association="DatabaseModel.Store.FK_EmployeeCommendationEmployee_EmployeeCommendation">
+      <End Role="EmployeeCommendation" EntitySet="EmployeeCommendations" />
+      <End Role="EmployeeCommendationEmployee" EntitySet="EmployeeCommendationEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeCommendationEmployee_Employee" Association="DatabaseModel.Store.FK_EmployeeCommendationEmployee_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeCommendationEmployee" EntitySet="EmployeeCommendationEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeCommendationShift" Association="DatabaseModel.Store.EmployeeCommendationShift">
+      <End Role="EmployeeCommendation" EntitySet="EmployeeCommendations" />
+      <End Role="Shift" EntitySet="Shifts" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeCommendationEmployeeCommendationClassification" Association="DatabaseModel.Store.EmployeeCommendationEmployeeCommendationClassification">
+      <End Role="EmployeeCommendation" EntitySet="EmployeeCommendations" />
+      <End Role="EmployeeCommendationClassification" EntitySet="EmployeeCommendationClassifications" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccessLevels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookingClasifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassificationName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookingConfirmations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConfirmationDate" Type="datetime" Nullable="true" />
+    <Property Name="Booking_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookingNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Booking_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="DateInactive" Type="datetime" Nullable="true" />
+    <Property Name="DateAdded" Type="datetime" Nullable="false" />
+    <Property Name="Severity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="ContactNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BookingClasificationId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ArrivedDate" Type="datetime" Nullable="true" />
+    <Property Name="DateInactive" Type="datetime" Nullable="true" />
+    <Property Name="RestaurantId" Type="int" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="BookingClasificationId1" Type="int" Nullable="false" />
+    <Property Name="RestaurantId1" Type="int" Nullable="false" />
+    <Property Name="EmployeeBooking_Booking_Id" Type="int" Nullable="false" />
+    <Property Name="BookingDate" Type="datetime" Nullable="false" />
+    <Property Name="Adults" Type="int" Nullable="false" />
+    <Property Name="Children" Type="int" Nullable="false" />
+    <Property Name="HighChair" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateInactive" Type="datetime" Nullable="true" />
+    <Property Name="AccessLevel_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LockOutDates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="RestaurantId" Type="int" Nullable="false" />
+    <Property Name="AccessLevel_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="LockOutTimes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="LockOutDate_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Restaurants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="RosteringStartDay" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="RosteringWeekDuration" Type="int" Nullable="false" DefaultValue="1" />
+    <Property Name="RosteringWeekOffset" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PresetNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Severity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeAvailabilityDays">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayOfWeek" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="true" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeNAs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EndDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Shifts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RosterId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeShifts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftId" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeAvailabilityHoursRequests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="true" />
+    <Property Name="RequestedMinimumHours" Type="int" Nullable="true" />
+    <Property Name="RequestedMaximumHours" Type="int" Nullable="true" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permissions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PermissionName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PermissionValue" Type="bit" Nullable="false" />
+    <Property Name="AccessLevel_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rosters">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Restaurant_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeCommendations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Shift_Id" Type="int" Nullable="true" />
+    <Property Name="EmployeeCommendationClassification_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeCommendationClassifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Weighting" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookingClasificationLockOutDate">
+    <Key>
+      <PropertyRef Name="BookingClasifications_Id" />
+      <PropertyRef Name="LockOutDates_Id" />
+    </Key>
+    <Property Name="BookingClasifications_Id" Type="int" Nullable="false" />
+    <Property Name="LockOutDates_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeRestaurant">
+    <Key>
+      <PropertyRef Name="Employees_Id" />
+      <PropertyRef Name="Restaurants_Id" />
+    </Key>
+    <Property Name="Employees_Id" Type="int" Nullable="false" />
+    <Property Name="Restaurants_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeCommendationEmployee">
+    <Key>
+      <PropertyRef Name="EmployeeCommendations_Id" />
+      <PropertyRef Name="Employees_Id" />
+    </Key>
+    <Property Name="EmployeeCommendations_Id" Type="int" Nullable="false" />
+    <Property Name="Employees_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EmployeeAccessLevel">
+    <End Role="AccessLevels" Type="DatabaseModel.Store.AccessLevels" Multiplicity="1" />
+    <End Role="Employees" Type="DatabaseModel.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessLevels">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="AccessLevel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LockOutDateAccessLevel">
+    <End Role="AccessLevels" Type="DatabaseModel.Store.AccessLevels" Multiplicity="0..1" />
+    <End Role="LockOutDates" Type="DatabaseModel.Store.LockOutDates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessLevels">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LockOutDates">
+        <PropertyRef Name="AccessLevel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingBookingClasification">
+    <End Role="BookingClasifications" Type="DatabaseModel.Store.BookingClasifications" Multiplicity="1" />
+    <End Role="Bookings" Type="DatabaseModel.Store.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookingClasifications">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="BookingClasificationId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingConfirmationBooking">
+    <End Role="Bookings" Type="DatabaseModel.Store.Bookings" Multiplicity="1" />
+    <End Role="BookingConfirmations" Type="DatabaseModel.Store.BookingConfirmations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingConfirmations">
+        <PropertyRef Name="Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingNotesBooking">
+    <End Role="Bookings" Type="DatabaseModel.Store.Bookings" Multiplicity="1" />
+    <End Role="BookingNotes" Type="DatabaseModel.Store.BookingNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingNotes">
+        <PropertyRef Name="Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeBooking">
+    <End Role="Employees" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <End Role="Bookings" Type="DatabaseModel.Store.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="EmployeeBooking_Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestaurantBooking">
+    <End Role="Restaurants" Type="DatabaseModel.Store.Restaurants" Multiplicity="1" />
+    <End Role="Bookings" Type="DatabaseModel.Store.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="RestaurantId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LockOutDateLockOutTime">
+    <End Role="LockOutDates" Type="DatabaseModel.Store.LockOutDates" Multiplicity="1" />
+    <End Role="LockOutTimes" Type="DatabaseModel.Store.LockOutTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LockOutDates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LockOutTimes">
+        <PropertyRef Name="LockOutDate_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestaurantLockOutDate">
+    <End Role="Restaurants" Type="DatabaseModel.Store.Restaurants" Multiplicity="1" />
+    <End Role="LockOutDates" Type="DatabaseModel.Store.LockOutDates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LockOutDates">
+        <PropertyRef Name="RestaurantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingNoteEmployee">
+    <End Role="BookingNote" Type="DatabaseModel.Store.BookingNotes" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingNote">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeAvailabilityDayEmployee">
+    <End Role="EmployeeAvailabilityDay" Type="DatabaseModel.Store.EmployeeAvailabilityDays" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeAvailabilityDay">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeNAEmployee">
+    <End Role="EmployeeNA" Type="DatabaseModel.Store.EmployeeNAs" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeNA">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShiftEmployeeShift">
+    <End Role="Shift" Type="DatabaseModel.Store.Shifts" Multiplicity="1" />
+    <End Role="EmployeeShift" Type="DatabaseModel.Store.EmployeeShifts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeShift">
+        <PropertyRef Name="ShiftId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeShiftEmployee">
+    <End Role="EmployeeShift" Type="DatabaseModel.Store.EmployeeShifts" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeShift">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeAvailabilityHoursRequestEmployee">
+    <End Role="EmployeeAvailabilityHoursRequest" Type="DatabaseModel.Store.EmployeeAvailabilityHoursRequests" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeAvailabilityHoursRequest">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PermissionsAccessLevel">
+    <End Role="Permissions" Type="DatabaseModel.Store.Permissions" Multiplicity="*" />
+    <End Role="AccessLevel" Type="DatabaseModel.Store.AccessLevels" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AccessLevel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="AccessLevel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RosterShift">
+    <End Role="Roster" Type="DatabaseModel.Store.Rosters" Multiplicity="1" />
+    <End Role="Shift" Type="DatabaseModel.Store.Shifts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shift">
+        <PropertyRef Name="RosterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RosterRestaurant">
+    <End Role="Roster" Type="DatabaseModel.Store.Rosters" Multiplicity="*" />
+    <End Role="Restaurant" Type="DatabaseModel.Store.Restaurants" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Roster">
+        <PropertyRef Name="Restaurant_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeCommendationShift">
+    <End Role="EmployeeCommendation" Type="DatabaseModel.Store.EmployeeCommendations" Multiplicity="*" />
+    <End Role="Shift" Type="DatabaseModel.Store.Shifts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeCommendation">
+        <PropertyRef Name="Shift_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeCommendationEmployeeCommendationClassification">
+    <End Role="EmployeeCommendation" Type="DatabaseModel.Store.EmployeeCommendations" Multiplicity="*" />
+    <End Role="EmployeeCommendationClassification" Type="DatabaseModel.Store.EmployeeCommendationClassifications" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeCommendationClassification">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeCommendation">
+        <PropertyRef Name="EmployeeCommendationClassification_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingClasificationLockOutDate_BookingClasification">
+    <End Role="BookingClasification" Type="DatabaseModel.Store.BookingClasifications" Multiplicity="1" />
+    <End Role="BookingClasificationLockOutDate" Type="DatabaseModel.Store.BookingClasificationLockOutDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookingClasification">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingClasificationLockOutDate">
+        <PropertyRef Name="BookingClasifications_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookingClasificationLockOutDate_LockOutDate">
+    <End Role="BookingClasificationLockOutDate" Type="DatabaseModel.Store.BookingClasificationLockOutDate" Multiplicity="*" />
+    <End Role="LockOutDate" Type="DatabaseModel.Store.LockOutDates" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="LockOutDate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingClasificationLockOutDate">
+        <PropertyRef Name="LockOutDates_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeRestaurant_Employee">
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <End Role="EmployeeRestaurant" Type="DatabaseModel.Store.EmployeeRestaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeRestaurant">
+        <PropertyRef Name="Employees_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeRestaurant_Restaurant">
+    <End Role="EmployeeRestaurant" Type="DatabaseModel.Store.EmployeeRestaurant" Multiplicity="*" />
+    <End Role="Restaurant" Type="DatabaseModel.Store.Restaurants" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeRestaurant">
+        <PropertyRef Name="Restaurants_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeCommendationEmployee_EmployeeCommendation">
+    <End Role="EmployeeCommendation" Type="DatabaseModel.Store.EmployeeCommendations" Multiplicity="1" />
+    <End Role="EmployeeCommendationEmployee" Type="DatabaseModel.Store.EmployeeCommendationEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeCommendation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeCommendationEmployee">
+        <PropertyRef Name="EmployeeCommendations_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeCommendationEmployee_Employee">
+    <End Role="EmployeeCommendationEmployee" Type="DatabaseModel.Store.EmployeeCommendationEmployee" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeCommendationEmployee">
+        <PropertyRef Name="Employees_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccessLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_EmployeeAccessLevel" FromRole="AccessLevels" ToRole="Employees" />
+          <NavigationProperty Name="LockOutDates" Relationship="Self.FK_LockOutDateAccessLevel" FromRole="AccessLevels" ToRole="LockOutDates" />
+          <NavigationProperty Name="Permissions" Relationship="DatabaseModel.PermissionsAccessLevel" FromRole="AccessLevel" ToRole="Permissions" />
+          <Property Name="Level" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookingClasification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassificationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK_BookingBookingClasification" FromRole="BookingClasifications" ToRole="Bookings" />
+          <NavigationProperty Name="LockOutDates" Relationship="DatabaseModel.BookingClasificationLockOutDate" FromRole="BookingClasification" ToRole="LockOutDate" />
+        </EntityType>
+        <EntityType Name="BookingConfirmation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfirmationDate" Type="DateTime" Precision="3" />
+          <Property Name="Booking_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_BookingConfirmationBooking" FromRole="BookingConfirmations" ToRole="Bookings" />
+        </EntityType>
+        <EntityType Name="BookingNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Booking_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_BookingNotesBooking" FromRole="BookingNotes" ToRole="Bookings" />
+          <NavigationProperty Name="Employee" Relationship="DatabaseModel.BookingNoteEmployee" FromRole="BookingNote" ToRole="Employee" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="DateInactive" Type="DateTime" Nullable="true" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" />
+          <Property Name="Severity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BookingClasificationId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArrivedDate" Type="DateTime" Precision="3" Nullable="true" />
+          <Property Name="DateInactive" Type="DateTime" Precision="3" Nullable="true" />
+          <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BookingClasificationId1" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantId1" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeBooking_Booking_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BookingClasification" Relationship="Self.FK_BookingBookingClasification" FromRole="Bookings" ToRole="BookingClasifications" />
+          <NavigationProperty Name="BookingConfirmations" Relationship="Self.FK_BookingConfirmationBooking" FromRole="Bookings" ToRole="BookingConfirmations" />
+          <NavigationProperty Name="BookingNotes" Relationship="Self.FK_BookingNotesBooking" FromRole="Bookings" ToRole="BookingNotes" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeBooking" FromRole="Bookings" ToRole="Employees" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_RestaurantBooking" FromRole="Bookings" ToRole="Restaurants" />
+          <Property Name="BookingDate" Type="DateTime" Nullable="false" />
+          <Property Name="Adults" Type="Int32" Nullable="false" />
+          <Property Name="Children" Type="Int32" Nullable="false" />
+          <Property Name="HighChair" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateInactive" Type="DateTime" Precision="3" Nullable="true" />
+          <Property Name="AccessLevel_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccessLevel" Relationship="Self.FK_EmployeeAccessLevel" FromRole="Employees" ToRole="AccessLevels" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK_EmployeeBooking" FromRole="Employees" ToRole="Bookings" />
+          <NavigationProperty Name="BookingNotes" Relationship="DatabaseModel.BookingNoteEmployee" FromRole="Employee" ToRole="BookingNote" />
+          <NavigationProperty Name="EmployeeAvailabilityDays" Relationship="DatabaseModel.EmployeeAvailabilityDayEmployee" FromRole="Employee" ToRole="EmployeeAvailabilityDay" />
+          <NavigationProperty Name="EmployeeNAs" Relationship="DatabaseModel.EmployeeNAEmployee" FromRole="Employee" ToRole="EmployeeNA" />
+          <NavigationProperty Name="EmployeeShifts" Relationship="DatabaseModel.EmployeeShiftEmployee" FromRole="Employee" ToRole="EmployeeShift" />
+          <NavigationProperty Name="Restaurants" Relationship="DatabaseModel.EmployeeRestaurant" FromRole="Employee" ToRole="Restaurant" />
+          <NavigationProperty Name="EmployeeAvailabilityHoursRequests" Relationship="DatabaseModel.EmployeeAvailabilityHoursRequestEmployee" FromRole="Employee" ToRole="EmployeeAvailabilityHoursRequest" />
+          <NavigationProperty Name="EmployeeCommendations" Relationship="DatabaseModel.EmployeeCommendationEmployee" FromRole="Employee" ToRole="EmployeeCommendation" />
+        </EntityType>
+        <EntityType Name="LockOutDate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+          <Property Name="AccessLevel_Id" Type="Int32" />
+          <NavigationProperty Name="AccessLevel" Relationship="Self.FK_LockOutDateAccessLevel" FromRole="LockOutDates" ToRole="AccessLevels" />
+          <NavigationProperty Name="LockOutTimes" Relationship="Self.FK_LockOutDateLockOutTime" FromRole="LockOutDates" ToRole="LockOutTimes" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_RestaurantLockOutDate" FromRole="LockOutDates" ToRole="Restaurants" />
+          <NavigationProperty Name="BookingClasifications" Relationship="DatabaseModel.BookingClasificationLockOutDate" FromRole="LockOutDate" ToRole="BookingClasification" />
+        </EntityType>
+        <EntityType Name="LockOutTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LockOutDate_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LockOutDate" Relationship="Self.FK_LockOutDateLockOutTime" FromRole="LockOutTimes" ToRole="LockOutDates" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK_RestaurantBooking" FromRole="Restaurants" ToRole="Bookings" />
+          <NavigationProperty Name="LockOutDates" Relationship="Self.FK_RestaurantLockOutDate" FromRole="Restaurants" ToRole="LockOutDates" />
+          <NavigationProperty Name="Employees" Relationship="DatabaseModel.EmployeeRestaurant" FromRole="Restaurant" ToRole="Employee" />
+          <Property Name="RosteringStartDay" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="RosteringWeekDuration" Type="Int32" Nullable="false" DefaultValue="1" />
+          <Property Name="RosteringWeekOffset" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rosters" Relationship="DatabaseModel.RosterRestaurant" FromRole="Restaurant" ToRole="Roster" />
+        </EntityType>
+        <Association Name="FK_EmployeeAccessLevel">
+          <End Role="AccessLevels" Type="Self.AccessLevel" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessLevels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="AccessLevel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LockOutDateAccessLevel">
+          <End Role="AccessLevels" Type="Self.AccessLevel" Multiplicity="0..1" />
+          <End Role="LockOutDates" Type="Self.LockOutDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessLevels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LockOutDates">
+              <PropertyRef Name="AccessLevel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingBookingClasification">
+          <End Role="BookingClasifications" Type="Self.BookingClasification" Multiplicity="1" />
+          <End Role="Bookings" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingClasifications">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="BookingClasificationId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingConfirmationBooking">
+          <End Role="Bookings" Type="Self.Booking" Multiplicity="1" />
+          <End Role="BookingConfirmations" Type="Self.BookingConfirmation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingConfirmations">
+              <PropertyRef Name="Booking_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingNotesBooking">
+          <End Role="Bookings" Type="Self.Booking" Multiplicity="1" />
+          <End Role="BookingNotes" Type="Self.BookingNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingNotes">
+              <PropertyRef Name="Booking_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeBooking">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Bookings" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="EmployeeBooking_Booking_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantBooking">
+          <End Role="Restaurants" Type="Self.Restaurant" Multiplicity="1" />
+          <End Role="Bookings" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="RestaurantId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LockOutDateLockOutTime">
+          <End Role="LockOutDates" Type="Self.LockOutDate" Multiplicity="1" />
+          <End Role="LockOutTimes" Type="Self.LockOutTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LockOutDates">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LockOutTimes">
+              <PropertyRef Name="LockOutDate_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantLockOutDate">
+          <End Role="Restaurants" Type="Self.Restaurant" Multiplicity="1" />
+          <End Role="LockOutDates" Type="Self.LockOutDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LockOutDates">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="AccessLevels" EntityType="Self.AccessLevel" />
+          <EntitySet Name="BookingClasifications" EntityType="Self.BookingClasification" />
+          <EntitySet Name="BookingConfirmations" EntityType="Self.BookingConfirmation" />
+          <EntitySet Name="BookingNotes" EntityType="Self.BookingNote" />
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="LockOutDates" EntityType="Self.LockOutDate" />
+          <EntitySet Name="LockOutTimes" EntityType="Self.LockOutTime" />
+          <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
+          <AssociationSet Name="FK_EmployeeAccessLevel" Association="Self.FK_EmployeeAccessLevel">
+            <End Role="AccessLevels" EntitySet="AccessLevels" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LockOutDateAccessLevel" Association="Self.FK_LockOutDateAccessLevel">
+            <End Role="AccessLevels" EntitySet="AccessLevels" />
+            <End Role="LockOutDates" EntitySet="LockOutDates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingBookingClasification" Association="Self.FK_BookingBookingClasification">
+            <End Role="BookingClasifications" EntitySet="BookingClasifications" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingConfirmationBooking" Association="Self.FK_BookingConfirmationBooking">
+            <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="BookingConfirmations" EntitySet="BookingConfirmations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingNotesBooking" Association="Self.FK_BookingNotesBooking">
+            <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="BookingNotes" EntitySet="BookingNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeBooking" Association="Self.FK_EmployeeBooking">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantBooking" Association="Self.FK_RestaurantBooking">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LockOutDateLockOutTime" Association="Self.FK_LockOutDateLockOutTime">
+            <End Role="LockOutDates" EntitySet="LockOutDates" />
+            <End Role="LockOutTimes" EntitySet="LockOutTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantLockOutDate" Association="Self.FK_RestaurantLockOutDate">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="LockOutDates" EntitySet="LockOutDates" />
+          </AssociationSet>
+          <EntitySet Name="PresetNotes" EntityType="DatabaseModel.PresetNote" />
+          <AssociationSet Name="BookingNoteEmployee" Association="DatabaseModel.BookingNoteEmployee">
+            <End Role="BookingNote" EntitySet="BookingNotes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="BookingClasificationLockOutDate" Association="DatabaseModel.BookingClasificationLockOutDate">
+            <End Role="BookingClasification" EntitySet="BookingClasifications" />
+            <End Role="LockOutDate" EntitySet="LockOutDates" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeAvailabilityDays" EntityType="DatabaseModel.EmployeeAvailabilityDay" />
+          <AssociationSet Name="EmployeeAvailabilityDayEmployee" Association="DatabaseModel.EmployeeAvailabilityDayEmployee">
+            <End Role="EmployeeAvailabilityDay" EntitySet="EmployeeAvailabilityDays" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeNAs" EntityType="DatabaseModel.EmployeeNA" />
+          <AssociationSet Name="EmployeeNAEmployee" Association="DatabaseModel.EmployeeNAEmployee">
+            <End Role="EmployeeNA" EntitySet="EmployeeNAs" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <EntitySet Name="Shifts" EntityType="DatabaseModel.Shift" />
+          <EntitySet Name="EmployeeShifts" EntityType="DatabaseModel.EmployeeShift" />
+          <AssociationSet Name="ShiftEmployeeShift" Association="DatabaseModel.ShiftEmployeeShift">
+            <End Role="Shift" EntitySet="Shifts" />
+            <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeShiftEmployee" Association="DatabaseModel.EmployeeShiftEmployee">
+            <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeRestaurant" Association="DatabaseModel.EmployeeRestaurant">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeAvailabilityHoursRequests" EntityType="DatabaseModel.EmployeeAvailabilityHoursRequest" />
+          <AssociationSet Name="EmployeeAvailabilityHoursRequestEmployee" Association="DatabaseModel.EmployeeAvailabilityHoursRequestEmployee">
+            <End Role="EmployeeAvailabilityHoursRequest" EntitySet="EmployeeAvailabilityHoursRequests" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <EntitySet Name="Permissions" EntityType="DatabaseModel.Permissions" />
+          <AssociationSet Name="PermissionsAccessLevel" Association="DatabaseModel.PermissionsAccessLevel">
+            <End Role="Permissions" EntitySet="Permissions" />
+            <End Role="AccessLevel" EntitySet="AccessLevels" />
+          </AssociationSet>
+          <EntitySet Name="Rosters" EntityType="DatabaseModel.Roster" />
+          <AssociationSet Name="RosterShift" Association="DatabaseModel.RosterShift">
+            <End Role="Roster" EntitySet="Rosters" />
+            <End Role="Shift" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="RosterRestaurant" Association="DatabaseModel.RosterRestaurant">
+            <End Role="Roster" EntitySet="Rosters" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeCommendations" EntityType="DatabaseModel.EmployeeCommendation" />
+          <AssociationSet Name="EmployeeCommendationEmployee" Association="DatabaseModel.EmployeeCommendationEmployee">
+            <End Role="EmployeeCommendation" EntitySet="EmployeeCommendations" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeCommendationShift" Association="DatabaseModel.EmployeeCommendationShift">
+            <End Role="EmployeeCommendation" EntitySet="EmployeeCommendations" />
+            <End Role="Shift" EntitySet="Shifts" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeCommendationClassifications" EntityType="DatabaseModel.EmployeeCommendationClassification" />
+          <AssociationSet Name="EmployeeCommendationEmployeeCommendationClassification" Association="DatabaseModel.EmployeeCommendationEmployeeCommendationClassification">
+            <End Role="EmployeeCommendation" EntitySet="EmployeeCommendations" />
+            <End Role="EmployeeCommendationClassification" EntitySet="EmployeeCommendationClassifications" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeLevelCategories" EntityType="DatabaseModel.EmployeeLevelCategory" />
+          <EntitySet Name="EmployeeShiftPresets" EntityType="DatabaseModel.EmployeeShiftPresets" />
+          <AssociationSet Name="EmployeeShiftCategoryEmployeeShiftPresets" Association="DatabaseModel.EmployeeShiftCategoryEmployeeShiftPresets">
+            <End Role="EmployeeShiftCategory" EntitySet="EmployeeLevelCategories" />
+            <End Role="EmployeeShiftPresets" EntitySet="EmployeeShiftPresets" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeShiftCategoryEmployeeShift" Association="DatabaseModel.EmployeeShiftCategoryEmployeeShift">
+            <End Role="EmployeeShiftCategory" EntitySet="EmployeeLevelCategories" />
+            <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+          </AssociationSet>
+          <EntitySet Name="ShiftCategories" EntityType="DatabaseModel.ShiftCategory" />
+          <AssociationSet Name="EmployeeShiftPresetsShiftCategory" Association="DatabaseModel.EmployeeShiftPresetsShiftCategory">
+            <End Role="EmployeeShiftPresets" EntitySet="EmployeeShiftPresets" />
+            <End Role="ShiftCategory" EntitySet="ShiftCategories" />
+          </AssociationSet>
+          <AssociationSet Name="ShiftCategoryShift" Association="DatabaseModel.ShiftCategoryShift">
+            <End Role="ShiftCategory" EntitySet="ShiftCategories" />
+            <End Role="Shift" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeCommendationEmployee1" Association="DatabaseModel.EmployeeCommendationEmployee1">
+            <End Role="EmployeeCommendation" EntitySet="EmployeeCommendations" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="PresetNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Severity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="BookingNoteEmployee">
+          <End Type="DatabaseModel.BookingNote" Role="BookingNote" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingNote">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BookingClasificationLockOutDate">
+          <End Type="DatabaseModel.BookingClasification" Role="BookingClasification" Multiplicity="*" />
+          <End Type="DatabaseModel.LockOutDate" Role="LockOutDate" Multiplicity="*" />
+        </Association>
+        <EntityType Name="EmployeeAvailabilityDay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee" Relationship="DatabaseModel.EmployeeAvailabilityDayEmployee" FromRole="EmployeeAvailabilityDay" ToRole="Employee" />
+          <Property Name="DayOfWeek" Type="String" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="true" />
+          <Property Name="Notes" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="EmployeeAvailabilityDayEmployee">
+          <End Type="DatabaseModel.EmployeeAvailabilityDay" Role="EmployeeAvailabilityDay" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="1" />
+        </Association>
+        <EntityType Name="EmployeeNA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee" Relationship="DatabaseModel.EmployeeNAEmployee" FromRole="EmployeeNA" ToRole="Employee" />
+          <Property Name="StartDate" Type="String" Nullable="false" />
+          <Property Name="EndDate" Type="String" Nullable="false" />
+          <Property Name="Notes" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="EmployeeNAEmployee">
+          <End Type="DatabaseModel.EmployeeNA" Role="EmployeeNA" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="EmployeeShifts" Relationship="DatabaseModel.ShiftEmployeeShift" FromRole="Shift" ToRole="EmployeeShift" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <Property Name="Notes" Type="String" Nullable="false" />
+          <NavigationProperty Name="Roster" Relationship="DatabaseModel.RosterShift" FromRole="Shift" ToRole="Roster" />
+          <Property Name="RosterId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeeCommendations" Relationship="DatabaseModel.EmployeeCommendationShift" FromRole="Shift" ToRole="EmployeeCommendation" />
+          <NavigationProperty Name="ShiftCategory" Relationship="DatabaseModel.ShiftCategoryShift" FromRole="Shift" ToRole="ShiftCategory" />
+          <Property Name="ShiftCategoryId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeShift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Shift" Relationship="DatabaseModel.ShiftEmployeeShift" FromRole="EmployeeShift" ToRole="Shift" />
+          <Property Name="ShiftId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="DatabaseModel.EmployeeShiftEmployee" FromRole="EmployeeShift" ToRole="Employee" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="EmployeeShiftCategory" Relationship="DatabaseModel.EmployeeShiftCategoryEmployeeShift" FromRole="EmployeeShift" ToRole="EmployeeShiftCategory" />
+          <Property Name="EmployeeShiftCategoryId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ShiftEmployeeShift">
+          <End Type="DatabaseModel.Shift" Role="Shift" Multiplicity="1" />
+          <End Type="DatabaseModel.EmployeeShift" Role="EmployeeShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shift">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeShift">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EmployeeShiftEmployee">
+          <End Type="DatabaseModel.EmployeeShift" Role="EmployeeShift" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="0..1" />
+        </Association>
+        <Association Name="EmployeeRestaurant">
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="*" />
+          <End Type="DatabaseModel.Restaurant" Role="Restaurant" Multiplicity="*" />
+        </Association>
+        <EntityType Name="EmployeeAvailabilityHoursRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="true" />
+          <Property Name="RequestedMinimumHours" Type="Int32" Nullable="true" />
+          <Property Name="RequestedMaximumHours" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Employee" Relationship="DatabaseModel.EmployeeAvailabilityHoursRequestEmployee" FromRole="EmployeeAvailabilityHoursRequest" ToRole="Employee" />
+        </EntityType>
+        <Association Name="EmployeeAvailabilityHoursRequestEmployee">
+          <End Type="DatabaseModel.EmployeeAvailabilityHoursRequest" Role="EmployeeAvailabilityHoursRequest" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Permissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PermissionName" Type="String" Nullable="false" />
+          <Property Name="PermissionValue" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AccessLevel" Relationship="DatabaseModel.PermissionsAccessLevel" FromRole="Permissions" ToRole="AccessLevel" />
+        </EntityType>
+        <Association Name="PermissionsAccessLevel">
+          <End Type="DatabaseModel.Permissions" Role="Permissions" Multiplicity="*" />
+          <End Type="DatabaseModel.AccessLevel" Role="AccessLevel" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Roster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Notes" Type="String" Nullable="false" />
+          <NavigationProperty Name="Shifts" Relationship="DatabaseModel.RosterShift" FromRole="Roster" ToRole="Shift" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Restaurant" Relationship="DatabaseModel.RosterRestaurant" FromRole="Roster" ToRole="Restaurant" />
+        </EntityType>
+        <Association Name="RosterShift">
+          <End Type="DatabaseModel.Roster" Role="Roster" Multiplicity="1" />
+          <End Type="DatabaseModel.Shift" Role="Shift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shift">
+              <PropertyRef Name="RosterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RosterRestaurant">
+          <End Type="DatabaseModel.Roster" Role="Roster" Multiplicity="*" />
+          <End Type="DatabaseModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+        </Association>
+        <EntityType Name="EmployeeCommendation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RecievingEmployee" Relationship="DatabaseModel.EmployeeCommendationEmployee" FromRole="EmployeeCommendation" ToRole="Employee" />
+          <NavigationProperty Name="Shift" Relationship="DatabaseModel.EmployeeCommendationShift" FromRole="EmployeeCommendation" ToRole="Shift" />
+          <Property Name="Notes" Type="String" Nullable="false" />
+          <NavigationProperty Name="EmployeeCommendationClassification" Relationship="DatabaseModel.EmployeeCommendationEmployeeCommendationClassification" FromRole="EmployeeCommendation" ToRole="EmployeeCommendationClassification" />
+          <NavigationProperty Name="CommendedBy" Relationship="DatabaseModel.EmployeeCommendationEmployee1" FromRole="EmployeeCommendation" ToRole="Employee" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <Association Name="EmployeeCommendationEmployee">
+          <End Type="DatabaseModel.EmployeeCommendation" Role="EmployeeCommendation" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeeCommendationShift">
+          <End Type="DatabaseModel.EmployeeCommendation" Role="EmployeeCommendation" Multiplicity="*" />
+          <End Type="DatabaseModel.Shift" Role="Shift" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="EmployeeCommendationClassification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Weighting" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="EmployeeCommendationEmployeeCommendationClassification">
+          <End Type="DatabaseModel.EmployeeCommendation" Role="EmployeeCommendation" Multiplicity="*" />
+          <End Type="DatabaseModel.EmployeeCommendationClassification" Role="EmployeeCommendationClassification" Multiplicity="1" />
+        </Association>
+        <EntityType Name="EmployeeLevelCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="MinLevelStaffMember" Type="Int32" Nullable="true" />
+        </EntityType>
+        <EntityType Name="EmployeeShiftPresets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="EmployeeShiftCategory" Relationship="DatabaseModel.EmployeeShiftCategoryEmployeeShiftPresets" FromRole="EmployeeShiftPresets" ToRole="EmployeeShiftCategory" />
+          <NavigationProperty Name="ShiftCategory" Relationship="DatabaseModel.EmployeeShiftPresetsShiftCategory" FromRole="EmployeeShiftPresets" ToRole="ShiftCategory" />
+          <Property Name="DayOfWeek" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" />
+          <Property Name="FinishTime" Type="DateTime" Nullable="true" />
+        </EntityType>
+        <Association Name="EmployeeShiftCategoryEmployeeShiftPresets">
+          <End Type="DatabaseModel.EmployeeLevelCategory" Role="EmployeeShiftCategory" Multiplicity="1" />
+          <End Type="DatabaseModel.EmployeeShiftPresets" Role="EmployeeShiftPresets" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeeShiftCategoryEmployeeShift">
+          <End Type="DatabaseModel.EmployeeLevelCategory" Role="EmployeeShiftCategory" Multiplicity="1" />
+          <End Type="DatabaseModel.EmployeeShift" Role="EmployeeShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeShiftCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeShift">
+              <PropertyRef Name="EmployeeShiftCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ShiftCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="EmployeeShiftPresets" Relationship="DatabaseModel.EmployeeShiftPresetsShiftCategory" FromRole="ShiftCategory" ToRole="EmployeeShiftPresets" />
+          <NavigationProperty Name="Shifts" Relationship="DatabaseModel.ShiftCategoryShift" FromRole="ShiftCategory" ToRole="Shift" />
+          <Property Name="CategoryName" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="EmployeeShiftPresetsShiftCategory">
+          <End Type="DatabaseModel.EmployeeShiftPresets" Role="EmployeeShiftPresets" Multiplicity="*" />
+          <End Type="DatabaseModel.ShiftCategory" Role="ShiftCategory" Multiplicity="1" />
+        </Association>
+        <Association Name="ShiftCategoryShift">
+          <End Type="DatabaseModel.ShiftCategory" Role="ShiftCategory" Multiplicity="1" />
+          <End Type="DatabaseModel.Shift" Role="Shift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShiftCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shift">
+              <PropertyRef Name="ShiftCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EmployeeCommendationEmployee1">
+          <End Type="DatabaseModel.EmployeeCommendation" Role="EmployeeCommendation" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+    <EntitySetMapping Name="AccessLevels">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.AccessLevel)">
+        <MappingFragment StoreEntitySet="AccessLevels">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingClasifications">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.BookingClasification)">
+        <MappingFragment StoreEntitySet="BookingClasifications">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassificationName" ColumnName="ClassificationName" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingConfirmations">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.BookingConfirmation)">
+        <MappingFragment StoreEntitySet="BookingConfirmations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ConfirmationDate" ColumnName="ConfirmationDate" />
+          <ScalarProperty Name="Booking_Id" ColumnName="Booking_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingNotes">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.BookingNote)">
+        <MappingFragment StoreEntitySet="BookingNotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Booking_Id" ColumnName="Booking_Id" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="DateInactive" ColumnName="DateInactive" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Booking)">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="BookingClasificationId" ColumnName="BookingClasificationId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
+          <ScalarProperty Name="DateInactive" ColumnName="DateInactive" />
+          <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="BookingClasificationId1" ColumnName="BookingClasificationId1" />
+          <ScalarProperty Name="RestaurantId1" ColumnName="RestaurantId1" />
+          <ScalarProperty Name="EmployeeBooking_Booking_Id" ColumnName="EmployeeBooking_Booking_Id" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="Adults" ColumnName="Adults" />
+          <ScalarProperty Name="Children" ColumnName="Children" />
+          <ScalarProperty Name="HighChair" ColumnName="HighChair" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateInactive" ColumnName="DateInactive" />
+          <ScalarProperty Name="AccessLevel_Id" ColumnName="AccessLevel_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LockOutDates">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.LockOutDate)">
+        <MappingFragment StoreEntitySet="LockOutDates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+          <ScalarProperty Name="AccessLevel_Id" ColumnName="AccessLevel_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LockOutTimes">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.LockOutTime)">
+        <MappingFragment StoreEntitySet="LockOutTimes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="LockOutDate_Id" ColumnName="LockOutDate_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Restaurant)">
+        <MappingFragment StoreEntitySet="Restaurants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="RosteringStartDay" ColumnName="RosteringStartDay" />
+          <ScalarProperty Name="RosteringWeekDuration" ColumnName="RosteringWeekDuration" />
+          <ScalarProperty Name="RosteringWeekOffset" ColumnName="RosteringWeekOffset" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PresetNotes">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.PresetNote)">
+        <MappingFragment StoreEntitySet="PresetNotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeAvailabilityDays">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.EmployeeAvailabilityDay)">
+        <MappingFragment StoreEntitySet="EmployeeAvailabilityDays">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeNAs">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.EmployeeNA)">
+        <MappingFragment StoreEntitySet="EmployeeNAs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shifts">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Shift)">
+        <MappingFragment StoreEntitySet="Shifts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="RosterId" ColumnName="RosterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeShifts">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.EmployeeShift)">
+        <MappingFragment StoreEntitySet="EmployeeShifts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeAvailabilityHoursRequests">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.EmployeeAvailabilityHoursRequest)">
+        <MappingFragment StoreEntitySet="EmployeeAvailabilityHoursRequests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="RequestedMinimumHours" ColumnName="RequestedMinimumHours" />
+          <ScalarProperty Name="RequestedMaximumHours" ColumnName="RequestedMaximumHours" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Permissions)">
+        <MappingFragment StoreEntitySet="Permissions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PermissionName" ColumnName="PermissionName" />
+          <ScalarProperty Name="PermissionValue" ColumnName="PermissionValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rosters">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Roster)">
+        <MappingFragment StoreEntitySet="Rosters">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeCommendations">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.EmployeeCommendation)">
+        <MappingFragment StoreEntitySet="EmployeeCommendations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeCommendationClassifications">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.EmployeeCommendationClassification)">
+        <MappingFragment StoreEntitySet="EmployeeCommendationClassifications">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Weighting" ColumnName="Weighting" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="BookingClasificationLockOutDate" TypeName="DatabaseModel.BookingClasificationLockOutDate" StoreEntitySet="BookingClasificationLockOutDate">
+      <EndProperty Name="BookingClasification">
+        <ScalarProperty Name="Id" ColumnName="BookingClasifications_Id" />
+      </EndProperty>
+      <EndProperty Name="LockOutDate">
+        <ScalarProperty Name="Id" ColumnName="LockOutDates_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeAvailabilityDayEmployee" TypeName="DatabaseModel.EmployeeAvailabilityDayEmployee" StoreEntitySet="EmployeeAvailabilityDays">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeAvailabilityDay">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeNAEmployee" TypeName="DatabaseModel.EmployeeNAEmployee" StoreEntitySet="EmployeeNAs">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeNA">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeShiftEmployee" TypeName="DatabaseModel.EmployeeShiftEmployee" StoreEntitySet="EmployeeShifts">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeShift">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+            <Condition ColumnName="Employee_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeRestaurant" TypeName="DatabaseModel.EmployeeRestaurant" StoreEntitySet="EmployeeRestaurant">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employees_Id" />
+      </EndProperty>
+      <EndProperty Name="Restaurant">
+        <ScalarProperty Name="Id" ColumnName="Restaurants_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeAvailabilityHoursRequestEmployee" TypeName="DatabaseModel.EmployeeAvailabilityHoursRequestEmployee" StoreEntitySet="EmployeeAvailabilityHoursRequests">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeAvailabilityHoursRequest">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PermissionsAccessLevel" TypeName="DatabaseModel.PermissionsAccessLevel" StoreEntitySet="Permissions">
+      <EndProperty Name="AccessLevel">
+        <ScalarProperty Name="Id" ColumnName="AccessLevel_Id" />
+      </EndProperty>
+      <EndProperty Name="Permissions">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RosterRestaurant" TypeName="DatabaseModel.RosterRestaurant" StoreEntitySet="Rosters">
+      <EndProperty Name="Restaurant">
+        <ScalarProperty Name="Id" ColumnName="Restaurant_Id" />
+      </EndProperty>
+      <EndProperty Name="Roster">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeCommendationEmployee" TypeName="DatabaseModel.EmployeeCommendationEmployee" StoreEntitySet="EmployeeCommendationEmployee">
+      <EndProperty Name="EmployeeCommendation">
+        <ScalarProperty Name="Id" ColumnName="EmployeeCommendations_Id" />
+      </EndProperty>
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employees_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeCommendationShift" TypeName="DatabaseModel.EmployeeCommendationShift" StoreEntitySet="EmployeeCommendations">
+      <EndProperty Name="Shift">
+        <ScalarProperty Name="Id" ColumnName="Shift_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeCommendation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Shift_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeCommendationEmployeeCommendationClassification" TypeName="DatabaseModel.EmployeeCommendationEmployeeCommendationClassification" StoreEntitySet="EmployeeCommendations">
+      <EndProperty Name="EmployeeCommendationClassification">
+        <ScalarProperty Name="Id" ColumnName="EmployeeCommendationClassification_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeCommendation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
