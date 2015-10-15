@@ -189,10 +189,10 @@
     <Compile Include="Views\Bookings\AddEditBooking.Designer.cs">
       <DependentUpon>AddEditBooking.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\AddEditEmployee.cs">
+    <Compile Include="Views\Common\EmployeeManagement\AddEditEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Common\AddEditEmployee.Designer.cs">
+    <Compile Include="Views\Common\EmployeeManagement\AddEditEmployee.Designer.cs">
       <DependentUpon>AddEditEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Common\LoginScreen.cs">
@@ -201,10 +201,10 @@
     <Compile Include="Views\Common\LoginScreen.Designer.cs">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\AddEditRestaurant.cs">
+    <Compile Include="Views\Common\RestaurantManagement\AddEditRestaurant.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Common\AddEditRestaurant.Designer.cs">
+    <Compile Include="Views\Common\RestaurantManagement\AddEditRestaurant.Designer.cs">
       <DependentUpon>AddEditRestaurant.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -215,29 +215,41 @@
     <Compile Include="Views\Bookings\ViewBookings.Designer.cs">
       <DependentUpon>ViewBookings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\ManageEmployees.cs">
+    <Compile Include="Views\Common\EmployeeManagement\ManagePermissions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Common\ManageEmployees.Designer.cs">
-      <DependentUpon>ManageEmployees.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Common\ManagePermissions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Common\ManagePermissions.Designer.cs">
+    <Compile Include="Views\Common\EmployeeManagement\ManagePermissions.Designer.cs">
       <DependentUpon>ManagePermissions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\ViewEmployees.cs">
+    <Compile Include="Views\Common\NavigationMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Common\ViewEmployees.Designer.cs">
+    <Compile Include="Views\Common\NavigationMenu.Designer.cs">
+      <DependentUpon>NavigationMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\ManageRestaurantEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\ManageRestaurantEmployees.Designer.cs">
+      <DependentUpon>ManageRestaurantEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\ViewRestaurants.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\ViewRestaurants.Designer.cs">
+      <DependentUpon>ViewRestaurants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\EmployeeManagement\ViewEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\EmployeeManagement\ViewEmployees.Designer.cs">
       <DependentUpon>ViewEmployees.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\ViewRestaurants.cs">
+    <Compile Include="Views\EmployeeCommendations\ViewCommendations.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Common\ViewRestaurants.Designer.cs">
-      <DependentUpon>ViewRestaurants.cs</DependentUpon>
+    <Compile Include="Views\EmployeeCommendations\ViewCommendations.Designer.cs">
+      <DependentUpon>ViewCommendations.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Rostering\AddEditShiftRoster.cs">
       <SubType>Form</SubType>
@@ -270,13 +282,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\Common\AddEditRestaurant.resx">
+    <EmbeddedResource Include="Views\Common\RestaurantManagement\AddEditRestaurant.resx">
       <DependentUpon>AddEditRestaurant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Bookings\ViewBookings.resx">
       <DependentUpon>ViewBookings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Common\ViewEmployees.resx">
+    <EmbeddedResource Include="Views\Common\NavigationMenu.resx">
+      <DependentUpon>NavigationMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\EmployeeManagement\ViewEmployees.resx">
       <DependentUpon>ViewEmployees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\AddEditShiftRoster.resx">

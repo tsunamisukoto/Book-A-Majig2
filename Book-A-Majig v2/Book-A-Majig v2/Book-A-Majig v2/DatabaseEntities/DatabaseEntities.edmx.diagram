@@ -30,7 +30,7 @@
         <AssociationConnector Association="DatabaseModel.EmployeeAvailabilityDayEmployee" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeNA" Width="1.5" PointX="12" PointY="10.125" />
         <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee" />
-        <EntityTypeShape EntityType="DatabaseModel.Shift" Width="1.5" PointX="7.125" PointY="11.875" />
+        <EntityTypeShape EntityType="DatabaseModel.Shift" Width="1.5" PointX="7.5" PointY="12" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeShift" Width="1.5" PointX="10.875" PointY="12.375" />
         <AssociationConnector Association="DatabaseModel.ShiftEmployeeShift" />
         <AssociationConnector Association="DatabaseModel.EmployeeShiftEmployee" />

@@ -1,6 +1,6 @@
-﻿namespace Book_A_Majig_v2.Views.Common
+﻿namespace Book_A_Majig_v2.Views.EmployeeCommendations
 {
-    partial class ViewRestaurants
+    partial class ViewCommendations
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "ViewRestaurants";
+            this.Text = "ViewCommendations";
         }
 
         #endregion

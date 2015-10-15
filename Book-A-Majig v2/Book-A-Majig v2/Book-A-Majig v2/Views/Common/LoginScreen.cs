@@ -1,5 +1,6 @@
 ﻿using Book_A_Majig_v2.DatabaseEntities;
 using Book_A_Majig_v2.Services;
+using Book_A_Majig_v2.Views.Common;
 using InteractivePreGeneratedViews;
 using System;
 using System.Collections.Generic;
@@ -39,8 +40,21 @@ namespace Book_A_Majig_v2
                         unitofwork.BookingClassificationRepository.Insert(new BookingClasification() { ClassificationName = "Class 3", DisplayOrder = 1 });
                         unitofwork.BookingClassificationRepository.Insert(new BookingClasification() { ClassificationName = "Class 4", DisplayOrder = 1 });
                         unitofwork.BookingClassificationRepository.Insert(new BookingClasification() { ClassificationName = "Class 5", DisplayOrder = 1 });
-                        var added = unitofwork.AccessLevelRepository.Insert(new AccessLevel {  Name = "Level 1" });
-                        unitofwork.EmpoyeeRepository.Insert(new Employee() { Id = 111, FirstName = "Scott", LastName = "Becker", AccessLevel = added });
+                        var added = unitofwork.AccessLevelRepository.Insert(new AccessLevel {  Name = "Level 1", Level = 3 });
+                    var newRestaurant = new Restaurant() { Capacity = 100, Name= "Rebellion",  Location="Sydney", RosteringStartDay= (int)DayOfWeek.Monday, RosteringWeekDuration=1, RosteringWeekOffset=0 };
+                    var newemployee = new Employee() { Id = 111, FirstName = "Scott", LastName = "Becker", AccessLevel = added };
+                    var availabilities = new List<EmployeeAvailabilityDay>();
+                    availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Monday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime=new DateTime(2014,10,10,16,30,0) });
+                    availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Tuesday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime=new DateTime(2014,10,10,18,30,0) });
+                    availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Wednesday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime=new DateTime(2014,10,10,12,30,0) });
+                    availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Thursday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime=new DateTime(2014,10,10,15,30,0) });
+                    availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Friday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime=new DateTime(2014,10,10,13,30,0) });
+                    availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Saturday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime=new DateTime(2014,10,10,16,30,0) });
+                    availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Sunday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime=new DateTime(2014,10,10,14,30,0) });
+                    newemployee.EmployeeAvailabilityDays = availabilities;
+                    newemployee.EmployeeAvailabilityHoursRequests.Add(new EmployeeAvailabilityHoursRequest() { StartDate=new DateTime(2014,1,1), RequestedMinimumHours=8, RequestedMaximumHours=30 });
+                
+                    unitofwork.EmpoyeeRepository.Insert(newemployee);
                         unitofwork.Save();
                     }
 
@@ -50,7 +64,7 @@ namespace Book_A_Majig_v2
                     {
                         throw new NullReferenceException();
                     }
-                    ViewBookings v = new ViewBookings();
+                    NavigationMenu v = new NavigationMenu();
                     v.User = user;
                     v.ShowDialog();
                 
@@ -70,6 +84,10 @@ namespace Book_A_Majig_v2
             {
                 MessageBox.Show("User Not Found");
 
+            }
+            catch(System.Data.Entity.Validation.DbEntityValidationException ex4)
+            {
+                MessageBox.Show(ex4.Message + " " +string.Join(", ",ex4.EntityValidationErrors.SelectMany(x => x.ValidationErrors.SelectMany(y => y.ErrorMessage))));
             }
             catch (Exception ex3)
             {

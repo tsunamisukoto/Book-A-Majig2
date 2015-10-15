@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Book_A_Majig_v2.Views.Rostering
+namespace Book_A_Majig_v2.Views.EmployeeCommendations
 {
-    public partial class ViewRosters : Form
+    public partial class ViewCommendations : Form
     {
         public Employee User { get; set; }
 
-        public ViewRosters()
+        public ViewCommendations()
         {
             InitializeComponent();
         }

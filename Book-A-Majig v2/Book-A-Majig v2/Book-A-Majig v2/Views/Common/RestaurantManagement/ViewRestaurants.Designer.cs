@@ -1,6 +1,6 @@
-﻿namespace Book_A_Majig_v2.Views.Rostering
+﻿namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
 {
-    partial class ViewRosters
+    partial class ViewRestaurants
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // ViewRosters
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1435, 544);
-            this.Name = "ViewRosters";
-            this.Text = "ViewRosters";
-            this.ResumeLayout(false);
-
+            this.Text = "ViewRestaurants";
         }
 
         #endregion

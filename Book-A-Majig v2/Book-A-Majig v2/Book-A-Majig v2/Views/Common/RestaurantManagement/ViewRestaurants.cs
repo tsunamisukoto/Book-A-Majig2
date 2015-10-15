@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Book_A_Majig_v2.DatabaseEntities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Book_A_Majig_v2.Views.Common
+namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
 {
-    public partial class ManageEmployees : Form
+    public partial class ViewRestaurants : Form
     {
-        public ManageEmployees()
+        public Employee User { get; set; }
+
+        public ViewRestaurants()
         {
             InitializeComponent();
         }

@@ -15,10 +15,12 @@ namespace Book_A_Majig_v2.DatabaseEntities
     public partial class EmployeeAvailabilityDay
     {
         public int Id { get; set; }
-        public string DayOfWeek { get; set; }
+        public int DayOfWeek { get; set; }
         public System.DateTime StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public string Notes { get; set; }
+        public System.DateTime StartTime { get; set; }
+        public Nullable<System.DateTime> FinishTime { get; set; }
     
         public virtual Employee Employee { get; set; }
     }

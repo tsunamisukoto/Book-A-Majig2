@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Book_A_Majig_v2.Views.Common
+namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
 {
-    public partial class ViewRestaurants : Form
+    public partial class ManageRestaurantEmployees : Form
     {
-        public ViewRestaurants()
+        public ManageRestaurantEmployees()
         {
             InitializeComponent();
         }

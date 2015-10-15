@@ -44,8 +44,9 @@ namespace Book_A_Majig_v2
                     Classification =x.BookingClasification!=null? x.BookingClasification.ClassificationName:"",
                     Time = x.BookingDate
                 }).ToList();
-            
-            
+
+
+            dataGridView1.DataBindings.Clear();
 
             
         }
@@ -60,5 +61,7 @@ namespace Book_A_Majig_v2
                 Rebind();
             }
         }
+
+    
     }
 }
