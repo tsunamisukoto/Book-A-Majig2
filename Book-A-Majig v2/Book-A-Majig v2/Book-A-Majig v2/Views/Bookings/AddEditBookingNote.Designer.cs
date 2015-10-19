@@ -1,6 +1,6 @@
-﻿namespace Book_A_Majig_v2.Views.Common
+﻿namespace Book_A_Majig_v2.Views.Bookings
 {
-    partial class ManagePermissions
+    partial class AddEditBookingNote
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // AddEditBookingNote
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "ManagePermissions";
+            this.ClientSize = new System.Drawing.Size(382, 365);
+            this.Name = "AddEditBookingNote";
+            this.Text = "AddEditBookingNote";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

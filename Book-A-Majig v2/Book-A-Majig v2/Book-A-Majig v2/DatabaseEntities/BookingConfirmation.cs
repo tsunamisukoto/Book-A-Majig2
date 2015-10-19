@@ -17,7 +17,9 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public int Id { get; set; }
         public Nullable<System.DateTime> ConfirmationDate { get; set; }
         public int Booking_Id { get; set; }
+        public int EmployeeId { get; set; }
     
         public virtual Booking Booking { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

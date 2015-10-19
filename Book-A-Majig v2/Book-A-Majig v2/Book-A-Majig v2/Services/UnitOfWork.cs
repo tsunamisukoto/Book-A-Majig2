@@ -30,6 +30,7 @@ namespace Book_A_Majig_v2.Services
         private GenericRepository<DatabaseEntities.BookingClasification> bookingclassificationRepository;
         private GenericRepository<DatabaseEntities.Employee> employeeRepository;
         private GenericRepository<DatabaseEntities.AccessLevel> accesslevelRepository;
+        private GenericRepository<DatabaseEntities.Restaurant> restaurantRepository;
 
         public GenericRepository<DatabaseEntities.Booking> BookingRepository
         {
@@ -94,7 +95,18 @@ namespace Book_A_Majig_v2.Services
                 return employeeRepository;
             }
         }
+        public GenericRepository<DatabaseEntities.Restaurant> RestaurantRepository
+        {
+            get
+            {
 
+                if (this.restaurantRepository == null)
+                {
+                    this.restaurantRepository = new GenericRepository<DatabaseEntities.Restaurant>(context);
+                }
+                return restaurantRepository;
+            }
+        }
         public void Save()
         {
             context.SaveChanges();

@@ -38,6 +38,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public int Adults { get; set; }
         public int Children { get; set; }
         public int HighChair { get; set; }
+        public Nullable<int> DeletedByID { get; set; }
     
         public virtual BookingClasification BookingClasification { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -46,5 +47,6 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public virtual ICollection<BookingNote> BookingNotes { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Restaurant Restaurant { get; set; }
+        public virtual Employee DeletedBy { get; set; }
     }
 }

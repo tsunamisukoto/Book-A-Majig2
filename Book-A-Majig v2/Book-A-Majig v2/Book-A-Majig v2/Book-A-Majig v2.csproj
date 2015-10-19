@@ -157,6 +157,7 @@
     <Compile Include="DatabaseEntities\EmployeeShiftPresets.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseEntities\EntityPartialClasses\Employee.cs" />
     <Compile Include="DatabaseEntities\LockOutDate.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -182,12 +183,19 @@
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\GenericRepository.cs" />
+    <Compile Include="Services\UIExtensionMethods.cs" />
     <Compile Include="Services\UnitOfWork.cs" />
     <Compile Include="Views\Bookings\AddEditBooking.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Bookings\AddEditBooking.Designer.cs">
       <DependentUpon>AddEditBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bookings\AddEditBookingNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Bookings\AddEditBookingNote.Designer.cs">
+      <DependentUpon>AddEditBookingNote.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Common\EmployeeManagement\AddEditEmployee.cs">
       <SubType>Form</SubType>
@@ -215,10 +223,16 @@
     <Compile Include="Views\Bookings\ViewBookings.Designer.cs">
       <DependentUpon>ViewBookings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\EmployeeManagement\ManagePermissions.cs">
+    <Compile Include="Views\Common\AccessLevelManagement\AddEditAccessLevel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Common\EmployeeManagement\ManagePermissions.Designer.cs">
+    <Compile Include="Views\Common\AccessLevelManagement\AddEditAccessLevel.Designer.cs">
+      <DependentUpon>AddEditAccessLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\AccessLevelManagement\ManagePermissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\AccessLevelManagement\ManagePermissions.Designer.cs">
       <DependentUpon>ManagePermissions.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Common\NavigationMenu.cs">
@@ -269,6 +283,12 @@
     <EmbeddedResource Include="Views\Bookings\AddEditBooking.resx">
       <DependentUpon>AddEditBooking.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Bookings\AddEditBookingNote.resx">
+      <DependentUpon>AddEditBookingNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\AccessLevelManagement\ManagePermissions.resx">
+      <DependentUpon>ManagePermissions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,6 +313,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\EmployeeManagement\ViewEmployees.resx">
       <DependentUpon>ViewEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\RestaurantManagement\ManageRestaurantEmployees.resx">
+      <DependentUpon>ManageRestaurantEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\RestaurantManagement\ViewRestaurants.resx">
+      <DependentUpon>ViewRestaurants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\AccessLevelManagement\AddEditAccessLevel.resx">
+      <DependentUpon>AddEditAccessLevel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\AddEditShiftRoster.resx">
       <DependentUpon>AddEditShiftRoster.cs</DependentUpon>

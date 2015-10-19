@@ -55,6 +55,9 @@
         <AssociationConnector Association="DatabaseModel.EmployeeShiftPresetsShiftCategory" />
         <AssociationConnector Association="DatabaseModel.ShiftCategoryShift" />
         <AssociationConnector Association="DatabaseModel.EmployeeCommendationEmployee1" />
+        <AssociationConnector Association="DatabaseModel.BookingEmployee" />
+        <AssociationConnector Association="DatabaseModel.BookingConfirmationEmployee" />
+        <AssociationConnector Association="DatabaseModel.BookingEmployee1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

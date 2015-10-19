@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/14/2015 19:09:39
+-- Date Created: 10/17/2015 13:44:45
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -110,6 +110,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_EmployeeCommendationEmployee1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[EmployeeCommendations] DROP CONSTRAINT [FK_EmployeeCommendationEmployee1];
 GO
+IF OBJECT_ID(N'[dbo].[FK_BookingEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Bookings] DROP CONSTRAINT [FK_BookingEmployee];
+GO
+IF OBJECT_ID(N'[dbo].[FK_BookingConfirmationEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BookingConfirmations] DROP CONSTRAINT [FK_BookingConfirmationEmployee];
+GO
+IF OBJECT_ID(N'[dbo].[FK_BookingEmployee1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Bookings] DROP CONSTRAINT [FK_BookingEmployee1];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -215,7 +224,8 @@ GO
 CREATE TABLE [dbo].[BookingConfirmations] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [ConfirmationDate] datetime  NULL,
-    [Booking_Id] int  NOT NULL
+    [Booking_Id] int  NOT NULL,
+    [EmployeeId] int  NOT NULL
 );
 GO
 
@@ -249,7 +259,9 @@ CREATE TABLE [dbo].[Bookings] (
     [BookingDate] datetime  NOT NULL,
     [Adults] int  NOT NULL,
     [Children] int  NOT NULL,
-    [HighChair] int  NOT NULL
+    [HighChair] int  NOT NULL,
+    [DeletedByID] int  NULL,
+    [BookingEmployee_Booking_Id] int  NULL
 );
 GO
 
@@ -1048,6 +1060,51 @@ GO
 CREATE INDEX [IX_FK_EmployeeCommendationEmployee1]
 ON [dbo].[EmployeeCommendations]
     ([CommendedBy_Id]);
+GO
+
+-- Creating foreign key on [BookingEmployee_Booking_Id] in table 'Bookings'
+ALTER TABLE [dbo].[Bookings]
+ADD CONSTRAINT [FK_BookingEmployee]
+    FOREIGN KEY ([BookingEmployee_Booking_Id])
+    REFERENCES [dbo].[Employees]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BookingEmployee'
+CREATE INDEX [IX_FK_BookingEmployee]
+ON [dbo].[Bookings]
+    ([BookingEmployee_Booking_Id]);
+GO
+
+-- Creating foreign key on [EmployeeId] in table 'BookingConfirmations'
+ALTER TABLE [dbo].[BookingConfirmations]
+ADD CONSTRAINT [FK_BookingConfirmationEmployee]
+    FOREIGN KEY ([EmployeeId])
+    REFERENCES [dbo].[Employees]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BookingConfirmationEmployee'
+CREATE INDEX [IX_FK_BookingConfirmationEmployee]
+ON [dbo].[BookingConfirmations]
+    ([EmployeeId]);
+GO
+
+-- Creating foreign key on [DeletedByID] in table 'Bookings'
+ALTER TABLE [dbo].[Bookings]
+ADD CONSTRAINT [FK_BookingEmployee1]
+    FOREIGN KEY ([DeletedByID])
+    REFERENCES [dbo].[Employees]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BookingEmployee1'
+CREATE INDEX [IX_FK_BookingEmployee1]
+ON [dbo].[Bookings]
+    ([DeletedByID]);
 GO
 
 -- --------------------------------------------------

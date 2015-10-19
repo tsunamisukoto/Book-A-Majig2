@@ -32,12 +32,15 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbCapacity = new System.Windows.Forms.NumericUpDown();
             this.tbLocation = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tbCapacity)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 461);
+            this.button1.Location = new System.Drawing.Point(190, 226);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -47,14 +50,14 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(12, 373);
+            this.tbName.Location = new System.Drawing.Point(145, 94);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(100, 20);
             this.tbName.TabIndex = 1;
             // 
             // tbCapacity
             // 
-            this.tbCapacity.Location = new System.Drawing.Point(12, 430);
+            this.tbCapacity.Location = new System.Drawing.Point(145, 182);
             this.tbCapacity.Maximum = new decimal(new int[] {
             400,
             0,
@@ -63,26 +66,61 @@
             this.tbCapacity.Name = "tbCapacity";
             this.tbCapacity.Size = new System.Drawing.Size(120, 20);
             this.tbCapacity.TabIndex = 2;
+            this.tbCapacity.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
             // 
             // tbLocation
             // 
-            this.tbLocation.Location = new System.Drawing.Point(12, 400);
+            this.tbLocation.Location = new System.Drawing.Point(145, 133);
             this.tbLocation.Name = "tbLocation";
             this.tbLocation.Size = new System.Drawing.Size(100, 20);
             this.tbLocation.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(145, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Name";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(145, 117);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Location";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(145, 163);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Capacity";
             // 
             // AddEditRestaurant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 496);
+            this.ClientSize = new System.Drawing.Size(353, 313);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.tbLocation);
             this.Controls.Add(this.tbCapacity);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.button1);
             this.Name = "AddEditRestaurant";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.ViewBookings_Load);
+            this.Load += new System.EventHandler(this.AddEditRestaurant_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbCapacity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -95,6 +133,9 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.NumericUpDown tbCapacity;
         private System.Windows.Forms.TextBox tbLocation;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

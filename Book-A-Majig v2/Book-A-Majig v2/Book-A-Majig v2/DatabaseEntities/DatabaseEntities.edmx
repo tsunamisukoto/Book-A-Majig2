@@ -155,6 +155,18 @@
       <End Role="EmployeeCommendation" EntitySet="EmployeeCommendations" />
       <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
+    <AssociationSet Name="BookingEmployee" Association="DatabaseModel.Store.BookingEmployee">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="BookingConfirmationEmployee" Association="DatabaseModel.Store.BookingConfirmationEmployee">
+      <End Role="BookingConfirmation" EntitySet="BookingConfirmations" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="BookingEmployee1" Association="DatabaseModel.Store.BookingEmployee1">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="AccessLevels">
     <Key>
@@ -179,6 +191,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ConfirmationDate" Type="datetime" Nullable="true" />
     <Property Name="Booking_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="BookingNotes">
     <Key>
@@ -213,6 +226,8 @@
     <Property Name="Adults" Type="int" Nullable="false" />
     <Property Name="Children" Type="int" Nullable="false" />
     <Property Name="HighChair" Type="int" Nullable="false" />
+    <Property Name="DeletedByID" Type="int" Nullable="true" />
+    <Property Name="BookingEmployee_Booking_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Employees">
     <Key>
@@ -709,6 +724,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="BookingEmployee">
+    <End Role="Booking" Type="DatabaseModel.Store.Bookings" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="BookingEmployee_Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingConfirmationEmployee">
+    <End Role="BookingConfirmation" Type="DatabaseModel.Store.BookingConfirmations" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookingConfirmation">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingEmployee1">
+    <End Role="Booking" Type="DatabaseModel.Store.Bookings" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="DeletedByID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BookingClasificationLockOutDate_BookingClasification">
     <End Role="BookingClasification" Type="DatabaseModel.Store.BookingClasifications" Multiplicity="1" />
     <End Role="BookingClasificationLockOutDate" Type="DatabaseModel.Store.BookingClasificationLockOutDate" Multiplicity="*" />
@@ -814,6 +865,8 @@
           <Property Name="ConfirmationDate" Type="DateTime" Precision="3" />
           <Property Name="Booking_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Booking" Relationship="Self.FK_BookingConfirmationBooking" FromRole="BookingConfirmations" ToRole="Bookings" />
+          <NavigationProperty Name="Employee" Relationship="DatabaseModel.BookingConfirmationEmployee" FromRole="BookingConfirmation" ToRole="Employee" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="BookingNote">
           <Key>
@@ -855,6 +908,8 @@
           <Property Name="Adults" Type="Int32" Nullable="false" />
           <Property Name="Children" Type="Int32" Nullable="false" />
           <Property Name="HighChair" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DeletedBy" Relationship="DatabaseModel.BookingEmployee1" FromRole="Booking" ToRole="Employee" />
+          <Property Name="DeletedByID" Type="Int32" Nullable="true" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -1160,6 +1215,18 @@
             <End Role="EmployeeCommendation" EntitySet="EmployeeCommendations" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <AssociationSet Name="BookingEmployee" Association="DatabaseModel.BookingEmployee">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="BookingConfirmationEmployee" Association="DatabaseModel.BookingConfirmationEmployee">
+            <End Role="BookingConfirmation" EntitySet="BookingConfirmations" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="BookingEmployee1" Association="DatabaseModel.BookingEmployee1">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="PresetNote">
           <Key>
@@ -1415,6 +1482,34 @@
           <End Type="DatabaseModel.EmployeeCommendation" Role="EmployeeCommendation" Multiplicity="*" />
           <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="1" />
         </Association>
+        <Association Name="BookingEmployee">
+          <End Type="DatabaseModel.Booking" Role="Booking" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="0..1" />
+        </Association>
+        <Association Name="BookingConfirmationEmployee">
+          <End Type="DatabaseModel.BookingConfirmation" Role="BookingConfirmation" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookingConfirmation">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BookingEmployee1">
+          <End Type="DatabaseModel.Booking" Role="Booking" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="DeletedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1445,6 +1540,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ConfirmationDate" ColumnName="ConfirmationDate" />
           <ScalarProperty Name="Booking_Id" ColumnName="Booking_Id" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1481,6 +1577,7 @@
           <ScalarProperty Name="Adults" ColumnName="Adults" />
           <ScalarProperty Name="Children" ColumnName="Children" />
           <ScalarProperty Name="HighChair" ColumnName="HighChair" />
+          <ScalarProperty Name="DeletedByID" ColumnName="DeletedByID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1774,6 +1871,15 @@
       <EndProperty Name="EmployeeCommendation">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BookingEmployee" TypeName="DatabaseModel.BookingEmployee" StoreEntitySet="Bookings">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="BookingEmployee_Booking_Id" />
+      </EndProperty>
+      <EndProperty Name="Booking">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="BookingEmployee_Booking_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
