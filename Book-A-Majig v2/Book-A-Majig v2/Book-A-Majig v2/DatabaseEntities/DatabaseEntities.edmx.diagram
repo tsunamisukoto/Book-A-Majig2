@@ -58,6 +58,8 @@
         <AssociationConnector Association="DatabaseModel.BookingEmployee" />
         <AssociationConnector Association="DatabaseModel.BookingConfirmationEmployee" />
         <AssociationConnector Association="DatabaseModel.BookingEmployee1" />
+        <EntityTypeShape EntityType="DatabaseModel.DateNote" Width="1.5" PointX="5.625" PointY="0.875" />
+        <AssociationConnector Association="DatabaseModel.DateNoteRestaurant" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -46,5 +46,11 @@ namespace Book_A_Majig_v2.Views.Common
             ViewRestaurants v = new ViewRestaurants() { User = User };
             v.ShowDialog();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ViewEmployees v = new ViewEmployees() { User = User };
+            v.ShowDialog();
+        }
     }
 }

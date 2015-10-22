@@ -60,20 +60,13 @@ namespace Book_A_Majig_v2
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void tbContactNumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private Booking GetFields(Booking b)
         {
             b.BookingDate = dtpBookingTime.Value;
             b.Name = tbName.Text;
-            b.ContactNumber = tbContactNumber.Text;
+            b.ContactNumber = tbContactNumber.Text.Replace(" ","" );
             b.Email = tbEmail.Text;
             b.BookingClasification = (BookingClasification)cbType.SelectedItem;
             b.Restaurant = new Restaurant() { Capacity = 3, Location = "CHILL", Name = "Whispers" };

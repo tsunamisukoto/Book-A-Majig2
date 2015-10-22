@@ -23,6 +23,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
             this.LockOutDates = new HashSet<LockOutDate>();
             this.Employees = new HashSet<Employee>();
             this.Rosters = new HashSet<Roster>();
+            this.DateNotes = new HashSet<DateNote>();
         }
     
         public int Id { get; set; }
@@ -41,5 +42,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public virtual ICollection<Employee> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Roster> Rosters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DateNote> DateNotes { get; set; }
     }
 }

@@ -22,10 +22,24 @@ namespace Book_A_Majig_v2.Views.Common
         private List<Employee> employees;
         private void ViewEmployees_Load(object sender, EventArgs e)
         {
+            Rebind();
+        }
+        private void Rebind()
+        {
             var unitOfWork = new UnitOfWork();
             employees = unitOfWork.EmpoyeeRepository.Get(x => x.DateInactive == null).ToList();
-            dataGridView1.DataSource = employees.Select(x => new { FullName = x.FullName });
+            dataGridView1.DataSource = employees.Select(x => new { FullName = x.FullName }).ToList() ;
             dataGridView1.ClearSelection();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddEditEmployee v = new AddEditEmployee() { User = User };
+            v.ShowDialog();
+            if(v.DialogResult==DialogResult.OK)
+            {
+                Rebind();
+            }
         }
     }
 }

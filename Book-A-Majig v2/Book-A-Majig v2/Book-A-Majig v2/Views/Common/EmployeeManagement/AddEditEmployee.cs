@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Book_A_Majig_v2.DatabaseEntities;
+using Book_A_Majig_v2.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +13,54 @@ namespace Book_A_Majig_v2.Views.Common
 {
     public partial class AddEditEmployee : Form
     {
+
+        public Employee User { get;  set; }
+        private Employee currentUser { get; set; }
+        public int? currentEmployeeId { get; set; }
         public AddEditEmployee()
         {
             InitializeComponent();
+        }
+
+        private void AddEditEmployee_Load(object sender, EventArgs e)
+        {
+            var unitOfWork = new UnitOfWork();
+
+            comboBox1.DisplayMember = "Name";
+            comboBox1.DataSource = unitOfWork.AccessLevelRepository.Get();
+        }
+        private Employee GetFields(Employee b)
+        {
+            b.FirstName = tbFirstName.Text;
+            b.LastName = tbLastName.Text;
+            b.AccessLevel = (AccessLevel)comboBox1.SelectedValue;
+            b.Email = tbEmail.Text;
+            b.PhoneNumber = tbPhoneNumber.Text;
+            b.Id = int.Parse(tbID.Text);
+            return b;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var unitOfWork = new UnitOfWork();
+        
+
+            if (currentUser == null)
+            {
+                Employee newUser;
+                newUser = GetFields(new Employee());
+               
+
+                unitOfWork.EmpoyeeRepository.Insert(newUser);
+                unitOfWork.Save();
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                currentUser = GetFields(currentUser);
+                unitOfWork.EmpoyeeRepository.Update(currentUser);
+                DialogResult = DialogResult.OK;
+
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/17/2015 13:44:45
+-- Date Created: 10/22/2015 19:33:52
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -119,6 +119,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_BookingEmployee1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Bookings] DROP CONSTRAINT [FK_BookingEmployee1];
 GO
+IF OBJECT_ID(N'[dbo].[FK_DateNoteRestaurant]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DateNotes] DROP CONSTRAINT [FK_DateNoteRestaurant];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -189,6 +192,9 @@ IF OBJECT_ID(N'[dbo].[EmployeeShiftPresets]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[ShiftCategories]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ShiftCategories];
+GO
+IF OBJECT_ID(N'[dbo].[DateNotes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DateNotes];
 GO
 IF OBJECT_ID(N'[dbo].[BookingClasificationLockOutDate]', 'U') IS NOT NULL
     DROP TABLE [dbo].[BookingClasificationLockOutDate];
@@ -271,7 +277,9 @@ CREATE TABLE [dbo].[Employees] (
     [FirstName] nvarchar(max)  NOT NULL,
     [LastName] nvarchar(max)  NOT NULL,
     [DateInactive] datetime  NULL,
-    [AccessLevel_Id] int  NOT NULL
+    [AccessLevel_Id] int  NOT NULL,
+    [Email] nvarchar(max)  NOT NULL,
+    [PhoneNumber] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -436,6 +444,18 @@ CREATE TABLE [dbo].[ShiftCategories] (
 );
 GO
 
+-- Creating table 'DateNotes'
+CREATE TABLE [dbo].[DateNotes] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [DateOfNote] datetime  NOT NULL,
+    [Note] nvarchar(max)  NOT NULL,
+    [InactiveDate] datetime  NULL,
+    [AppearOnAddingBooking] bit  NOT NULL,
+    [AppearOnRoster] bit  NOT NULL,
+    [Restaurant_Id] int  NOT NULL
+);
+GO
+
 -- Creating table 'BookingClasificationLockOutDate'
 CREATE TABLE [dbo].[BookingClasificationLockOutDate] (
     [BookingClasifications_Id] int  NOT NULL,
@@ -590,6 +610,12 @@ GO
 -- Creating primary key on [Id] in table 'ShiftCategories'
 ALTER TABLE [dbo].[ShiftCategories]
 ADD CONSTRAINT [PK_ShiftCategories]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'DateNotes'
+ALTER TABLE [dbo].[DateNotes]
+ADD CONSTRAINT [PK_DateNotes]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -1105,6 +1131,21 @@ GO
 CREATE INDEX [IX_FK_BookingEmployee1]
 ON [dbo].[Bookings]
     ([DeletedByID]);
+GO
+
+-- Creating foreign key on [Restaurant_Id] in table 'DateNotes'
+ALTER TABLE [dbo].[DateNotes]
+ADD CONSTRAINT [FK_DateNoteRestaurant]
+    FOREIGN KEY ([Restaurant_Id])
+    REFERENCES [dbo].[Restaurants]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DateNoteRestaurant'
+CREATE INDEX [IX_FK_DateNoteRestaurant]
+ON [dbo].[DateNotes]
+    ([Restaurant_Id]);
 GO
 
 -- --------------------------------------------------

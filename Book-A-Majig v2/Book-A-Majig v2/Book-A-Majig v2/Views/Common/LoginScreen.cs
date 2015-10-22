@@ -42,7 +42,7 @@ namespace Book_A_Majig_v2
                     unitofwork.BookingClassificationRepository.Insert(new BookingClasification() { ClassificationName = "Class 5", DisplayOrder = 1 });
                     var added = unitofwork.AccessLevelRepository.Insert(new AccessLevel { Name = "Level 1", Level = 3 });
                     var newRestaurant = new Restaurant() { Capacity = 100, Name = "Rebellion", Location = "Sydney", RosteringStartDay = (int)DayOfWeek.Monday, RosteringWeekDuration = 1, RosteringWeekOffset = 0 };
-                    var newemployee = new Employee() { Id = 111, FirstName = "Scott", LastName = "Becker", AccessLevel = added };
+                    var newemployee = new Employee() { Id = 111, FirstName = "Scott", LastName = "Becker", AccessLevel = added, Email="test@test.com", PhoneNumber= "999999999" };
                     var availabilities = new List<EmployeeAvailabilityDay>();
                     availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Monday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime = new DateTime(2014, 10, 10, 16, 30, 0) });
                     availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Tuesday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime = new DateTime(2014, 10, 10, 18, 30, 0) });

@@ -102,7 +102,6 @@
             this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Contact Number";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // tbContactNumber
             // 
@@ -111,7 +110,6 @@
             this.tbContactNumber.Name = "tbContactNumber";
             this.tbContactNumber.Size = new System.Drawing.Size(216, 22);
             this.tbContactNumber.TabIndex = 4;
-            this.tbContactNumber.TextChanged += new System.EventHandler(this.tbContactNumber_TextChanged);
             // 
             // btnCancel
             // 

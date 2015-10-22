@@ -130,6 +130,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DatabaseEntities\DateNote.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseEntities\Employee.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -241,6 +244,12 @@
     <Compile Include="Views\Common\NavigationMenu.Designer.cs">
       <DependentUpon>NavigationMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\ManageRestaurantDateNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\ManageRestaurantDateNotes.Designer.cs">
+      <DependentUpon>ManageRestaurantDateNotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Common\RestaurantManagement\ManageRestaurantEmployees.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +298,9 @@
     <EmbeddedResource Include="Views\Common\AccessLevelManagement\ManagePermissions.resx">
       <DependentUpon>ManagePermissions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\EmployeeManagement\AddEditEmployee.resx">
+      <DependentUpon>AddEditEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\EmployeeManagement\ViewEmployees.resx">
       <DependentUpon>ViewEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\RestaurantManagement\ManageRestaurantDateNotes.resx">
+      <DependentUpon>ManageRestaurantDateNotes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\RestaurantManagement\ManageRestaurantEmployees.resx">
       <DependentUpon>ManageRestaurantEmployees.cs</DependentUpon>

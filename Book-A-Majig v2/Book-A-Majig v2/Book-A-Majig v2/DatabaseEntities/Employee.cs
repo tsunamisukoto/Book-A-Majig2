@@ -32,6 +32,8 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public string LastName { get; set; }
         public Nullable<System.DateTime> DateInactive { get; set; }
         public int AccessLevel_Id { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
     
         public virtual AccessLevel AccessLevel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
