@@ -1,7 +1,9 @@
 ﻿using Book_A_Majig_v2.DatabaseEntities;
+using Book_A_Majig_v2.Views.Common.AccessLevelManagement;
 using Book_A_Majig_v2.Views.Common.RestaurantManagement;
 using Book_A_Majig_v2.Views.EmployeeCommendations;
 using Book_A_Majig_v2.Views.Rostering;
+using Book_A_Majig_v2.Views.Rostering.Management;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +33,7 @@ namespace Book_A_Majig_v2.Views.Common
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ViewRosters v = new ViewRosters() { User = User };
+            RosterHomeScreen v = new RosterHomeScreen() { User = User };
             v.ShowDialog();
         }
 
@@ -50,6 +52,12 @@ namespace Book_A_Majig_v2.Views.Common
         private void button6_Click(object sender, EventArgs e)
         {
             ViewEmployees v = new ViewEmployees() { User = User };
+            v.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+           ViewAccessLevels v = new ViewAccessLevels() { User = User };
             v.ShowDialog();
         }
     }

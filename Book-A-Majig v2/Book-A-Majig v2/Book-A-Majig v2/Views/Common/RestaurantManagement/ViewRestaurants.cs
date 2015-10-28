@@ -28,8 +28,8 @@ namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
         {
             var unitOfWork = new UnitOfWork();
             restaurantsList = unitOfWork.RestaurantRepository.Get(includeProperties: "Employees").ToList();
-            dataGridView1.DataSource = restaurantsList.Select(x => new { Name = x.Name, Location = x.Location , EmployeeCount= x.Employees.Count}).ToList();
-            dataGridView1.ClearSelection();
+            dgvRestaurants.DataSource = restaurantsList.Select(x => new { Name = x.Name, Location = x.Location , EmployeeCount= x.Employees.Count}).ToList();
+            dgvRestaurants.ClearSelection();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,12 +47,12 @@ namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
         private void button2_Click(object sender, EventArgs e)
         {
             /*TO DO: Permissions*/
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dgvRestaurants.SelectedRows.Count > 0)
             {
 
                 AddEditRestaurant c = new AddEditRestaurant();
                 c.user = User;
-                c.RestaurantID = restaurantsList[dataGridView1.SelectedRows[0].Index].Id;
+                c.RestaurantID = restaurantsList[dgvRestaurants.SelectedRows[0].Index].Id;
                 c.ShowDialog();
                 if (c.DialogResult == DialogResult.OK)
                 {
@@ -68,12 +68,17 @@ namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
 
             ManageRestaurantEmployees c = new ManageRestaurantEmployees();
             c.user = User;
-            c.RestaurantID = restaurantsList[dataGridView1.SelectedRows[0].Index].Id;
+            c.RestaurantID = restaurantsList[dgvRestaurants.SelectedRows[0].Index].Id;
             c.ShowDialog();
             if (c.DialogResult == DialogResult.OK)
             {
                 Rebind();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

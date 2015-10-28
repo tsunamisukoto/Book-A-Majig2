@@ -48,6 +48,7 @@
             this.ShownClassificationListBox = new System.Windows.Forms.CheckedListBox();
             this.button5 = new System.Windows.Forms.Button();
             this.lblMoreDetails = new System.Windows.Forms.RichTextBox();
+            this.userInformation1 = new Book_A_Majig_v2.DatabaseEntities.UserInformation();
             this.bookingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -87,7 +88,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(32, 138);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(932, 408);
+            this.dataGridView1.Size = new System.Drawing.Size(920, 408);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -183,6 +184,7 @@
             // 
             // checkedListBox1
             // 
+            this.checkedListBox1.CheckOnClick = true;
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Items.AddRange(new object[] {
             "Confirmed Bookings",
@@ -237,12 +239,20 @@
             // lblMoreDetails
             // 
             this.lblMoreDetails.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lblMoreDetails.Location = new System.Drawing.Point(971, 138);
+            this.lblMoreDetails.Location = new System.Drawing.Point(958, 138);
             this.lblMoreDetails.Name = "lblMoreDetails";
             this.lblMoreDetails.ReadOnly = true;
-            this.lblMoreDetails.Size = new System.Drawing.Size(487, 408);
+            this.lblMoreDetails.Size = new System.Drawing.Size(500, 408);
             this.lblMoreDetails.TabIndex = 13;
-            this.lblMoreDetails.Text = "gfgfd";
+            this.lblMoreDetails.Text = "";
+            // 
+            // userInformation1
+            // 
+            this.userInformation1.Location = new System.Drawing.Point(1212, 34);
+            this.userInformation1.Name = "userInformation1";
+            this.userInformation1.Size = new System.Drawing.Size(246, 98);
+            this.userInformation1.TabIndex = 14;
+            this.userInformation1.UserID = null;
             // 
             // bookingBindingSource
             // 
@@ -253,6 +263,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1483, 587);
+            this.Controls.Add(this.userInformation1);
             this.Controls.Add(this.lblMoreDetails);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox3);
@@ -300,5 +311,6 @@
         private System.Windows.Forms.CheckedListBox ShownClassificationListBox;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.RichTextBox lblMoreDetails;
+        private DatabaseEntities.UserInformation userInformation1;
     }
 }

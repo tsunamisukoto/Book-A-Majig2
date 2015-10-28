@@ -36,7 +36,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(12, 152);
+            this.btnLogin.Location = new System.Drawing.Point(12, 410);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(94, 152);
+            this.btnCancel.Location = new System.Drawing.Point(93, 410);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -55,15 +55,15 @@
             // 
             // tbUserId
             // 
-            this.tbUserId.Location = new System.Drawing.Point(12, 120);
+            this.tbUserId.Location = new System.Drawing.Point(12, 244);
             this.tbUserId.Name = "tbUserId";
-            this.tbUserId.Size = new System.Drawing.Size(100, 20);
+            this.tbUserId.Size = new System.Drawing.Size(273, 20);
             this.tbUserId.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 101);
+            this.label1.Location = new System.Drawing.Point(12, 228);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 3;
@@ -73,7 +73,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 187);
+            this.ClientSize = new System.Drawing.Size(297, 445);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbUserId);
             this.Controls.Add(this.btnCancel);

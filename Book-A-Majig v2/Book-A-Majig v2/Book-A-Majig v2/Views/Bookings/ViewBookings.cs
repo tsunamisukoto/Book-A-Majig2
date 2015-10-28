@@ -21,21 +21,37 @@ namespace Book_A_Majig_v2
         private void ViewBookings_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Value = DateTime.Now;
+
+            checkedListBox1.SetItemChecked(0, true);
+            checkedListBox1.SetItemChecked(1, true);
+            checkedListBox1.SetItemChecked(2, false);
+            checkedListBox1.SetItemChecked(3, true);
+            checkedListBox1.SetItemChecked(4, true);
+            checkedListBox1.SetItemChecked(5, false);
             if (User != null)
             {
                 Rebind();
+                userInformation1.UserID = User.Id;
             }
-
         }
         List<Booking> ListOfBookings = new List<Booking>();
         UnitOfWork unitOfWork = new UnitOfWork();
+       private bool SatisfiesWheres(Booking b)
+        {
+            if(checkedListBox1.CheckedIndices.Contains(0))
+            {
+                if (b.BookingConfirmations.Count == 0)
+                    return false;    
+            }
+            return true;
+        }
         public void Rebind()
         {
 
             ListOfBookings = unitOfWork.BookingRepository.Get(x =>
              x.BookingDate.Year == dateTimePicker1.Value.Year &&
              x.BookingDate.Month == dateTimePicker1.Value.Month &&
-             x.BookingDate.Day == dateTimePicker1.Value.Day, y => y.OrderBy(q => q.BookingDate), "Employee,BookingClasification,BookingNotes.Employee").ToList();
+             x.BookingDate.Day == dateTimePicker1.Value.Day , y => y.OrderBy(q => q.BookingDate), "Employee,BookingClasification,BookingNotes.Employee").ToList();
             dataGridView1.DataSource = ListOfBookings.Select(x =>
                 new
                 {
@@ -43,13 +59,23 @@ namespace Book_A_Majig_v2
                     TakenBy = x.Employee.FirstName,
                     ContactNumber = x.ContactNumber,
                     Classification = x.BookingClasification != null ? x.BookingClasification.ClassificationName : "",
-                    Time = x.BookingDate
+                    Time = x.BookingDate.ToShortTimeString()
                 }).ToList();
+            dataGridView1.Columns["Name"].HeaderText = "Booking Name";
+            dataGridView1.Columns["Name"].Width = 350;
+            dataGridView1.Columns["TakenBy"].Width = 100;
+            dataGridView1.Columns["TakenBy"].HeaderText = "Taken By";
+            dataGridView1.Columns["ContactNumber"].Width = 100;
+            dataGridView1.Columns["ContactNumber"].HeaderText = "Contact Number";
+            dataGridView1.Columns["Time"].Width = 100;
+            dataGridView1.Columns["Time"].HeaderText = "Booking Time";
 
+            //dataGridView1.AutoResizeColumn();
             lblNumBookings.Text = ListOfBookings.Count.ToString();
             lblNumCovers.Text = ListOfBookings.Sum(x=> x.Adults+ x.Children).ToString();
             lblMoreDetails.Text = "";
             dataGridView1.ClearSelection();
+            
 
         }
 
@@ -77,7 +103,10 @@ namespace Book_A_Majig_v2
                 c.currentBookingID = ListOfBookings[workingIndex].Id;
 
                 c.ShowDialog();
-
+                if (c.DialogResult == DialogResult.OK)
+                {
+                    Rebind();
+                }
             }
         }
 

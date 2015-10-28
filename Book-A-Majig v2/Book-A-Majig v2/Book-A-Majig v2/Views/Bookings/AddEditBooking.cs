@@ -1,5 +1,6 @@
 ﻿using Book_A_Majig_v2.DatabaseEntities;
 using Book_A_Majig_v2.Services;
+using Book_A_Majig_v2.Views.Bookings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,12 +30,15 @@ namespace Book_A_Majig_v2
         }
         public Employee user { get; set; }
         List<BookingNote> newbookingNotes = new List<BookingNote>();
+        List<BookingNote> existingbookingnotes = new List<BookingNote>();
+        List<BookingNote> allbookingnotes = new List<BookingNote>();
         private void AddEditBooking_Load(object sender, EventArgs e)
         {
             var unitOfWork = new UnitOfWork();
 
             cbType.DataSource = unitOfWork.BookingClassificationRepository.Get().ToList();
             cbType.DisplayMember = "ClassificationName";
+            cbType.ValueMember = "Id";
             var startDate = DateTime.Today;
             startDate.AddSeconds(-startDate.Second);
             startDate.AddMinutes(-startDate.Minute);
@@ -49,9 +53,10 @@ namespace Book_A_Majig_v2
                 tbContactNumber.Text = currentBooking.ContactNumber;
                 tbEmail.Text = currentBooking.Email;
 
-                cbType.SelectedValue = currentBooking.BookingClasification;
+                cbType.SelectedValue = currentBooking.BookingClasification.Id;
                 newbookingNotes = currentBooking.BookingNotes.Where(x => x.DateInactive == null).ToList();
             }
+            RebindNotes();
 
         }
 
@@ -70,14 +75,17 @@ namespace Book_A_Majig_v2
             b.Email = tbEmail.Text;
             b.BookingClasification = (BookingClasification)cbType.SelectedItem;
             b.Restaurant = new Restaurant() { Capacity = 3, Location = "CHILL", Name = "Whispers" };
+            foreach (var note in newbookingNotes)
+                b.BookingNotes.Add(note);
             return b;
         }
         public void RebindNotes()
         {
             var unitOfWork = new UnitOfWork();
-
-            listView1.Items.AddRange(unitOfWork.BookingNotesRepository.Get(y => y.Booking_Id == currentBooking.Id, null, "Employee,BookingClasification").Select(z => z.Note).Select(a => new ListViewItem(a)).ToArray());
-
+            if(currentBooking!=null)
+            existingbookingnotes = unitOfWork.BookingNotesRepository.Get(y => y.Booking_Id == currentBooking.Id, null, "Employee").ToList();
+            allbookingnotes = existingbookingnotes.Union(newbookingNotes).ToList();
+            dataGridView1.DataSource = allbookingnotes.Select(x => new { Severity = x.Severity, Note = x.Note }).ToList();
 
 
 
@@ -110,6 +118,52 @@ namespace Book_A_Majig_v2
         {
             var unitOfWork = new UnitOfWork();
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            AddEditBookingNote aebn = new AddEditBookingNote();
+            aebn.UserId = user.Id;
+            
+            aebn.ShowDialog();
+            if(aebn.DialogResult==DialogResult.OK)
+            {
+           
+                newbookingNotes.Add(aebn.WorkingNote);
+
+
+
+                RebindNotes();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                AddEditBookingNote aebn = new AddEditBookingNote();
+                aebn.UserId = user.Id;
+                int workingindex = dataGridView1.SelectedRows[0].Index;
+                if(allbookingnotes[workingindex].Id!=0)
+                {
+                    aebn.noteID = allbookingnotes[workingindex].Id;
+
+                }
+                else
+                {
+                    aebn.WorkingNote = allbookingnotes[workingindex];
+                }
+                aebn.ShowDialog();
+                if (aebn.DialogResult == DialogResult.OK)
+                {
+
+
+
+
+
+                    RebindNotes();
+                }
+            }
         }
     }
 }

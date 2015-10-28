@@ -31,7 +31,9 @@ namespace Book_A_Majig_v2.Services
         private GenericRepository<DatabaseEntities.Employee> employeeRepository;
         private GenericRepository<DatabaseEntities.AccessLevel> accesslevelRepository;
         private GenericRepository<DatabaseEntities.Restaurant> restaurantRepository;
-
+        private GenericRepository<DatabaseEntities.Permissions> permissionRepository;
+        private GenericRepository<DatabaseEntities.PresetNote> presetnoteRepository;
+  
         public GenericRepository<DatabaseEntities.Booking> BookingRepository
         {
             get
@@ -105,6 +107,32 @@ namespace Book_A_Majig_v2.Services
                     this.restaurantRepository = new GenericRepository<DatabaseEntities.Restaurant>(context);
                 }
                 return restaurantRepository;
+            }
+        }
+
+        public GenericRepository<DatabaseEntities.Permissions> PermissionRepository
+        {
+            get
+            {
+
+                if (this.permissionRepository == null)
+                {
+                    this.permissionRepository = new GenericRepository<DatabaseEntities.Permissions>(context);
+                }
+                return permissionRepository;
+            }
+        }
+
+        public GenericRepository<DatabaseEntities.PresetNote> PresetNoteRepository
+        {
+            get
+            {
+
+                if (this.presetnoteRepository == null)
+                {
+                    this.presetnoteRepository = new GenericRepository<DatabaseEntities.PresetNote>(context);
+                }
+                return presetnoteRepository;
             }
         }
         public void Save()

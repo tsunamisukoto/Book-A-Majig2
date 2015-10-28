@@ -35,7 +35,6 @@
             this.tbContactNumber = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dtpBookingTime = new System.Windows.Forms.DateTimePicker();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,10 +54,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbName
@@ -132,15 +133,6 @@
             this.dtpBookingTime.Size = new System.Drawing.Size(227, 22);
             this.dtpBookingTime.TabIndex = 6;
             this.dtpBookingTime.ValueChanged += new System.EventHandler(this.dtpBookingTime_ValueChanged);
-            // 
-            // listView1
-            // 
-            this.listView1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.Location = new System.Drawing.Point(23, 387);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(488, 208);
-            this.listView1.TabIndex = 7;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // label3
             // 
@@ -302,6 +294,7 @@
             this.button1.TabIndex = 24;
             this.button1.Text = "Add Note";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
@@ -312,6 +305,7 @@
             this.button2.TabIndex = 25;
             this.button2.Text = "Edit Note";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -323,11 +317,24 @@
             this.button3.Text = "Delete Note";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(23, 381);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(488, 214);
+            this.dataGridView1.TabIndex = 27;
+            // 
             // AddEditBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 636);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -347,7 +354,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.dtpBookingTime);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tbContactNumber);
@@ -362,6 +368,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,7 +383,6 @@
         private System.Windows.Forms.TextBox tbContactNumber;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DateTimePicker dtpBookingTime;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.Label label4;
@@ -396,5 +402,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

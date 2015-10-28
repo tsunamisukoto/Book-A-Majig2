@@ -12,7 +12,9 @@ namespace Book_A_Majig_v2.DatabaseEntities
             get
             {
                 return this.FirstName+ " " + this.LastName;
+              
             }
         }
+        
     }
 }

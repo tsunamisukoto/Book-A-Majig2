@@ -27,8 +27,8 @@ namespace Book_A_Majig_v2.Views.Common
         private void Rebind()
         {
             var unitOfWork = new UnitOfWork();
-            employees = unitOfWork.EmpoyeeRepository.Get(x => x.DateInactive == null).ToList();
-            dataGridView1.DataSource = employees.Select(x => new { FullName = x.FullName }).ToList() ;
+            employees = unitOfWork.EmpoyeeRepository.Get(x => x.DateInactive == null,null, "AccessLevel").ToList();
+            dataGridView1.DataSource = employees.Select(x => new {ID=x.Id, FullName = x.FullName, AccessLevel= x.AccessLevel.Name }).ToList() ;
             dataGridView1.ClearSelection();
         }
 
@@ -36,9 +36,27 @@ namespace Book_A_Majig_v2.Views.Common
         {
             AddEditEmployee v = new AddEditEmployee() { User = User };
             v.ShowDialog();
-            if(v.DialogResult==DialogResult.OK)
+            if (v.DialogResult == DialogResult.OK)
             {
                 Rebind();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+
+                int workingIndex = dataGridView1.SelectedRows[0].Index;
+                AddEditEmployee c = new AddEditEmployee();
+                c.User = User;
+                c.currentEmployeeId = employees[workingIndex].Id;
+
+                c.ShowDialog();
+                if(c.DialogResult==DialogResult.OK)
+                {
+                    Rebind();
+                }
             }
         }
     }

@@ -18,5 +18,10 @@ namespace Book_A_Majig_v2.Views.Rostering
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

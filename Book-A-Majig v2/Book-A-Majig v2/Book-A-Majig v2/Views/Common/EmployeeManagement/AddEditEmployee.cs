@@ -25,15 +25,26 @@ namespace Book_A_Majig_v2.Views.Common
         private void AddEditEmployee_Load(object sender, EventArgs e)
         {
             var unitOfWork = new UnitOfWork();
-
+   
             comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "Id";
             comboBox1.DataSource = unitOfWork.AccessLevelRepository.Get();
+            if (currentEmployeeId != null)
+            {
+                currentUser = unitOfWork.EmpoyeeRepository.Get(x => x.Id == currentEmployeeId.Value, null, "AccessLevel").FirstOrDefault();
+                tbFirstName.Text = currentUser.FirstName;
+                tbLastName.Text = currentUser.LastName;
+                tbEmail.Text = currentUser.Email;
+                tbPhoneNumber.Text = currentUser.PhoneNumber;
+                tbID.Text = currentUser.Id.ToString();
+                comboBox1.SelectedValue = currentUser.AccessLevel.Id;
+            }
         }
         private Employee GetFields(Employee b)
         {
             b.FirstName = tbFirstName.Text;
             b.LastName = tbLastName.Text;
-            b.AccessLevel = (AccessLevel)comboBox1.SelectedValue;
+            b.AccessLevel_Id = (int)comboBox1.SelectedValue;
             b.Email = tbEmail.Text;
             b.PhoneNumber = tbPhoneNumber.Text;
             b.Id = int.Parse(tbID.Text);

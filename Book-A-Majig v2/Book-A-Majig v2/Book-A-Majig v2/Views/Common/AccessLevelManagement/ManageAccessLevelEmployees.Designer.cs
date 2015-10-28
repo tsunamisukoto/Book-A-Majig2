@@ -1,6 +1,6 @@
 ﻿namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
 {
-    partial class ManageRestaurantEmployees
+    partial class ManageAccessLevelEmployees
     {
         /// <summary>
         /// Required designer variable.
@@ -72,14 +72,14 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(333, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 13);
+            this.label2.Size = new System.Drawing.Size(187, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Employees Assigned To Restaurant";
+            this.label2.Text = "Employees Assigned To Access Level";
             // 
             // lblRestaurantName
             // 
             this.lblRestaurantName.AutoSize = true;
-            this.lblRestaurantName.Location = new System.Drawing.Point(12, 42);
+            this.lblRestaurantName.Location = new System.Drawing.Point(13, 13);
             this.lblRestaurantName.Name = "lblRestaurantName";
             this.lblRestaurantName.Size = new System.Drawing.Size(35, 13);
             this.lblRestaurantName.TabIndex = 4;
@@ -95,7 +95,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ManageRestaurantEmployees
+            // ManageAccessLevelEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -106,7 +106,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "ManageRestaurantEmployees";
+            this.Name = "ManageAccessLevelEmployees";
             this.Text = "ViewRestaurants";
             this.Load += new System.EventHandler(this.ManageRestaurantEmployees_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
