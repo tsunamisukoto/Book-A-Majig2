@@ -78,7 +78,14 @@ namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            ManageRestaurantDateNotes c = new ManageRestaurantDateNotes();
+            c.user = User;
+            c.RestaurantID = restaurantsList[dgvRestaurants.SelectedRows[0].Index].Id;
+            c.ShowDialog();
+            if (c.DialogResult == DialogResult.OK)
+            {
+                Rebind();
+            }
         }
     }
 }

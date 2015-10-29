@@ -15,7 +15,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
     public partial class LockOutTime
     {
         public int Id { get; set; }
-        public string StartTime { get; set; }
+        public System.DateTime StartTime { get; set; }
         public System.DateTime EndTime { get; set; }
         public int LockOutDate_Id { get; set; }
     

@@ -263,7 +263,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StartTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
     <Property Name="EndTime" Type="datetime" Nullable="false" />
     <Property Name="LockOutDate_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -412,11 +412,12 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DateOfNote" Type="datetime" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
     <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
     <Property Name="InactiveDate" Type="datetime" Nullable="true" />
     <Property Name="AppearOnAddingBooking" Type="bit" Nullable="false" DefaultValue="true" />
     <Property Name="AppearOnRoster" Type="bit" Nullable="false" DefaultValue="true" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="Restaurant_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="BookingClasificationLockOutDate">
@@ -984,7 +985,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StartTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" />
           <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LockOutDate_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LockOutDate" Relationship="Self.FK_LockOutDateLockOutTime" FromRole="LockOutTimes" ToRole="LockOutDates" />
@@ -1555,11 +1556,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Restaurant" Relationship="DatabaseModel.DateNoteRestaurant" FromRole="DateNote" ToRole="Restaurant" />
-          <Property Name="DateOfNote" Type="DateTime" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
           <Property Name="Note" Type="String" Nullable="false" />
           <Property Name="InactiveDate" Type="DateTime" Nullable="true" />
           <Property Name="AppearOnAddingBooking" Type="Boolean" Nullable="false" DefaultValue="true" />
           <Property Name="AppearOnRoster" Type="Boolean" Nullable="false" DefaultValue="true" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="DateNoteRestaurant">
           <End Type="DatabaseModel.DateNote" Role="DateNote" Multiplicity="*" />
@@ -1819,11 +1821,12 @@
       <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.DateNote)">
         <MappingFragment StoreEntitySet="DateNotes">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="DateOfNote" ColumnName="DateOfNote" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="Note" ColumnName="Note" />
           <ScalarProperty Name="InactiveDate" ColumnName="InactiveDate" />
           <ScalarProperty Name="AppearOnAddingBooking" ColumnName="AppearOnAddingBooking" />
           <ScalarProperty Name="AppearOnRoster" ColumnName="AppearOnRoster" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

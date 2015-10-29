@@ -30,16 +30,16 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvNotes = new System.Windows.Forms.DataGridView();
+            this.dgvLocked = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocked)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -60,27 +60,27 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Upcoming Locked Dates";
             // 
-            // dataGridView1
+            // dgvNotes
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 30);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(724, 251);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvNotes.AllowUserToAddRows = false;
+            this.dgvNotes.AllowUserToDeleteRows = false;
+            this.dgvNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNotes.Location = new System.Drawing.Point(13, 30);
+            this.dgvNotes.Name = "dgvNotes";
+            this.dgvNotes.ReadOnly = true;
+            this.dgvNotes.Size = new System.Drawing.Size(724, 251);
+            this.dgvNotes.TabIndex = 2;
             // 
-            // dataGridView2
+            // dgvLocked
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 316);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(724, 320);
-            this.dataGridView2.TabIndex = 3;
+            this.dgvLocked.AllowUserToAddRows = false;
+            this.dgvLocked.AllowUserToDeleteRows = false;
+            this.dgvLocked.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocked.Location = new System.Drawing.Point(3, 316);
+            this.dgvLocked.Name = "dgvLocked";
+            this.dgvLocked.ReadOnly = true;
+            this.dgvLocked.Size = new System.Drawing.Size(724, 320);
+            this.dgvLocked.TabIndex = 3;
             // 
             // button1
             // 
@@ -147,14 +147,15 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvLocked);
+            this.Controls.Add(this.dgvNotes);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ManageRestaurantDateNotes";
             this.Text = "ManageRestaurantDateNotes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.Load += new System.EventHandler(this.ManageRestaurantDateNotes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocked)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,8 +165,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvNotes;
+        private System.Windows.Forms.DataGridView dgvLocked;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

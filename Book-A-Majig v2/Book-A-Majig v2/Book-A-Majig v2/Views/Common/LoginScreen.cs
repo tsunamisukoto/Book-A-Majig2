@@ -60,6 +60,14 @@ namespace Book_A_Majig_v2
                     unitofwork.PresetNoteRepository.Insert(new PresetNote() { Name = "Gluten Free", Severity = 5 });
                     unitofwork.PresetNoteRepository.Insert(new PresetNote() { Name = "Dairy Free", Severity = 5 });
                     unitofwork.PresetNoteRepository.Insert(new PresetNote() { Name = "Window Seat", Severity = 2 });
+                    unitofwork.LockedOutDateRepository.Insert(new LockOutDate() { Name="Locked Out Date 1",  Reason="Cause", StartDate= DateTime.Now, EndDate= DateTime.Now.AddYears(1), Restaurant=newRestaurant});
+                    unitofwork.LockedOutDateRepository.Insert(new LockOutDate() { Name= "Locked Out Date 2",  Reason="Cause", StartDate= DateTime.Now, EndDate= DateTime.Now.AddYears(1), Restaurant=newRestaurant});
+                    unitofwork.LockedOutDateRepository.Insert(new LockOutDate() { Name= "Locked Out Date 3",  Reason="Cause", StartDate= DateTime.Now, EndDate= DateTime.Now.AddYears(1), Restaurant=newRestaurant});
+                    unitofwork.LockedOutDateRepository.Insert(new LockOutDate() { Name= "Locked Out Date 4",  Reason="Cause", StartDate= DateTime.Now, EndDate= DateTime.Now.AddYears(1), Restaurant=newRestaurant});
+                    unitofwork.DateNoteRepository.Insert(new DateNote() {  Note="Note1", AppearOnAddingBooking=true, AppearOnRoster=true, StartDate= DateTime.Now, EndDate=DateTime.Now.AddYears(1), Restaurant=newRestaurant});
+                    unitofwork.DateNoteRepository.Insert(new DateNote() {  Note="Note2", AppearOnAddingBooking=false, AppearOnRoster=true, StartDate= DateTime.Now, EndDate=DateTime.Now.AddYears(1), Restaurant=newRestaurant});
+                    unitofwork.DateNoteRepository.Insert(new DateNote() {  Note="Note3", AppearOnAddingBooking=true, AppearOnRoster=false, StartDate= DateTime.Now, EndDate=DateTime.Now.AddYears(1), Restaurant=newRestaurant});
+                
                     unitofwork.Save();
                 }
                 var user = unitofwork.EmpoyeeRepository.Get(x => x.Id == userID).FirstOrDefault();

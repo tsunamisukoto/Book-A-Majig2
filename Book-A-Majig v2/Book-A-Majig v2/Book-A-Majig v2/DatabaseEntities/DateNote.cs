@@ -22,11 +22,12 @@ namespace Book_A_Majig_v2.DatabaseEntities
         }
     
         public int Id { get; set; }
-        public System.DateTime DateOfNote { get; set; }
+        public System.DateTime StartDate { get; set; }
         public string Note { get; set; }
         public Nullable<System.DateTime> InactiveDate { get; set; }
         public bool AppearOnAddingBooking { get; set; }
         public bool AppearOnRoster { get; set; }
+        public System.DateTime EndDate { get; set; }
     
         public virtual Restaurant Restaurant { get; set; }
     }

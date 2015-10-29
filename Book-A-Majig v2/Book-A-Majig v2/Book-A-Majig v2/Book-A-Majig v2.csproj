@@ -397,6 +397,9 @@
     <EmbeddedResource Include="Views\Rostering\AddEditShiftRoster.resx">
       <DependentUpon>AddEditShiftRoster.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Rostering\Management\ManageStaffMemberHours.resx">
+      <DependentUpon>ManageStaffMemberHours.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\Management\RosterHomeScreen.resx">
       <DependentUpon>RosterHomeScreen.cs</DependentUpon>
     </EmbeddedResource>

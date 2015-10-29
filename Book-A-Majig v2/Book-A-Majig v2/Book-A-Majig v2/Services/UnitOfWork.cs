@@ -33,7 +33,33 @@ namespace Book_A_Majig_v2.Services
         private GenericRepository<DatabaseEntities.Restaurant> restaurantRepository;
         private GenericRepository<DatabaseEntities.Permissions> permissionRepository;
         private GenericRepository<DatabaseEntities.PresetNote> presetnoteRepository;
-  
+        private GenericRepository<DatabaseEntities.DateNote> datenoteRepository;
+        private GenericRepository<DatabaseEntities.LockOutDate> lockeddateRepository;
+
+        public GenericRepository<DatabaseEntities.LockOutDate> LockedOutDateRepository
+        {
+            get
+            {
+
+                if (this.lockeddateRepository == null)
+                {
+                    this.lockeddateRepository = new GenericRepository<DatabaseEntities.LockOutDate>(context);
+                }
+                return lockeddateRepository;
+            }
+        }
+        public GenericRepository<DatabaseEntities.DateNote> DateNoteRepository
+        {
+            get
+            {
+
+                if (this.datenoteRepository == null)
+                {
+                    this.datenoteRepository = new GenericRepository<DatabaseEntities.DateNote>(context);
+                }
+                return datenoteRepository;
+            }
+        }
         public GenericRepository<DatabaseEntities.Booking> BookingRepository
         {
             get
