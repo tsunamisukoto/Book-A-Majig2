@@ -27,9 +27,9 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public int RestaurantId { get; set; }
-        public Nullable<int> AccessLevel_Id { get; set; }
+        public Nullable<int> AuthorityRequiredToOverride { get; set; }
+        public System.DateTime DateCreated { get; set; }
     
-        public virtual AccessLevel AccessLevel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LockOutTime> LockOutTimes { get; set; }
         public virtual Restaurant Restaurant { get; set; }

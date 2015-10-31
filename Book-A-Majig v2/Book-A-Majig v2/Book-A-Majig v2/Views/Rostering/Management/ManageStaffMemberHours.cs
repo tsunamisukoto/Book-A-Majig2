@@ -15,5 +15,10 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
         {
             InitializeComponent();
         }
+
+        private void ManageStaffMemberHours_Load(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = DateTime.Now.Date;
+        }
     }
 }

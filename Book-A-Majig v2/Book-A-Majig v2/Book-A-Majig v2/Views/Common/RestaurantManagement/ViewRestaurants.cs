@@ -28,7 +28,7 @@ namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
         {
             var unitOfWork = new UnitOfWork();
             restaurantsList = unitOfWork.RestaurantRepository.Get(includeProperties: "Employees").ToList();
-            dgvRestaurants.DataSource = restaurantsList.Select(x => new { Name = x.Name, Location = x.Location , EmployeeCount= x.Employees.Count}).ToList();
+            dgvRestaurants.DataSource = restaurantsList.Select(x => new { Name = x.Name, Location = x.Location, EmployeeCount = x.Employees.Count }).ToList();
             dgvRestaurants.ClearSelection();
         }
 
@@ -65,26 +65,34 @@ namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
         private void button3_Click(object sender, EventArgs e)
         {
             /*TO DO: Permissions*/
-
-            ManageRestaurantEmployees c = new ManageRestaurantEmployees();
-            c.user = User;
-            c.RestaurantID = restaurantsList[dgvRestaurants.SelectedRows[0].Index].Id;
-            c.ShowDialog();
-            if (c.DialogResult == DialogResult.OK)
+            if(dgvRestaurants.SelectedRows.Count>0)
             {
-                Rebind();
+
+                ManageRestaurantEmployees c = new ManageRestaurantEmployees();
+                c.user = User;
+                c.RestaurantID = restaurantsList[dgvRestaurants.SelectedRows[0].Index].Id;
+                c.ShowDialog();
+                if (c.DialogResult == DialogResult.OK)
+                {
+                    Rebind();
+                }
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ManageRestaurantDateNotes c = new ManageRestaurantDateNotes();
-            c.user = User;
-            c.RestaurantID = restaurantsList[dgvRestaurants.SelectedRows[0].Index].Id;
-            c.ShowDialog();
-            if (c.DialogResult == DialogResult.OK)
+            if (dgvRestaurants.SelectedRows.Count > 0)
             {
-                Rebind();
+
+                ManageRestaurantDates c = new ManageRestaurantDates();
+                c.user = User;
+                c.RestaurantID = restaurantsList[dgvRestaurants.SelectedRows[0].Index].Id;
+                c.ShowDialog();
+                if (c.DialogResult == DialogResult.OK)
+                {
+                    Rebind();
+                }
+
             }
         }
     }

@@ -193,7 +193,9 @@
       <DependentUpon>UserInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\AllPermissions.cs" />
+    <Compile Include="Services\DateService.cs" />
     <Compile Include="Services\GenericRepository.cs" />
+    <Compile Include="Services\InitService.cs" />
     <Compile Include="Services\UIExtensionMethods.cs" />
     <Compile Include="Services\UnitOfWork.cs" />
     <Compile Include="Views\Bookings\AddEditBooking.cs">
@@ -264,11 +266,23 @@
     <Compile Include="Views\Common\NavigationMenu.Designer.cs">
       <DependentUpon>NavigationMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Common\RestaurantManagement\RestaurantDates\ManageRestaurantDateNotes.cs">
+    <Compile Include="Views\Common\RestaurantManagement\RestaurantDates\AddEditDateNote.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Common\RestaurantManagement\RestaurantDates\ManageRestaurantDateNotes.Designer.cs">
-      <DependentUpon>ManageRestaurantDateNotes.cs</DependentUpon>
+    <Compile Include="Views\Common\RestaurantManagement\RestaurantDates\AddEditDateNote.Designer.cs">
+      <DependentUpon>AddEditDateNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\RestaurantDates\AddEditLockedDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\RestaurantDates\AddEditLockedDate.Designer.cs">
+      <DependentUpon>AddEditLockedDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\RestaurantDates\ManageRestaurantDates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\RestaurantManagement\RestaurantDates\ManageRestaurantDates.Designer.cs">
+      <DependentUpon>ManageRestaurantDates.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Common\RestaurantManagement\ManageRestaurantEmployees.cs">
       <SubType>Form</SubType>
@@ -323,6 +337,12 @@
     </Compile>
     <Compile Include="Views\Rostering\Management\ViewStaffMemberHours.Designer.cs">
       <DependentUpon>ViewStaffMemberHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Rostering\ReusableControls\StaffMemberDayAvailability.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Rostering\ReusableControls\StaffMemberDayAvailability.Designer.cs">
+      <DependentUpon>StaffMemberDayAvailability.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Rostering\ViewRosters.cs">
       <SubType>Form</SubType>
@@ -379,8 +399,14 @@
     <EmbeddedResource Include="Views\Common\EmployeeManagement\ViewEmployees.resx">
       <DependentUpon>ViewEmployees.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Common\RestaurantManagement\RestaurantDates\ManageRestaurantDateNotes.resx">
-      <DependentUpon>ManageRestaurantDateNotes.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Common\RestaurantManagement\RestaurantDates\AddEditDateNote.resx">
+      <DependentUpon>AddEditDateNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\RestaurantManagement\RestaurantDates\AddEditLockedDate.resx">
+      <DependentUpon>AddEditLockedDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\RestaurantManagement\RestaurantDates\ManageRestaurantDates.resx">
+      <DependentUpon>ManageRestaurantDates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\RestaurantManagement\ManageRestaurantEmployees.resx">
       <DependentUpon>ManageRestaurantEmployees.cs</DependentUpon>
@@ -405,6 +431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\Management\ViewStaffMemberHours.resx">
       <DependentUpon>ViewStaffMemberHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Rostering\ReusableControls\StaffMemberDayAvailability.resx">
+      <DependentUpon>StaffMemberDayAvailability.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\ViewRosters.resx">
       <DependentUpon>ViewRosters.cs</DependentUpon>

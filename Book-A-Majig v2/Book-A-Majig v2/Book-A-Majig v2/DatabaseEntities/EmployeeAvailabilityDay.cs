@@ -21,6 +21,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public string Notes { get; set; }
         public System.DateTime StartTime { get; set; }
         public Nullable<System.DateTime> FinishTime { get; set; }
+        public System.DateTime DateAdded { get; set; }
     
         public virtual Employee Employee { get; set; }
     }

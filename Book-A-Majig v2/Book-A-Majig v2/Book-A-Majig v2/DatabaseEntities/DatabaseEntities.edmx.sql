@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/29/2015 19:45:47
+-- Date Created: 10/31/2015 13:56:08
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -121,6 +121,12 @@ IF OBJECT_ID(N'[dbo].[FK_BookingEmployee1]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_DateNoteRestaurant]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DateNotes] DROP CONSTRAINT [FK_DateNoteRestaurant];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmployeeNAEmployee1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EmployeeNAs] DROP CONSTRAINT [FK_EmployeeNAEmployee1];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmployeeNAEmployee2]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EmployeeNAs] DROP CONSTRAINT [FK_EmployeeNAEmployee2];
 GO
 
 -- --------------------------------------------------
@@ -291,7 +297,8 @@ CREATE TABLE [dbo].[LockOutDates] (
     [StartDate] datetime  NOT NULL,
     [EndDate] datetime  NOT NULL,
     [RestaurantId] int  NOT NULL,
-    [AccessLevel_Id] int  NULL
+    [AuthorityRequiredToOverride] int  NULL,
+    [DateCreated] datetime  NOT NULL
 );
 GO
 
@@ -333,6 +340,7 @@ CREATE TABLE [dbo].[EmployeeAvailabilityDays] (
     [Notes] nvarchar(max)  NOT NULL,
     [StartTime] datetime  NOT NULL,
     [FinishTime] datetime  NULL,
+    [DateAdded] datetime  NOT NULL,
     [Employee_Id] int  NOT NULL
 );
 GO
@@ -340,10 +348,12 @@ GO
 -- Creating table 'EmployeeNAs'
 CREATE TABLE [dbo].[EmployeeNAs] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [StartDate] nvarchar(max)  NOT NULL,
-    [EndDate] nvarchar(max)  NOT NULL,
+    [StartDate] datetime  NOT NULL,
+    [EndDate] datetime  NOT NULL,
     [Notes] nvarchar(max)  NOT NULL,
-    [Employee_Id] int  NOT NULL
+    [Employee_Id] int  NOT NULL,
+    [SubmittedBy_Id] int  NULL,
+    [ApprovedBy_Id] int  NULL
 );
 GO
 
@@ -453,6 +463,7 @@ CREATE TABLE [dbo].[DateNotes] (
     [AppearOnAddingBooking] bit  NOT NULL,
     [AppearOnRoster] bit  NOT NULL,
     [EndDate] datetime  NOT NULL,
+    [DateCreated] datetime  NOT NULL,
     [Restaurant_Id] int  NOT NULL
 );
 GO
@@ -654,21 +665,6 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_EmployeeAccessLevel'
 CREATE INDEX [IX_FK_EmployeeAccessLevel]
 ON [dbo].[Employees]
-    ([AccessLevel_Id]);
-GO
-
--- Creating foreign key on [AccessLevel_Id] in table 'LockOutDates'
-ALTER TABLE [dbo].[LockOutDates]
-ADD CONSTRAINT [FK_LockOutDateAccessLevel]
-    FOREIGN KEY ([AccessLevel_Id])
-    REFERENCES [dbo].[AccessLevels]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_LockOutDateAccessLevel'
-CREATE INDEX [IX_FK_LockOutDateAccessLevel]
-ON [dbo].[LockOutDates]
     ([AccessLevel_Id]);
 GO
 
@@ -1147,6 +1143,36 @@ GO
 CREATE INDEX [IX_FK_DateNoteRestaurant]
 ON [dbo].[DateNotes]
     ([Restaurant_Id]);
+GO
+
+-- Creating foreign key on [SubmittedBy_Id] in table 'EmployeeNAs'
+ALTER TABLE [dbo].[EmployeeNAs]
+ADD CONSTRAINT [FK_EmployeeNAEmployee1]
+    FOREIGN KEY ([SubmittedBy_Id])
+    REFERENCES [dbo].[Employees]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EmployeeNAEmployee1'
+CREATE INDEX [IX_FK_EmployeeNAEmployee1]
+ON [dbo].[EmployeeNAs]
+    ([SubmittedBy_Id]);
+GO
+
+-- Creating foreign key on [ApprovedBy_Id] in table 'EmployeeNAs'
+ALTER TABLE [dbo].[EmployeeNAs]
+ADD CONSTRAINT [FK_EmployeeNAEmployee2]
+    FOREIGN KEY ([ApprovedBy_Id])
+    REFERENCES [dbo].[Employees]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EmployeeNAEmployee2'
+CREATE INDEX [IX_FK_EmployeeNAEmployee2]
+ON [dbo].[EmployeeNAs]
+    ([ApprovedBy_Id]);
 GO
 
 -- --------------------------------------------------

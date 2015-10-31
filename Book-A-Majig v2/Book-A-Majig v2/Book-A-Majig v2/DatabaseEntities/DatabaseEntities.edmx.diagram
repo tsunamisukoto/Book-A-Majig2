@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="DatabaseModel.LockOutTime" Width="1.5" PointX="8.5" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.Restaurant" Width="1.5" PointX="11.5" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="DatabaseModel.FK_EmployeeAccessLevel" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.FK_LockOutDateAccessLevel" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_BookingBookingClasification" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_BookingConfirmationBooking" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_BookingNotesBooking" ManuallyRouted="false" />
@@ -28,7 +27,7 @@
         <AssociationConnector Association="DatabaseModel.BookingClasificationLockOutDate" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeAvailabilityDay" Width="1.875" PointX="4.625" PointY="9.125" />
         <AssociationConnector Association="DatabaseModel.EmployeeAvailabilityDayEmployee" />
-        <EntityTypeShape EntityType="DatabaseModel.EmployeeNA" Width="1.5" PointX="12" PointY="10.125" />
+        <EntityTypeShape EntityType="DatabaseModel.EmployeeNA" Width="1.5" PointX="12.375" PointY="9.75" />
         <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee" />
         <EntityTypeShape EntityType="DatabaseModel.Shift" Width="1.5" PointX="7.5" PointY="12" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeShift" Width="1.5" PointX="10.875" PointY="12.375" />
@@ -58,8 +57,10 @@
         <AssociationConnector Association="DatabaseModel.BookingEmployee" />
         <AssociationConnector Association="DatabaseModel.BookingConfirmationEmployee" />
         <AssociationConnector Association="DatabaseModel.BookingEmployee1" />
-        <EntityTypeShape EntityType="DatabaseModel.DateNote" Width="1.5" PointX="2.625" PointY="2.125" />
+        <EntityTypeShape EntityType="DatabaseModel.DateNote" Width="1.5" PointX="1.25" PointY="4" />
         <AssociationConnector Association="DatabaseModel.DateNoteRestaurant" />
+        <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee1" />
+        <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

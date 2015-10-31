@@ -18,7 +18,6 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public AccessLevel()
         {
             this.Employees = new HashSet<Employee>();
-            this.LockOutDates = new HashSet<LockOutDate>();
             this.Permissions = new HashSet<Permissions>();
         }
     
@@ -28,8 +27,6 @@ namespace Book_A_Majig_v2.DatabaseEntities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LockOutDate> LockOutDates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Permissions> Permissions { get; set; }
     }

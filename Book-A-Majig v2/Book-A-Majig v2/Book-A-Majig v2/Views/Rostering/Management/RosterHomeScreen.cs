@@ -1,4 +1,5 @@
 ﻿using Book_A_Majig_v2.DatabaseEntities;
+using Book_A_Majig_v2.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,10 +18,17 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             InitializeComponent();
         }
         public Employee User { get; set; }
-
+        List<EmployeeNA> EmployeeNAs = new List<EmployeeNA>();
         private void RosterHomeScreen_Load(object sender, EventArgs e)
         {
+            RebindEmployeeNAs();
+        }
 
+        private void RebindEmployeeNAs()
+        {
+            var unitOfWork = new UnitOfWork();
+            EmployeeNAs = unitOfWork.EmployeeNARepository.Get(x => x.EndDate > DateTime.Today, x=> x.OrderBy(y=>y.StartDate),includeProperties:"Employee").ToList();
+            dgvNAs.DataSource = EmployeeNAs.Select(x => new {StartDate = x.StartDate, EndDate = x.EndDate, Notes= x.Notes });
         }
 
         private void button4_Click(object sender, EventArgs e)

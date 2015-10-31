@@ -48,6 +48,8 @@
             this.ShownClassificationListBox = new System.Windows.Forms.CheckedListBox();
             this.button5 = new System.Windows.Forms.Button();
             this.lblMoreDetails = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.userInformation1 = new Book_A_Majig_v2.DatabaseEntities.UserInformation();
             this.bookingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
@@ -135,13 +137,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.richTextBox2);
+            this.groupBox1.Controls.Add(this.richTextBox1);
             this.groupBox1.Controls.Add(this.lblNumCovers);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.lblNumBookings);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(39, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(281, 94);
+            this.groupBox1.Size = new System.Drawing.Size(802, 94);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
@@ -201,7 +205,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.checkedListBox1);
-            this.groupBox2.Location = new System.Drawing.Point(326, 9);
+            this.groupBox2.Location = new System.Drawing.Point(847, 9);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(154, 123);
             this.groupBox2.TabIndex = 10;
@@ -211,7 +215,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.ShownClassificationListBox);
-            this.groupBox3.Location = new System.Drawing.Point(506, 12);
+            this.groupBox3.Location = new System.Drawing.Point(1007, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(200, 120);
             this.groupBox3.TabIndex = 11;
@@ -235,6 +239,7 @@
             this.button5.TabIndex = 12;
             this.button5.Text = "Arrived";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // lblMoreDetails
             // 
@@ -246,11 +251,29 @@
             this.lblMoreDetails.TabIndex = 13;
             this.lblMoreDetails.Text = "";
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(247, 7);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(269, 87);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(523, 7);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.Size = new System.Drawing.Size(279, 87);
+            this.richTextBox2.TabIndex = 5;
+            this.richTextBox2.Text = "";
+            // 
             // userInformation1
             // 
-            this.userInformation1.Location = new System.Drawing.Point(1212, 34);
+            this.userInformation1.Location = new System.Drawing.Point(1213, 26);
             this.userInformation1.Name = "userInformation1";
-            this.userInformation1.Size = new System.Drawing.Size(246, 98);
+            this.userInformation1.Size = new System.Drawing.Size(245, 98);
             this.userInformation1.TabIndex = 14;
             this.userInformation1.UserID = null;
             // 
@@ -312,5 +335,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.RichTextBox lblMoreDetails;
         private DatabaseEntities.UserInformation userInformation1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }

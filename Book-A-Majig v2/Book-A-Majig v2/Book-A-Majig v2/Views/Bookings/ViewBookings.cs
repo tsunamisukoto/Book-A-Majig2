@@ -113,6 +113,8 @@ namespace Book_A_Majig_v2
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             Rebind();
+            new DateService().DateNotesForDate(richTextBox1, dateTimePicker1.Value, false, true);
+            new DateService().BookingLockoutsForDate(richTextBox2, dateTimePicker1.Value);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -198,6 +200,8 @@ namespace Book_A_Majig_v2
                     lblMoreDetails.AppendBoldColoredLine("Deleted By: ", Color.Red);
                     lblMoreDetails.AppendLine(workingBooking.DeletedBy.FullName + " On " + workingBooking.DateInactive);
                 }
+                lblMoreDetails.AppendLine("");
+                lblMoreDetails.AppendBoldLine("Notes:");
 
                 foreach (var note in workingBooking.BookingNotes)
                 {
@@ -211,6 +215,25 @@ namespace Book_A_Majig_v2
 
         private void ShownClassificationListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            /*TO DO: Permissions*/
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var unitOfWork = new UnitOfWork();
+                foreach (var row in dataGridView1.SelectedRows)
+                {
+                    int workingIndex = dataGridView1.SelectedRows[0].Index;
+                    var booking = ListOfBookings[workingIndex];
+                    booking.ArrivedDate=DateTime.Now;
+
+                }
+                unitOfWork.Save();
+
+                Rebind();
+            }
         }
     }
 }

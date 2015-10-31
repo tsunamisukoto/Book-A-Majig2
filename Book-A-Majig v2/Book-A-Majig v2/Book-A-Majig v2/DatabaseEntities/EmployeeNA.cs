@@ -15,10 +15,12 @@ namespace Book_A_Majig_v2.DatabaseEntities
     public partial class EmployeeNA
     {
         public int Id { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public System.DateTime EndDate { get; set; }
         public string Notes { get; set; }
     
         public virtual Employee Employee { get; set; }
+        public virtual Employee SubmittedBy { get; set; }
+        public virtual Employee ApprovedBy { get; set; }
     }
 }

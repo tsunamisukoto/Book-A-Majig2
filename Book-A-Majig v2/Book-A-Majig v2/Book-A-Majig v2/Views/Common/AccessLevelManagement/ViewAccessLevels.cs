@@ -32,6 +32,8 @@ namespace Book_A_Majig_v2.Views.Common.AccessLevelManagement
             var unitOfWork = new UnitOfWork();
             accessLevels = unitOfWork.AccessLevelRepository.Get( includeProperties:"Employees").ToList();
             dgvAccessLevels.DataSource = accessLevels.Select(x => new { Name = x.Name, AuthorityLevel = x.Level ,Employees = x.Employees.Where(y=> y.DateInactive== null).Count()}).ToList();
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)

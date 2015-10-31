@@ -50,11 +50,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.tbDateInformation = new System.Windows.Forms.TextBox();
+            this.tbDateInformation = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -125,12 +126,12 @@
             // 
             // dtpBookingTime
             // 
-            this.dtpBookingTime.CustomFormat = "dddd, d MMMM  hh:MM tt";
+            this.dtpBookingTime.CustomFormat = " hh:MM tt dddd, d MMMM yyyy";
             this.dtpBookingTime.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBookingTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpBookingTime.Location = new System.Drawing.Point(12, 70);
             this.dtpBookingTime.Name = "dtpBookingTime";
-            this.dtpBookingTime.Size = new System.Drawing.Size(227, 22);
+            this.dtpBookingTime.Size = new System.Drawing.Size(280, 22);
             this.dtpBookingTime.TabIndex = 6;
             this.dtpBookingTime.ValueChanged += new System.EventHandler(this.dtpBookingTime_ValueChanged);
             // 
@@ -205,9 +206,19 @@
             // 
             this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown2.Location = new System.Drawing.Point(80, 310);
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(49, 22);
             this.numericUpDown2.TabIndex = 15;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // numericUpDown3
             // 
@@ -279,11 +290,11 @@
             // 
             this.tbDateInformation.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDateInformation.Location = new System.Drawing.Point(18, 114);
-            this.tbDateInformation.Multiline = true;
             this.tbDateInformation.Name = "tbDateInformation";
             this.tbDateInformation.ReadOnly = true;
-            this.tbDateInformation.Size = new System.Drawing.Size(493, 135);
+            this.tbDateInformation.Size = new System.Drawing.Size(242, 135);
             this.tbDateInformation.TabIndex = 23;
+            this.tbDateInformation.Text = "";
             // 
             // button1
             // 
@@ -316,6 +327,7 @@
             this.button3.TabIndex = 26;
             this.button3.Text = "Delete Note";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView1
             // 
@@ -329,11 +341,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(488, 214);
             this.dataGridView1.TabIndex = 27;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(261, 114);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(250, 135);
+            this.richTextBox1.TabIndex = 28;
+            this.richTextBox1.Text = "";
+            // 
             // AddEditBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 636);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -398,10 +420,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox tbDateInformation;
+        private System.Windows.Forms.RichTextBox tbDateInformation;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

@@ -75,7 +75,7 @@ namespace Book_A_Majig_v2
             b.Email = tbEmail.Text;
             b.BookingClasification = (BookingClasification)cbType.SelectedItem;
             b.Restaurant = new Restaurant() { Capacity = 3, Location = "CHILL", Name = "Whispers" };
-            foreach (var note in newbookingNotes)
+            foreach (var note in newbookingNotes.Where(x=> x.DateInactive==null))
                 b.BookingNotes.Add(note);
             return b;
         }
@@ -84,7 +84,7 @@ namespace Book_A_Majig_v2
             var unitOfWork = new UnitOfWork();
             if(currentBooking!=null)
             existingbookingnotes = unitOfWork.BookingNotesRepository.Get(y => y.Booking_Id == currentBooking.Id, null, "Employee").ToList();
-            allbookingnotes = existingbookingnotes.Union(newbookingNotes).ToList();
+            allbookingnotes = existingbookingnotes.Union(newbookingNotes).Where(x=> x.DateInactive== null).ToList();
             dataGridView1.DataSource = allbookingnotes.Select(x => new { Severity = x.Severity, Note = x.Note }).ToList();
 
 
@@ -113,13 +113,13 @@ namespace Book_A_Majig_v2
 
             }
         }
-
         private void dtpBookingTime_ValueChanged(object sender, EventArgs e)
         {
-            var unitOfWork = new UnitOfWork();
-
+            tbDateInformation.Text = "";
+            new DateService().DateNotesForDate(tbDateInformation, dtpBookingTime.Value.Date, false, true);
+            new DateService().BookingLockoutsForDate(richTextBox1, dtpBookingTime.Value.Date);
         }
-
+      
         private void button1_Click_1(object sender, EventArgs e)
         {
             AddEditBookingNote aebn = new AddEditBookingNote();
@@ -163,6 +163,21 @@ namespace Book_A_Majig_v2
 
                     RebindNotes();
                 }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+              
+                int workingindex = dataGridView1.SelectedRows[0].Index;
+
+                var unitOfWork = new UnitOfWork();
+            
+                    allbookingnotes[workingindex].DateInactive = DateTime.Now;
+                
+                RebindNotes();
             }
         }
     }

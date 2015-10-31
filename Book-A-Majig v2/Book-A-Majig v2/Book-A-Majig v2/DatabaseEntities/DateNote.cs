@@ -28,6 +28,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public bool AppearOnAddingBooking { get; set; }
         public bool AppearOnRoster { get; set; }
         public System.DateTime EndDate { get; set; }
+        public System.DateTime DateCreated { get; set; }
     
         public virtual Restaurant Restaurant { get; set; }
     }

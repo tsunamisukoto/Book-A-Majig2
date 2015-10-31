@@ -36,10 +36,6 @@
       <End Role="AccessLevels" EntitySet="AccessLevels" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK_LockOutDateAccessLevel" Association="DatabaseModel.Store.FK_LockOutDateAccessLevel">
-      <End Role="AccessLevels" EntitySet="AccessLevels" />
-      <End Role="LockOutDates" EntitySet="LockOutDates" />
-    </AssociationSet>
     <AssociationSet Name="FK_BookingBookingClasification" Association="DatabaseModel.Store.FK_BookingBookingClasification">
       <End Role="BookingClasifications" EntitySet="BookingClasifications" />
       <End Role="Bookings" EntitySet="Bookings" />
@@ -172,6 +168,14 @@
       <End Role="DateNote" EntitySet="DateNotes" />
       <End Role="Restaurant" EntitySet="Restaurants" />
     </AssociationSet>
+    <AssociationSet Name="EmployeeNAEmployee1" Association="DatabaseModel.Store.EmployeeNAEmployee1">
+      <End Role="EmployeeNA" EntitySet="EmployeeNAs" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeNAEmployee2" Association="DatabaseModel.Store.EmployeeNAEmployee2">
+      <End Role="EmployeeNA" EntitySet="EmployeeNAs" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="AccessLevels">
     <Key>
@@ -256,7 +260,8 @@
     <Property Name="StartDate" Type="datetime" Nullable="false" />
     <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="RestaurantId" Type="int" Nullable="false" />
-    <Property Name="AccessLevel_Id" Type="int" Nullable="true" />
+    <Property Name="AuthorityRequiredToOverride" Type="int" Nullable="true" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="LockOutTimes">
     <Key>
@@ -298,6 +303,7 @@
     <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
     <Property Name="StartTime" Type="datetime" Nullable="false" />
     <Property Name="FinishTime" Type="datetime" Nullable="true" />
+    <Property Name="DateAdded" Type="datetime" Nullable="false" />
     <Property Name="Employee_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="EmployeeNAs">
@@ -305,10 +311,12 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StartDate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="EndDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Employee_Id" Type="int" Nullable="false" />
+    <Property Name="SubmittedBy_Id" Type="int" Nullable="true" />
+    <Property Name="ApprovedBy_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Shifts">
     <Key>
@@ -418,6 +426,7 @@
     <Property Name="AppearOnAddingBooking" Type="bit" Nullable="false" DefaultValue="true" />
     <Property Name="AppearOnRoster" Type="bit" Nullable="false" DefaultValue="true" />
     <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
     <Property Name="Restaurant_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="BookingClasificationLockOutDate">
@@ -452,18 +461,6 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Employees">
-        <PropertyRef Name="AccessLevel_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_LockOutDateAccessLevel">
-    <End Role="AccessLevels" Type="DatabaseModel.Store.AccessLevels" Multiplicity="0..1" />
-    <End Role="LockOutDates" Type="DatabaseModel.Store.LockOutDates" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AccessLevels">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="LockOutDates">
         <PropertyRef Name="AccessLevel_Id" />
       </Dependent>
     </ReferentialConstraint>
@@ -792,6 +789,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="EmployeeNAEmployee1">
+    <End Role="EmployeeNA" Type="DatabaseModel.Store.EmployeeNAs" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeNA">
+        <PropertyRef Name="SubmittedBy_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeNAEmployee2">
+    <End Role="EmployeeNA" Type="DatabaseModel.Store.EmployeeNAs" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeNA">
+        <PropertyRef Name="ApprovedBy_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BookingClasificationLockOutDate_BookingClasification">
     <End Role="BookingClasification" Type="DatabaseModel.Store.BookingClasifications" Multiplicity="1" />
     <End Role="BookingClasificationLockOutDate" Type="DatabaseModel.Store.BookingClasificationLockOutDate" Multiplicity="*" />
@@ -875,7 +896,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_EmployeeAccessLevel" FromRole="AccessLevels" ToRole="Employees" />
-          <NavigationProperty Name="LockOutDates" Relationship="Self.FK_LockOutDateAccessLevel" FromRole="AccessLevels" ToRole="LockOutDates" />
           <NavigationProperty Name="Permissions" Relationship="DatabaseModel.PermissionsAccessLevel" FromRole="AccessLevel" ToRole="Permissions" />
           <Property Name="Level" Type="Int32" Nullable="false" />
         </EntityType>
@@ -974,11 +994,11 @@
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RestaurantId" Type="Int32" Nullable="false" />
-          <Property Name="AccessLevel_Id" Type="Int32" />
-          <NavigationProperty Name="AccessLevel" Relationship="Self.FK_LockOutDateAccessLevel" FromRole="LockOutDates" ToRole="AccessLevels" />
+          <Property Name="AuthorityRequiredToOverride" Type="Int32" />
           <NavigationProperty Name="LockOutTimes" Relationship="Self.FK_LockOutDateLockOutTime" FromRole="LockOutDates" ToRole="LockOutTimes" />
           <NavigationProperty Name="Restaurant" Relationship="Self.FK_RestaurantLockOutDate" FromRole="LockOutDates" ToRole="Restaurants" />
           <NavigationProperty Name="BookingClasifications" Relationship="DatabaseModel.BookingClasificationLockOutDate" FromRole="LockOutDate" ToRole="BookingClasification" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="LockOutTime">
           <Key>
@@ -1015,18 +1035,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Employees">
-              <PropertyRef Name="AccessLevel_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LockOutDateAccessLevel">
-          <End Role="AccessLevels" Type="Self.AccessLevel" Multiplicity="0..1" />
-          <End Role="LockOutDates" Type="Self.LockOutDate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AccessLevels">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LockOutDates">
               <PropertyRef Name="AccessLevel_Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -1128,10 +1136,6 @@
           <AssociationSet Name="FK_EmployeeAccessLevel" Association="Self.FK_EmployeeAccessLevel">
             <End Role="AccessLevels" EntitySet="AccessLevels" />
             <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LockOutDateAccessLevel" Association="Self.FK_LockOutDateAccessLevel">
-            <End Role="AccessLevels" EntitySet="AccessLevels" />
-            <End Role="LockOutDates" EntitySet="LockOutDates" />
           </AssociationSet>
           <AssociationSet Name="FK_BookingBookingClasification" Association="Self.FK_BookingBookingClasification">
             <End Role="BookingClasifications" EntitySet="BookingClasifications" />
@@ -1267,6 +1271,14 @@
             <End Role="DateNote" EntitySet="DateNotes" />
             <End Role="Restaurant" EntitySet="Restaurants" />
           </AssociationSet>
+          <AssociationSet Name="EmployeeNAEmployee1" Association="DatabaseModel.EmployeeNAEmployee1">
+            <End Role="EmployeeNA" EntitySet="EmployeeNAs" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeNAEmployee2" Association="DatabaseModel.EmployeeNAEmployee2">
+            <End Role="EmployeeNA" EntitySet="EmployeeNAs" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="PresetNote">
           <Key>
@@ -1304,6 +1316,7 @@
           <Property Name="Notes" Type="String" Nullable="false" />
           <Property Name="StartTime" Type="DateTime" Nullable="false" />
           <Property Name="FinishTime" Type="DateTime" Nullable="true" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="EmployeeAvailabilityDayEmployee">
           <End Type="DatabaseModel.EmployeeAvailabilityDay" Role="EmployeeAvailabilityDay" Multiplicity="*" />
@@ -1315,9 +1328,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Employee" Relationship="DatabaseModel.EmployeeNAEmployee" FromRole="EmployeeNA" ToRole="Employee" />
-          <Property Name="StartDate" Type="String" Nullable="false" />
-          <Property Name="EndDate" Type="String" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
           <Property Name="Notes" Type="String" Nullable="false" />
+          <NavigationProperty Name="SubmittedBy" Relationship="DatabaseModel.EmployeeNAEmployee1" FromRole="EmployeeNA" ToRole="Employee" />
+          <NavigationProperty Name="ApprovedBy" Relationship="DatabaseModel.EmployeeNAEmployee2" FromRole="EmployeeNA" ToRole="Employee" />
         </EntityType>
         <Association Name="EmployeeNAEmployee">
           <End Type="DatabaseModel.EmployeeNA" Role="EmployeeNA" Multiplicity="*" />
@@ -1562,10 +1577,19 @@
           <Property Name="AppearOnAddingBooking" Type="Boolean" Nullable="false" DefaultValue="true" />
           <Property Name="AppearOnRoster" Type="Boolean" Nullable="false" DefaultValue="true" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="DateNoteRestaurant">
           <End Type="DatabaseModel.DateNote" Role="DateNote" Multiplicity="*" />
           <End Type="DatabaseModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+        </Association>
+        <Association Name="EmployeeNAEmployee1">
+          <End Type="DatabaseModel.EmployeeNA" Role="EmployeeNA" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="0..1" />
+        </Association>
+        <Association Name="EmployeeNAEmployee2">
+          <End Type="DatabaseModel.EmployeeNA" Role="EmployeeNA" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="0..1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -1660,7 +1684,8 @@
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
-          <ScalarProperty Name="AccessLevel_Id" ColumnName="AccessLevel_Id" />
+          <ScalarProperty Name="AuthorityRequiredToOverride" ColumnName="AuthorityRequiredToOverride" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1706,6 +1731,7 @@
           <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="StartTime" ColumnName="StartTime" />
           <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1827,6 +1853,7 @@
           <ScalarProperty Name="AppearOnAddingBooking" ColumnName="AppearOnAddingBooking" />
           <ScalarProperty Name="AppearOnRoster" ColumnName="AppearOnRoster" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1960,6 +1987,24 @@
       <EndProperty Name="DateNote">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeNAEmployee1" TypeName="DatabaseModel.EmployeeNAEmployee1" StoreEntitySet="EmployeeNAs">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="SubmittedBy_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeNA">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="SubmittedBy_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeNAEmployee2" TypeName="DatabaseModel.EmployeeNAEmployee2" StoreEntitySet="EmployeeNAs">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="ApprovedBy_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeNA">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="ApprovedBy_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
