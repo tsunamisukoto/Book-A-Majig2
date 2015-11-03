@@ -160,6 +160,7 @@
     <Compile Include="DatabaseEntities\EmployeeShiftPresets.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseEntities\EntityPartialClasses\EmployeeAvailabilityDay.cs" />
     <Compile Include="DatabaseEntities\EntityPartialClasses\EmployeePermissions.cs" />
     <Compile Include="DatabaseEntities\EntityPartialClasses\Employee.cs" />
     <Compile Include="DatabaseEntities\LockOutDate.cs">
@@ -314,11 +315,11 @@
     <Compile Include="Views\Rostering\AddEditShiftRoster.Designer.cs">
       <DependentUpon>AddEditShiftRoster.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Rostering\Management\EditDayAvailability.cs">
+    <Compile Include="Views\Rostering\Management\AddEditDayAvailability.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Rostering\Management\EditDayAvailability.Designer.cs">
-      <DependentUpon>EditDayAvailability.cs</DependentUpon>
+    <Compile Include="Views\Rostering\Management\AddEditDayAvailability.Designer.cs">
+      <DependentUpon>AddEditDayAvailability.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Rostering\Management\ManageStaffMemberHours.cs">
       <SubType>Form</SubType>
@@ -422,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\AddEditShiftRoster.resx">
       <DependentUpon>AddEditShiftRoster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Rostering\Management\AddEditDayAvailability.resx">
+      <DependentUpon>AddEditDayAvailability.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\Management\ManageStaffMemberHours.resx">
       <DependentUpon>ManageStaffMemberHours.cs</DependentUpon>

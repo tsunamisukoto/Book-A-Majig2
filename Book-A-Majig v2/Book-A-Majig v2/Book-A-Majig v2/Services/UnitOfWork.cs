@@ -36,7 +36,20 @@ namespace Book_A_Majig_v2.Services
         private GenericRepository<DatabaseEntities.DateNote> datenoteRepository;
         private GenericRepository<DatabaseEntities.LockOutDate> lockeddateRepository;
         private GenericRepository<DatabaseEntities.EmployeeNA> employeenaRepository;
+        private GenericRepository<DatabaseEntities.EmployeeAvailabilityDay>employeeavailabilityRepository;
 
+        public GenericRepository<DatabaseEntities.EmployeeAvailabilityDay> EmployeeAvailabilityRepository
+        {
+            get
+            {
+
+                if (this.employeeavailabilityRepository == null)
+                {
+                    this.employeeavailabilityRepository = new GenericRepository<DatabaseEntities.EmployeeAvailabilityDay>(context);
+                }
+                return employeeavailabilityRepository;
+            }
+        }
         public GenericRepository<DatabaseEntities.EmployeeNA> EmployeeNARepository
         {
             get

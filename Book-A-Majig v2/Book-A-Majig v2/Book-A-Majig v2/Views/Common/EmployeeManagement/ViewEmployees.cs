@@ -1,5 +1,6 @@
 ﻿using Book_A_Majig_v2.DatabaseEntities;
 using Book_A_Majig_v2.Services;
+using Book_A_Majig_v2.Views.Rostering.Management;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +59,22 @@ namespace Book_A_Majig_v2.Views.Common
                     Rebind();
                 }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if(dataGridView1.SelectedRows.Count>0)
+            {
+                ManageStaffMemberHours msmh = new ManageStaffMemberHours();
+                msmh.User = User;
+                msmh.EditedUserID = employees[dataGridView1.SelectedRows[0].Index].Id;
+                msmh.ShowDialog();
+                if (msmh.DialogResult == DialogResult.OK)
+                {
+                    Rebind();
+                }
+            }
+           
         }
     }
 }

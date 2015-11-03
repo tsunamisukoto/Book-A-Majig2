@@ -36,5 +36,11 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             ViewRosters v = new ViewRosters() { User = User };
             v.ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ViewStaffMemberHours v = new ViewStaffMemberHours() { User = User };
+            v.ShowDialog();
+        }
     }
 }

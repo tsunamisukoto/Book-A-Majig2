@@ -25,7 +25,7 @@
         <EntityTypeShape EntityType="DatabaseModel.PresetNote" Width="1.5" PointX="17.25" PointY="6.875" />
         <AssociationConnector Association="DatabaseModel.BookingNoteEmployee" />
         <AssociationConnector Association="DatabaseModel.BookingClasificationLockOutDate" />
-        <EntityTypeShape EntityType="DatabaseModel.EmployeeAvailabilityDay" Width="1.875" PointX="4.625" PointY="9.125" />
+        <EntityTypeShape EntityType="DatabaseModel.EmployeeAvailabilityDay" Width="2.625" PointX="3.875" PointY="9.125" />
         <AssociationConnector Association="DatabaseModel.EmployeeAvailabilityDayEmployee" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeNA" Width="1.5" PointX="12.375" PointY="9.75" />
         <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee" />
