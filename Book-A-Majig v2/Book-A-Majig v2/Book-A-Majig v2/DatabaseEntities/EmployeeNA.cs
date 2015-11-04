@@ -18,6 +18,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public string Notes { get; set; }
+        public System.DateTime SubmittedDate { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Employee SubmittedBy { get; set; }

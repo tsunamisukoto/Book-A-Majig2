@@ -194,6 +194,7 @@
       <DependentUpon>UserInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\AllPermissions.cs" />
+    <Compile Include="Services\AvailabilityService.cs" />
     <Compile Include="Services\DateService.cs" />
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\InitService.cs" />
@@ -321,6 +322,12 @@
     <Compile Include="Views\Rostering\Management\AddEditDayAvailability.Designer.cs">
       <DependentUpon>AddEditDayAvailability.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Rostering\Management\AddEditNA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Rostering\Management\AddEditNA.Designer.cs">
+      <DependentUpon>AddEditNA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Rostering\Management\ManageStaffMemberHours.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -426,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\Management\AddEditDayAvailability.resx">
       <DependentUpon>AddEditDayAvailability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Rostering\Management\AddEditNA.resx">
+      <DependentUpon>AddEditNA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\Management\ManageStaffMemberHours.resx">
       <DependentUpon>ManageStaffMemberHours.cs</DependentUpon>

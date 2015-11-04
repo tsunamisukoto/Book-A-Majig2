@@ -31,9 +31,9 @@ namespace Book_A_Majig_v2.Services
                 availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Saturday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime = new DateTime(2014, 10, 10, 16, 30, 0), DateAdded = DateTime.Now });
                 availabilities.Add(new EmployeeAvailabilityDay() { DayOfWeek = (int)DayOfWeek.Sunday, StartDate = new DateTime(2014, 1, 1), Notes = "Initial Availability", StartTime = new DateTime(2014, 10, 10, 14, 30, 0), DateAdded = DateTime.Now });
                 newemployee.EmployeeAvailabilityDays = availabilities;
-                newemployee.EmployeeNAs.Add(new EmployeeNA() { StartDate = DateTime.Now.AddDays(-7), EndDate = DateTime.Now.AddDays(-6), Notes = "Visiting Grandma", SubmittedBy = newemployee });
-                newemployee.EmployeeNAs.Add(new EmployeeNA() { StartDate = DateTime.Now.AddDays(6), EndDate = DateTime.Now.AddDays(7), Notes = "Visiting Grandma Again", SubmittedBy = newemployee });
-                newemployee.EmployeeNAs.Add(new EmployeeNA() { StartDate = DateTime.Now.AddDays(9), EndDate = DateTime.Now.AddDays(10), Notes = "Visiting Grandma", SubmittedBy = newemployee });
+                newemployee.EmployeeNAs.Add(new EmployeeNA() { StartDate = DateTime.Now.AddDays(-7), EndDate = DateTime.Now.AddDays(-6), Notes = "Visiting Grandma", SubmittedBy = newemployee ,SubmittedDate=DateTime.Now});
+                newemployee.EmployeeNAs.Add(new EmployeeNA() { StartDate = DateTime.Now.AddDays(6), EndDate = DateTime.Now.AddDays(7), Notes = "Visiting Grandma Again", SubmittedBy = newemployee, SubmittedDate = DateTime.Now });
+                newemployee.EmployeeNAs.Add(new EmployeeNA() { StartDate = DateTime.Now.AddDays(9), EndDate = DateTime.Now.AddDays(10), Notes = "Visiting Grandma", SubmittedBy = newemployee, SubmittedDate = DateTime.Now });
 
                 newemployee.EmployeeAvailabilityHoursRequests.Add(new EmployeeAvailabilityHoursRequest() { StartDate = new DateTime(2014, 1, 1), RequestedMinimumHours = 8, RequestedMaximumHours = 30 });
                 unitofwork.AccessLevelRepository.Insert(new AccessLevel() { Name = "Level 2", Level = 2 });

@@ -314,6 +314,7 @@
     <Property Name="StartDate" Type="datetime" Nullable="false" />
     <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SubmittedDate" Type="datetime" Nullable="false" />
     <Property Name="Employee_Id" Type="int" Nullable="false" />
     <Property Name="SubmittedBy_Id" Type="int" Nullable="true" />
     <Property Name="ApprovedBy_Id" Type="int" Nullable="true" />
@@ -1333,6 +1334,7 @@
           <Property Name="Notes" Type="String" Nullable="false" />
           <NavigationProperty Name="SubmittedBy" Relationship="DatabaseModel.EmployeeNAEmployee1" FromRole="EmployeeNA" ToRole="Employee" />
           <NavigationProperty Name="ApprovedBy" Relationship="DatabaseModel.EmployeeNAEmployee2" FromRole="EmployeeNA" ToRole="Employee" />
+          <Property Name="SubmittedDate" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="EmployeeNAEmployee">
           <End Type="DatabaseModel.EmployeeNA" Role="EmployeeNA" Multiplicity="*" />
@@ -1742,6 +1744,7 @@
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

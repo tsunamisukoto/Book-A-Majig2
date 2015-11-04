@@ -23,30 +23,46 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
         {
             dateTimePicker1.Value = DateTime.Now.Date;
 
+            button1.Click += B_Click;
+            button2.Click += B_Click;
+            button3.Click += B_Click;
+            button4.Click += B_Click;
+            button5.Click += B_Click;
+            button6.Click += B_Click;
+            button7.Click += B_Click;
             Rebind();
         }
         private void Rebind()
         {
             var unitofwork = new UnitOfWork();
-            var allemployeeavailabilities = unitofwork.EmployeeAvailabilityRepository.Get(x => x.Employee.Id == EditedUserID&& x.StartDate< DateTime.Now && (x.EndDate==null || x.EndDate>DateTime.Now), includeProperties: "Employee").ToList();
-            BuildButton(allemployeeavailabilities, 1, button1);
-            BuildButton(allemployeeavailabilities, 2, button2);
-            BuildButton(allemployeeavailabilities, 3, button3);
-            BuildButton(allemployeeavailabilities, 4, button4);
-            BuildButton(allemployeeavailabilities, 5, button5);
-            BuildButton(allemployeeavailabilities, 6, button6);
-            BuildButton(allemployeeavailabilities, 0, button7);
+             BuildButton( 1, button1);
+            BuildButton( 2, button2);
+            BuildButton( 3, button3);
+            BuildButton( 4, button4);
+            BuildButton( 5, button5);
+            BuildButton( 6, button6);
+            BuildButton( 0, button7);
             lblEmployeeName.Text = unitofwork.EmpoyeeRepository.GetByID(EditedUserID).FullName;
         }
-        private void BuildButton(List<EmployeeAvailabilityDay> allEmployeeAvailabilityDays, int day, Button b)
+        private void BuildButton( int day, Button b)
         {
-            var item = allEmployeeAvailabilityDays.Where(x => x.DayOfWeek == day).OrderByDescending(x => x.DateAdded).FirstOrDefault();
+            AvailabilityService aservice = new AvailabilityService();
+        
             var s = Enum.GetName(typeof(DayOfWeek), day);
-            s += item.StartTime.ToShortTimeString() +( item.FinishTime.HasValue?" - "+item.FinishTime.Value.ToShortTimeString():"")+"\n" ;
-            b.Text = s;
-            b.Click += B_Click;
+            var item = aservice.AvailabilityForDay(EditedUserID, day, dateTimePicker1.Value);
+            if(item!=null)
+            {
+                s += item.StartTime.ToShortTimeString() + (item.FinishTime.HasValue ? " - " + item.FinishTime.Value.ToShortTimeString() : "") + "\n";
+              
+         
+            }
+            else
+            {
+                s += "No Availability Set";
+            }
             b.Tag = day;
-        }
+            b.Text = s;
+        } 
 
         private void B_Click(object sender, EventArgs e)
         {
@@ -56,7 +72,16 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             aeda.DayOfWeek = day;
             aeda.EditedUserID = EditedUserID;
             aeda.ShowDialog();
-            
+            if(aeda.DialogResult==DialogResult.OK)
+            {
+             
+                Rebind();
+            }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Rebind();
         }
     }
 }

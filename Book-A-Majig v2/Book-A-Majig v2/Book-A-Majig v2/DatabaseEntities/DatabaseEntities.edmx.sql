@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/31/2015 13:56:08
+-- Date Created: 11/04/2015 22:02:43
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -19,9 +19,6 @@ GO
 
 IF OBJECT_ID(N'[dbo].[FK_EmployeeAccessLevel]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_EmployeeAccessLevel];
-GO
-IF OBJECT_ID(N'[dbo].[FK_LockOutDateAccessLevel]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[LockOutDates] DROP CONSTRAINT [FK_LockOutDateAccessLevel];
 GO
 IF OBJECT_ID(N'[dbo].[FK_BookingBookingClasification]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Bookings] DROP CONSTRAINT [FK_BookingBookingClasification];
@@ -351,6 +348,7 @@ CREATE TABLE [dbo].[EmployeeNAs] (
     [StartDate] datetime  NOT NULL,
     [EndDate] datetime  NOT NULL,
     [Notes] nvarchar(max)  NOT NULL,
+    [SubmittedDate] datetime  NOT NULL,
     [Employee_Id] int  NOT NULL,
     [SubmittedBy_Id] int  NULL,
     [ApprovedBy_Id] int  NULL

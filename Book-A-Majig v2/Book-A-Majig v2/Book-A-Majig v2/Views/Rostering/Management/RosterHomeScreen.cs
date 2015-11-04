@@ -28,7 +28,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
         {
             var unitOfWork = new UnitOfWork();
             EmployeeNAs = unitOfWork.EmployeeNARepository.Get(x => x.EndDate > DateTime.Today, x=> x.OrderBy(y=>y.StartDate),includeProperties:"Employee").ToList();
-            dgvNAs.DataSource = EmployeeNAs.Select(x => new {StartDate = x.StartDate, EndDate = x.EndDate, Notes= x.Notes });
+            dgvNAs.DataSource = EmployeeNAs.Select(x => new {StartDate = x.StartDate, EndDate = x.EndDate, Notes= x.Notes }).ToList();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -41,6 +41,31 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
         {
             ViewStaffMemberHours v = new ViewStaffMemberHours() { User = User };
             v.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddEditNA aena = new AddEditNA() { User = User };
+            aena.ShowDialog();
+            if(aena.DialogResult==DialogResult.OK)
+            {
+                RebindEmployeeNAs();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            if(dgvNAs.SelectedRows.Count>0)
+            {
+                AddEditNA aena = new AddEditNA() { User = User };
+                aena.NAID = EmployeeNAs[dgvNAs.SelectedRows[0].Index].Id;
+                aena.ShowDialog();
+                if (aena.DialogResult == DialogResult.OK)
+                {
+                    RebindEmployeeNAs();
+                }
+            }
         }
     }
 }
