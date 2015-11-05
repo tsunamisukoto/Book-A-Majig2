@@ -346,6 +346,12 @@
     <Compile Include="Views\Rostering\Management\ViewStaffMemberHours.Designer.cs">
       <DependentUpon>ViewStaffMemberHours.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Rostering\ReusableControls\RosterDay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Rostering\ReusableControls\RosterDay.Designer.cs">
+      <DependentUpon>RosterDay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Rostering\ReusableControls\StaffMemberDayAvailability.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -445,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\Management\ViewStaffMemberHours.resx">
       <DependentUpon>ViewStaffMemberHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Rostering\ReusableControls\RosterDay.resx">
+      <DependentUpon>RosterDay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\ReusableControls\StaffMemberDayAvailability.resx">
       <DependentUpon>StaffMemberDayAvailability.cs</DependentUpon>

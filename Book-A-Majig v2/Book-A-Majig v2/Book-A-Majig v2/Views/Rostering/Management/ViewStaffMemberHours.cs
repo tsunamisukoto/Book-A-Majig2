@@ -27,7 +27,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
         {
             var unitOfWork = new UnitOfWork();
             employees = unitOfWork.EmpoyeeRepository.Get(x => x.DateInactive == null, includeProperties: "EmployeeAvailabilityDays").ToList();
-            dataGridView1.DataSource = employees.Select(x => new { Name = x.FullName, Availability = 0 });
+            dataGridView1.DataSource = employees.Select(x => new { Name = x.FullName, Availability = 0 }).ToList();
 
         }
 

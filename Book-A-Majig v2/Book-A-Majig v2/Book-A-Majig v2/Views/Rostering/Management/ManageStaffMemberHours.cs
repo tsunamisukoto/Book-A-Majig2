@@ -1,5 +1,6 @@
 ﻿using Book_A_Majig_v2.DatabaseEntities;
 using Book_A_Majig_v2.Services;
+using Book_A_Majig_v2.Views.Rostering.ReusableControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,33 +23,38 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
         private void ManageStaffMemberHours_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Value = DateTime.Now.Date;
-
-            button1.Click += B_Click;
-            button2.Click += B_Click;
-            button3.Click += B_Click;
-            button4.Click += B_Click;
-            button5.Click += B_Click;
-            button6.Click += B_Click;
-            button7.Click += B_Click;
+            
+            staffMemberDayAvailability1.btnModify.Click += B_Click;
+            staffMemberDayAvailability2.btnModify.Click += B_Click;
+            staffMemberDayAvailability3.btnModify.Click += B_Click;
+            staffMemberDayAvailability4.btnModify.Click += B_Click;
+            staffMemberDayAvailability5.btnModify.Click += B_Click;
+            staffMemberDayAvailability6.btnModify.Click += B_Click;
+            staffMemberDayAvailability7.btnModify.Click += B_Click;
             Rebind();
         }
         private void Rebind()
         {
+            var newRestaurant = new Restaurant() { Capacity = 100, Name = "Rebellion", Location = "Sydney", RosteringStartDay = (int)DayOfWeek.Monday, RosteringWeekDuration = 1, RosteringWeekOffset = 0 };
+
             var unitofwork = new UnitOfWork();
-             BuildButton( 1, button1);
-            BuildButton( 2, button2);
-            BuildButton( 3, button3);
-            BuildButton( 4, button4);
-            BuildButton( 5, button5);
-            BuildButton( 6, button6);
-            BuildButton( 0, button7);
+            BuildButton(newRestaurant.RosteringStartDay + 0, staffMemberDayAvailability1);
+            BuildButton(newRestaurant.RosteringStartDay + 1, staffMemberDayAvailability2);
+            BuildButton(newRestaurant.RosteringStartDay + 2, staffMemberDayAvailability3);
+            BuildButton(newRestaurant.RosteringStartDay + 3, staffMemberDayAvailability4);
+            BuildButton(newRestaurant.RosteringStartDay + 4, staffMemberDayAvailability5);
+            BuildButton(newRestaurant.RosteringStartDay + 5, staffMemberDayAvailability6);
+            BuildButton(newRestaurant.RosteringStartDay + 6, staffMemberDayAvailability7);
+
             lblEmployeeName.Text = unitofwork.EmpoyeeRepository.GetByID(EditedUserID).FullName;
         }
-        private void BuildButton( int day, Button b)
+        private void BuildButton( int day, StaffMemberDayAvailability b)
         {
             AvailabilityService aservice = new AvailabilityService();
-        
-            var s = Enum.GetName(typeof(DayOfWeek), day);
+            if (day > 6)
+                day = day % 7;
+            b.Label = Enum.GetName(typeof(DayOfWeek), day); 
+            var s = "";
             var item = aservice.AvailabilityForDay(EditedUserID, day, dateTimePicker1.Value);
             if(item!=null)
             {
@@ -60,8 +66,8 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             {
                 s += "No Availability Set";
             }
-            b.Tag = day;
-            b.Text = s;
+            b.btnModify.Tag = day;
+            b.rtbDetails.Text = s;
         } 
 
         private void B_Click(object sender, EventArgs e)

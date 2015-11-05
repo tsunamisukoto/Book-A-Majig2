@@ -148,7 +148,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(70, 153);
+            this.button4.Location = new System.Drawing.Point(3, 203);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(127, 23);
             this.button4.TabIndex = 11;
@@ -174,7 +174,7 @@
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Location = new System.Drawing.Point(390, 66);
+            this.panel1.Location = new System.Drawing.Point(390, 70);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(359, 229);
             this.panel1.TabIndex = 13;

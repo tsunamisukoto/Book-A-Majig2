@@ -15,5 +15,13 @@ namespace Book_A_Majig_v2.Views.Rostering.ReusableControls
         {
             InitializeComponent();
         }
+
+        private void StaffMemberDayAvailability_Load(object sender, EventArgs e)
+        {
+
+        }
+        public Button btnModify { get { return this.button1; } }
+        public RichTextBox rtbDetails { get { return this.richTextBox1; } }
+        public String Label { set { this.lblDayOfWeek.Text=value; } }
     }
 }

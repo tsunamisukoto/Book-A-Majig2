@@ -38,10 +38,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.tbNotes = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.cbEndTime = new System.Windows.Forms.CheckBox();
+            this.cbStartTime = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
@@ -128,24 +128,6 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "End Date";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(256, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Start Time";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(259, 106);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "End Time";
-            // 
             // tbNotes
             // 
             this.tbNotes.Location = new System.Drawing.Point(12, 169);
@@ -163,15 +145,35 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Notes";
             // 
+            // cbEndTime
+            // 
+            this.cbEndTime.AutoSize = true;
+            this.cbEndTime.Location = new System.Drawing.Point(256, 106);
+            this.cbEndTime.Name = "cbEndTime";
+            this.cbEndTime.Size = new System.Drawing.Size(68, 17);
+            this.cbEndTime.TabIndex = 14;
+            this.cbEndTime.Text = "EndTime";
+            this.cbEndTime.UseVisualStyleBackColor = true;
+            // 
+            // cbStartTime
+            // 
+            this.cbStartTime.AutoSize = true;
+            this.cbStartTime.Location = new System.Drawing.Point(256, 48);
+            this.cbStartTime.Name = "cbStartTime";
+            this.cbStartTime.Size = new System.Drawing.Size(74, 17);
+            this.cbStartTime.TabIndex = 15;
+            this.cbStartTime.Text = "Start Time";
+            this.cbStartTime.UseVisualStyleBackColor = true;
+            // 
             // AddEditNA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 374);
+            this.Controls.Add(this.cbStartTime);
+            this.Controls.Add(this.cbEndTime);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbNotes);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
@@ -202,9 +204,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbNotes;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox cbEndTime;
+        private System.Windows.Forms.CheckBox cbStartTime;
     }
 }
