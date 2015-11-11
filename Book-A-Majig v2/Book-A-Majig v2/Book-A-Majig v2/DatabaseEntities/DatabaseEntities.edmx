@@ -324,11 +324,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StartDate" Type="datetime" Nullable="false" />
-    <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
     <Property Name="RosterId" Type="int" Nullable="false" />
     <Property Name="ShiftCategoryId" Type="int" Nullable="false" />
+    <Property Name="DayOfTheWeek" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="EmployeeShifts">
     <Key>
@@ -336,8 +335,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ShiftId" Type="int" Nullable="false" />
-    <Property Name="StartDate" Type="datetime" Nullable="false" />
-    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="true" />
     <Property Name="EmployeeShiftCategoryId" Type="int" Nullable="false" />
     <Property Name="Employee_Id" Type="int" Nullable="true" />
   </EntityType>
@@ -367,8 +366,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="StartDate" Type="datetime" Nullable="false" />
-    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="WeekOfYear" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
     <Property Name="Restaurant_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="EmployeeCommendations">
@@ -1346,14 +1345,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="EmployeeShifts" Relationship="DatabaseModel.ShiftEmployeeShift" FromRole="Shift" ToRole="EmployeeShift" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" />
-          <Property Name="EndDate" Type="DateTime" Nullable="false" />
           <Property Name="Notes" Type="String" Nullable="false" />
           <NavigationProperty Name="Roster" Relationship="DatabaseModel.RosterShift" FromRole="Shift" ToRole="Roster" />
           <Property Name="RosterId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="EmployeeCommendations" Relationship="DatabaseModel.EmployeeCommendationShift" FromRole="Shift" ToRole="EmployeeCommendation" />
           <NavigationProperty Name="ShiftCategory" Relationship="DatabaseModel.ShiftCategoryShift" FromRole="Shift" ToRole="ShiftCategory" />
           <Property Name="ShiftCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="DayOfTheWeek" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="EmployeeShift">
           <Key>
@@ -1363,8 +1361,8 @@
           <NavigationProperty Name="Shift" Relationship="DatabaseModel.ShiftEmployeeShift" FromRole="EmployeeShift" ToRole="Shift" />
           <Property Name="ShiftId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="DatabaseModel.EmployeeShiftEmployee" FromRole="EmployeeShift" ToRole="Employee" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" />
-          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" />
+          <Property Name="EndTime" Type="DateTime" Nullable="true" />
           <NavigationProperty Name="EmployeeShiftCategory" Relationship="DatabaseModel.EmployeeShiftCategoryEmployeeShift" FromRole="EmployeeShift" ToRole="EmployeeShiftCategory" />
           <Property Name="EmployeeShiftCategoryId" Type="Int32" Nullable="false" />
         </EntityType>
@@ -1423,9 +1421,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Notes" Type="String" Nullable="false" />
           <NavigationProperty Name="Shifts" Relationship="DatabaseModel.RosterShift" FromRole="Roster" ToRole="Shift" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" />
-          <Property Name="EndDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Restaurant" Relationship="DatabaseModel.RosterRestaurant" FromRole="Roster" ToRole="Restaurant" />
+          <Property Name="WeekOfYear" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="RosterShift">
           <End Type="DatabaseModel.Roster" Role="Roster" Multiplicity="1" />
@@ -1752,11 +1750,10 @@
       <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Shift)">
         <MappingFragment StoreEntitySet="Shifts">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="RosterId" ColumnName="RosterId" />
           <ScalarProperty Name="ShiftCategoryId" ColumnName="ShiftCategoryId" />
+          <ScalarProperty Name="DayOfTheWeek" ColumnName="DayOfTheWeek" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1765,8 +1762,8 @@
         <MappingFragment StoreEntitySet="EmployeeShifts">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
           <ScalarProperty Name="EmployeeShiftCategoryId" ColumnName="EmployeeShiftCategoryId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -1796,8 +1793,8 @@
         <MappingFragment StoreEntitySet="Rosters">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="WeekOfYear" ColumnName="WeekOfYear" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

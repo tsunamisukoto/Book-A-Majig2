@@ -1,5 +1,6 @@
 ﻿using Book_A_Majig_v2.DatabaseEntities;
 using Book_A_Majig_v2.Services;
+using LinqKit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace Book_A_Majig_v2
@@ -18,65 +20,145 @@ namespace Book_A_Majig_v2
         {
             InitializeComponent();
         }
+        bool[] states = new bool[6];
+        bool[] classes;
+        List<BookingClasification> allclassifications;
+        bool firstLoad = true;
         private void ViewBookings_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Value = DateTime.Now;
 
             checkedListBox1.SetItemChecked(0, true);
+            states[0] = true;
             checkedListBox1.SetItemChecked(1, true);
+            states[1] = true;
+
             checkedListBox1.SetItemChecked(2, false);
+            states[2] = false;
+
             checkedListBox1.SetItemChecked(3, true);
+            states[3] = true;
+
             checkedListBox1.SetItemChecked(4, true);
+            states[4] = true;
+
             checkedListBox1.SetItemChecked(5, false);
+            states[5] = false;
+            var unitofWork = new UnitOfWork();
+            allclassifications = unitofWork.BookingClassificationRepository.Get().ToList();
+            classes = new bool[allclassifications.Count];
+
+            for (int i = 0; i < classes.Count(); i++)
+            {
+                classes[i] = true;
+            }
+            allclassifications.ForEach(x => ShownClassificationListBox.Items.Add(x.ClassificationName, true));
             if (User != null)
             {
-                Rebind();
                 userInformation1.UserID = User.Id;
             }
+            firstLoad = false;
+            dateTimePicker1.Value = DateTime.Now;
         }
         List<Booking> ListOfBookings = new List<Booking>();
         UnitOfWork unitOfWork = new UnitOfWork();
-       private bool SatisfiesWheres(Booking b)
+        private bool SatisfiesWheres(Booking b)
         {
-            if(checkedListBox1.CheckedIndices.Contains(0))
+            if (checkedListBox1.CheckedIndices.Contains(0))
             {
                 if (b.BookingConfirmations.Count == 0)
-                    return false;    
+                    return false;
             }
             return true;
         }
+
         public void Rebind()
         {
-
-            ListOfBookings = unitOfWork.BookingRepository.Get(x =>
-             x.BookingDate.Year == dateTimePicker1.Value.Year &&
-             x.BookingDate.Month == dateTimePicker1.Value.Month &&
-             x.BookingDate.Day == dateTimePicker1.Value.Day , y => y.OrderBy(q => q.BookingDate), "Employee,BookingClasification,BookingNotes.Employee").ToList();
-            dataGridView1.DataSource = ListOfBookings.Select(x =>
-                new
+            if (!firstLoad)
+            {
+                var searchPredicate = PredicateBuilder.False<Booking>();
+                for (int j = 0; j < classes.Count(); j++)
                 {
-                    Name = x.Name,
-                    TakenBy = x.Employee.FirstName,
-                    ContactNumber = x.ContactNumber,
-                    Classification = x.BookingClasification != null ? x.BookingClasification.ClassificationName : "",
-                    Time = x.BookingDate.ToShortTimeString()
-                }).ToList();
-            dataGridView1.Columns["Name"].HeaderText = "Booking Name";
-            dataGridView1.Columns["Name"].Width = 350;
-            dataGridView1.Columns["TakenBy"].Width = 100;
-            dataGridView1.Columns["TakenBy"].HeaderText = "Taken By";
-            dataGridView1.Columns["ContactNumber"].Width = 100;
-            dataGridView1.Columns["ContactNumber"].HeaderText = "Contact Number";
-            dataGridView1.Columns["Time"].Width = 100;
-            dataGridView1.Columns["Time"].HeaderText = "Booking Time";
+                    if (classes[j])
+                    {
+                        string s = allclassifications[j].ClassificationName;
+                        searchPredicate = searchPredicate.Or(y => y.BookingClasification.ClassificationName == s);
+                    }
+                }
+                ListOfBookings = unitOfWork.BookingRepository.Get(x =>
+                 x.BookingDate.Year == dateTimePicker1.Value.Year &&
+                 x.BookingDate.Month == dateTimePicker1.Value.Month &&
+                 x.BookingDate.Day == dateTimePicker1.Value.Day, y => y.OrderBy(q => q.BookingDate), "Employee,BookingClasification,BookingNotes.Employee").ToList();
 
-            //dataGridView1.AutoResizeColumn();
-            lblNumBookings.Text = ListOfBookings.Count.ToString();
-            lblNumCovers.Text = ListOfBookings.Sum(x=> x.Adults+ x.Children).ToString();
-            lblMoreDetails.Text = "";
-            dataGridView1.ClearSelection();
-            
+                ListOfBookings = ListOfBookings.AsQueryable().Where(searchPredicate).ToList();
+                if (states[0] && !states[1])
+                {
+                    ListOfBookings = ListOfBookings.Where(x => x.BookingConfirmations.LastOrDefault() != null).ToList();
+                }
+                if (states[1] && !states[0])
+                {
+                    ListOfBookings = ListOfBookings.Where(x => x.BookingConfirmations.LastOrDefault() == null).ToList();
 
+                }
+                if (!states[1] && !states[0])
+                {
+                    ListOfBookings = new List<Booking>();
+                }
+                if (states[2] && !states[3])
+                {
+                    ListOfBookings = ListOfBookings.Where(x => x.DateInactive != null).ToList();
+
+                }
+                if (states[3] && !states[2])
+                {
+                    ListOfBookings = ListOfBookings.Where(x => x.DateInactive == null).ToList();
+
+                }
+
+                if (!states[2] && !states[3])
+                {
+                    ListOfBookings = new List<Booking>();
+                }
+                if (states[4] && !states[5])
+                {
+                    ListOfBookings = ListOfBookings.Where(x => x.ArrivedDate != null).ToList();
+
+                }
+                if (states[5] && !states[4])
+                {
+                    ListOfBookings = ListOfBookings.Where(x => x.ArrivedDate == null).ToList();
+
+                }
+
+                if (!states[4] && !states[5])
+                {
+                    ListOfBookings = new List<Booking>();
+                }
+                dataGridView1.DataSource = ListOfBookings.Select(x =>
+                    new
+                    {
+                        Name = x.Name,
+                        TakenBy = x.Employee.FirstName,
+                        ContactNumber = x.ContactNumber,
+                        Classification = x.BookingClasification != null ? x.BookingClasification.ClassificationName : "",
+                        Time = x.BookingDate.ToShortTimeString()
+                    }).ToList();
+                dataGridView1.Columns["Name"].HeaderText = "Booking Name";
+                dataGridView1.Columns["Name"].Width = 350;
+                dataGridView1.Columns["TakenBy"].Width = 100;
+                dataGridView1.Columns["TakenBy"].HeaderText = "Taken By";
+                dataGridView1.Columns["ContactNumber"].Width = 100;
+                dataGridView1.Columns["ContactNumber"].HeaderText = "Contact Number";
+                dataGridView1.Columns["Time"].Width = 100;
+                dataGridView1.Columns["Time"].HeaderText = "Booking Time";
+
+                //dataGridView1.AutoResizeColumn();
+                lblNumBookings.Text = ListOfBookings.Count.ToString();
+                lblNumCovers.Text = ListOfBookings.Sum(x => x.Adults + x.Children).ToString();
+                lblMoreDetails.Text = "";
+                dataGridView1.ClearSelection();
+
+
+            }
         }
 
         private void btnAddBooking_Click(object sender, EventArgs e)
@@ -119,7 +201,7 @@ namespace Book_A_Majig_v2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker1.Value = DateTime.Today.Date;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -133,7 +215,7 @@ namespace Book_A_Majig_v2
                     int workingIndex = dataGridView1.SelectedRows[0].Index;
                     var booking = ListOfBookings[workingIndex];
                     booking.DateInactive = DateTime.Now;
-                    booking.DeletedByID= User.Id;
+                    booking.DeletedByID = User.Id;
 
                 }
                 unitOfWork.Save();
@@ -153,7 +235,7 @@ namespace Book_A_Majig_v2
                 {
                     int workingIndex = dataGridView1.SelectedRows[0].Index;
                     var booking = ListOfBookings[workingIndex];
-                    booking.BookingConfirmations.Add(new BookingConfirmation() { ConfirmationDate = DateTime.Today, EmployeeId= User.Id });
+                    booking.BookingConfirmations.Add(new BookingConfirmation() { ConfirmationDate = DateTime.Today, EmployeeId = User.Id });
 
                 }
                 unitOfWork.Save();
@@ -164,22 +246,22 @@ namespace Book_A_Majig_v2
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if(dataGridView1.SelectedRows.Count>0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
                 var workingBooking = ListOfBookings[dataGridView1.SelectedRows[0].Index];
                 lblMoreDetails.Text = "";
-                lblMoreDetails.AppendBoldLine( "Booking Name:");
-                lblMoreDetails.AppendLine( workingBooking.Name);
+                lblMoreDetails.AppendBoldLine("Booking Name:");
+                lblMoreDetails.AppendLine(workingBooking.Name);
                 lblMoreDetails.AppendBoldLine("Taken By:");
                 lblMoreDetails.AppendLine(workingBooking.Employee.FullName + ", " + workingBooking.DateCreated.ToShortDateString());
                 lblMoreDetails.AppendBoldLine("Booking Classification");
-                lblMoreDetails.AppendLine( workingBooking.BookingClasification.ClassificationName);
+                lblMoreDetails.AppendLine(workingBooking.BookingClasification.ClassificationName);
                 lblMoreDetails.AppendLine("");
                 if (!string.IsNullOrEmpty(workingBooking.ContactNumber))
                 {
                     lblMoreDetails.AppendBoldLine("Phone Number: ");
                     lblMoreDetails.AppendLine(workingBooking.ContactNumber);
-                   
+
 
                 }
                 if (!string.IsNullOrEmpty(workingBooking.Email))
@@ -192,10 +274,10 @@ namespace Book_A_Majig_v2
                 var lastConfirmation = workingBooking.BookingConfirmations.LastOrDefault();
                 if (lastConfirmation != null)
                 {
-                    lblMoreDetails.AppendBoldColoredLine("Confirmed By: ",Color.Blue);
+                    lblMoreDetails.AppendBoldColoredLine("Confirmed By: ", Color.Blue);
                     lblMoreDetails.AppendLine(lastConfirmation.Employee.FullName + " On " + lastConfirmation.ConfirmationDate.Value.ToShortDateString());
                 }
-                if(workingBooking.DateInactive!= null)
+                if (workingBooking.DateInactive != null)
                 {
                     lblMoreDetails.AppendBoldColoredLine("Deleted By: ", Color.Red);
                     lblMoreDetails.AppendLine(workingBooking.DeletedBy.FullName + " On " + workingBooking.DateInactive);
@@ -205,7 +287,7 @@ namespace Book_A_Majig_v2
 
                 foreach (var note in workingBooking.BookingNotes)
                 {
-                    lblMoreDetails.AppendLine(note.Note+" "+ note.Employee.FullName+ " " + note.DateAdded.ToShortDateString() );
+                    lblMoreDetails.AppendLine(note.Note + " " + note.Employee.FullName + " " + note.DateAdded.ToShortDateString());
 
 
                 }
@@ -227,13 +309,35 @@ namespace Book_A_Majig_v2
                 {
                     int workingIndex = dataGridView1.SelectedRows[0].Index;
                     var booking = ListOfBookings[workingIndex];
-                    booking.ArrivedDate=DateTime.Now;
+                    booking.ArrivedDate = DateTime.Now;
 
                 }
                 unitOfWork.Save();
 
                 Rebind();
             }
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            states[e.Index] = (e.NewValue == CheckState.Checked);
+            Rebind();
+        }
+
+        private void checkedListBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShownClassificationListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            classes[e.Index] = (e.NewValue == CheckState.Checked);
+            Rebind();
         }
     }
 }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/04/2015 22:02:43
+-- Date Created: 11/11/2015 21:56:35
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -358,11 +358,10 @@ GO
 -- Creating table 'Shifts'
 CREATE TABLE [dbo].[Shifts] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [StartDate] datetime  NOT NULL,
-    [EndDate] datetime  NOT NULL,
     [Notes] nvarchar(max)  NOT NULL,
     [RosterId] int  NOT NULL,
-    [ShiftCategoryId] int  NOT NULL
+    [ShiftCategoryId] int  NOT NULL,
+    [DayOfTheWeek] int  NOT NULL
 );
 GO
 
@@ -370,8 +369,8 @@ GO
 CREATE TABLE [dbo].[EmployeeShifts] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [ShiftId] int  NOT NULL,
-    [StartDate] datetime  NOT NULL,
-    [EndDate] datetime  NOT NULL,
+    [StartTime] datetime  NOT NULL,
+    [EndTime] datetime  NULL,
     [EmployeeShiftCategoryId] int  NOT NULL,
     [Employee_Id] int  NULL
 );
@@ -401,8 +400,8 @@ GO
 CREATE TABLE [dbo].[Rosters] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Notes] nvarchar(max)  NOT NULL,
-    [StartDate] datetime  NOT NULL,
-    [EndDate] datetime  NOT NULL,
+    [WeekOfYear] int  NOT NULL,
+    [Year] int  NOT NULL,
     [Restaurant_Id] int  NOT NULL
 );
 GO

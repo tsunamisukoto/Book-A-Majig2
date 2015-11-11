@@ -16,8 +16,8 @@ namespace Book_A_Majig_v2.DatabaseEntities
     {
         public int Id { get; set; }
         public int ShiftId { get; set; }
-        public System.DateTime StartDate { get; set; }
-        public System.DateTime EndDate { get; set; }
+        public System.DateTime StartTime { get; set; }
+        public Nullable<System.DateTime> EndTime { get; set; }
         public int EmployeeShiftCategoryId { get; set; }
     
         public virtual Shift Shift { get; set; }

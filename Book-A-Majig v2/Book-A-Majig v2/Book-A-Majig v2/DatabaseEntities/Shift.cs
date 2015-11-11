@@ -22,11 +22,10 @@ namespace Book_A_Majig_v2.DatabaseEntities
         }
     
         public int Id { get; set; }
-        public System.DateTime StartDate { get; set; }
-        public System.DateTime EndDate { get; set; }
         public string Notes { get; set; }
         public int RosterId { get; set; }
         public int ShiftCategoryId { get; set; }
+        public int DayOfTheWeek { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeShift> EmployeeShifts { get; set; }

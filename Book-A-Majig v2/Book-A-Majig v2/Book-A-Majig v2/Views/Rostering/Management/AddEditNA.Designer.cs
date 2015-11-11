@@ -87,6 +87,7 @@
             // 
             // dtpStartTime
             // 
+            this.dtpStartTime.Enabled = false;
             this.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpStartTime.Location = new System.Drawing.Point(256, 71);
             this.dtpStartTime.Name = "dtpStartTime";
@@ -95,6 +96,7 @@
             // 
             // dtpEndTime
             // 
+            this.dtpEndTime.Enabled = false;
             this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpEndTime.Location = new System.Drawing.Point(256, 125);
             this.dtpEndTime.Name = "dtpEndTime";
@@ -109,6 +111,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 

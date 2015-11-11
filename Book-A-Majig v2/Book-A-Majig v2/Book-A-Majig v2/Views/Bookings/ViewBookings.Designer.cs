@@ -38,6 +38,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.lblNumCovers = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNumBookings = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.ShownClassificationListBox = new System.Windows.Forms.CheckedListBox();
             this.button5 = new System.Windows.Forms.Button();
             this.lblMoreDetails = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.userInformation1 = new Book_A_Majig_v2.DatabaseEntities.UserInformation();
             this.bookingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
@@ -150,6 +150,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
             // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(523, 7);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.Size = new System.Drawing.Size(279, 87);
+            this.richTextBox2.TabIndex = 5;
+            this.richTextBox2.Text = "";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(247, 7);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(269, 87);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            // 
             // lblNumCovers
             // 
             this.lblNumCovers.AutoSize = true;
@@ -201,6 +219,9 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(142, 94);
             this.checkedListBox1.TabIndex = 9;
+            this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
+            this.checkedListBox1.Click += new System.EventHandler(this.checkedListBox1_Click);
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -224,11 +245,13 @@
             // 
             // ShownClassificationListBox
             // 
+            this.ShownClassificationListBox.CheckOnClick = true;
             this.ShownClassificationListBox.FormattingEnabled = true;
             this.ShownClassificationListBox.Location = new System.Drawing.Point(0, 16);
             this.ShownClassificationListBox.Name = "ShownClassificationListBox";
             this.ShownClassificationListBox.Size = new System.Drawing.Size(194, 94);
             this.ShownClassificationListBox.TabIndex = 0;
+            this.ShownClassificationListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ShownClassificationListBox_ItemCheck);
             this.ShownClassificationListBox.SelectedIndexChanged += new System.EventHandler(this.ShownClassificationListBox_SelectedIndexChanged);
             // 
             // button5
@@ -250,24 +273,6 @@
             this.lblMoreDetails.Size = new System.Drawing.Size(500, 408);
             this.lblMoreDetails.TabIndex = 13;
             this.lblMoreDetails.Text = "";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(247, 7);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(269, 87);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Location = new System.Drawing.Point(523, 7);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(279, 87);
-            this.richTextBox2.TabIndex = 5;
-            this.richTextBox2.Text = "";
             // 
             // userInformation1
             // 

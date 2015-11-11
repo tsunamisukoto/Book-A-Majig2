@@ -64,15 +64,7 @@ namespace Book_A_Majig_v2
             {
                 MessageBox.Show(ex4.Message + " " + string.Join(", ", ex4.EntityValidationErrors.SelectMany(x => x.ValidationErrors.SelectMany(y => y.ErrorMessage))));
             }
-            catch (Exception ex3)
-            {
-                MessageBox.Show(ex3.Message);
-                while (ex3.InnerException != null)
-                {
-                    ex3 = ex3.InnerException;
-                    MessageBox.Show(ex3.Message);
-                }
-            }
+          
         }
     }
 }
