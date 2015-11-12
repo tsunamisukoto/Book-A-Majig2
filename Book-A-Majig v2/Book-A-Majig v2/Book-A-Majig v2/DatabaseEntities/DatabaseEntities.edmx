@@ -402,10 +402,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DayOfWeek" Type="int" Nullable="false" />
     <Property Name="StartTime" Type="datetime" Nullable="false" />
     <Property Name="FinishTime" Type="datetime" Nullable="true" />
-    <Property Name="EmployeeShiftCategory_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeLevelCategory_Id" Type="int" Nullable="false" />
     <Property Name="ShiftCategory_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ShiftCategories">
@@ -689,7 +688,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="EmployeeShiftPresets">
-        <PropertyRef Name="EmployeeShiftCategory_Id" />
+        <PropertyRef Name="EmployeeLevelCategory_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1486,9 +1485,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="EmployeeShiftCategory" Relationship="DatabaseModel.EmployeeShiftCategoryEmployeeShiftPresets" FromRole="EmployeeShiftPresets" ToRole="EmployeeShiftCategory" />
+          <NavigationProperty Name="EmployeeLevelCategory" Relationship="DatabaseModel.EmployeeShiftCategoryEmployeeShiftPresets" FromRole="EmployeeShiftPresets" ToRole="EmployeeShiftCategory" />
           <NavigationProperty Name="ShiftCategory" Relationship="DatabaseModel.EmployeeShiftPresetsShiftCategory" FromRole="EmployeeShiftPresets" ToRole="ShiftCategory" />
-          <Property Name="DayOfWeek" Type="Int32" Nullable="false" />
           <Property Name="StartTime" Type="DateTime" Nullable="false" />
           <Property Name="FinishTime" Type="DateTime" Nullable="true" />
         </EntityType>
@@ -1829,7 +1827,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.EmployeeShiftPresets)">
         <MappingFragment StoreEntitySet="EmployeeShiftPresets">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
           <ScalarProperty Name="StartTime" ColumnName="StartTime" />
           <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
         </MappingFragment>
@@ -1949,7 +1946,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="EmployeeShiftCategoryEmployeeShiftPresets" TypeName="DatabaseModel.EmployeeShiftCategoryEmployeeShiftPresets" StoreEntitySet="EmployeeShiftPresets">
       <EndProperty Name="EmployeeShiftCategory">
-        <ScalarProperty Name="Id" ColumnName="EmployeeShiftCategory_Id" />
+        <ScalarProperty Name="Id" ColumnName="EmployeeLevelCategory_Id" />
       </EndProperty>
       <EndProperty Name="EmployeeShiftPresets">
         <ScalarProperty Name="Id" ColumnName="Id" />

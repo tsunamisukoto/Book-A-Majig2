@@ -39,6 +39,20 @@ namespace Book_A_Majig_v2.Services
         private GenericRepository<DatabaseEntities.EmployeeAvailabilityDay>employeeavailabilityRepository;
         private GenericRepository<DatabaseEntities.Roster>rosterRepository;
         private GenericRepository<DatabaseEntities.Shift>shiftRepository;
+        private GenericRepository<DatabaseEntities.ShiftCategory>shiftcategoryRepository;
+        public GenericRepository<DatabaseEntities.ShiftCategory> ShiftCategoryRepository
+        {
+            get
+            {
+
+                if (this.shiftcategoryRepository == null)
+                {
+                    this.shiftcategoryRepository = new GenericRepository<DatabaseEntities.ShiftCategory>(context);
+                }
+                return shiftcategoryRepository;
+            }
+        }
+
         public GenericRepository<DatabaseEntities.Shift> ShiftRepository
         {
             get

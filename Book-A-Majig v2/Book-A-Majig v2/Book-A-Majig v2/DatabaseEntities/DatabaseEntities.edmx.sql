@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/11/2015 21:56:35
+-- Date Created: 11/12/2015 19:35:56
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -436,10 +436,9 @@ GO
 -- Creating table 'EmployeeShiftPresets'
 CREATE TABLE [dbo].[EmployeeShiftPresets] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [DayOfWeek] int  NOT NULL,
     [StartTime] datetime  NOT NULL,
     [FinishTime] datetime  NULL,
-    [EmployeeShiftCategory_Id] int  NOT NULL,
+    [EmployeeLevelCategory_Id] int  NOT NULL,
     [ShiftCategory_Id] int  NOT NULL
 );
 GO
@@ -1007,10 +1006,10 @@ ON [dbo].[EmployeeCommendations]
     ([EmployeeCommendationClassification_Id]);
 GO
 
--- Creating foreign key on [EmployeeShiftCategory_Id] in table 'EmployeeShiftPresets'
+-- Creating foreign key on [EmployeeLevelCategory_Id] in table 'EmployeeShiftPresets'
 ALTER TABLE [dbo].[EmployeeShiftPresets]
 ADD CONSTRAINT [FK_EmployeeShiftCategoryEmployeeShiftPresets]
-    FOREIGN KEY ([EmployeeShiftCategory_Id])
+    FOREIGN KEY ([EmployeeLevelCategory_Id])
     REFERENCES [dbo].[EmployeeLevelCategories]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -1019,7 +1018,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_EmployeeShiftCategoryEmployeeShiftPresets'
 CREATE INDEX [IX_FK_EmployeeShiftCategoryEmployeeShiftPresets]
 ON [dbo].[EmployeeShiftPresets]
-    ([EmployeeShiftCategory_Id]);
+    ([EmployeeLevelCategory_Id]);
 GO
 
 -- Creating foreign key on [EmployeeShiftCategoryId] in table 'EmployeeShifts'

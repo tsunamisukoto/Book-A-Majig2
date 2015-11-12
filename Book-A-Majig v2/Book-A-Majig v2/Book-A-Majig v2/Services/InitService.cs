@@ -50,7 +50,10 @@ namespace Book_A_Majig_v2.Services
                 unitofwork.DateNoteRepository.Insert(new DateNote() { Note = "Note1", AppearOnAddingBooking = true, AppearOnRoster = true, StartDate = DateTime.Now, EndDate = DateTime.Now.AddYears(1), Restaurant = newRestaurant, DateCreated = DateTime.Now });
                 unitofwork.DateNoteRepository.Insert(new DateNote() { Note = "Note2", AppearOnAddingBooking = false, AppearOnRoster = true, StartDate = DateTime.Now, EndDate = DateTime.Now.AddYears(1), DateCreated = DateTime.Now, Restaurant = newRestaurant });
                 unitofwork.DateNoteRepository.Insert(new DateNote() { Note = "Note3", AppearOnAddingBooking = true, AppearOnRoster = false, StartDate = DateTime.Now, EndDate = DateTime.Now.AddYears(1), DateCreated = DateTime.Now, Restaurant = newRestaurant });
-
+                unitofwork.ShiftCategoryRepository.Insert(new ShiftCategory() { CategoryName="Quiet Night" });
+                unitofwork.ShiftCategoryRepository.Insert(new ShiftCategory() { CategoryName="Busy Week Night" });
+                unitofwork.ShiftCategoryRepository.Insert(new ShiftCategory() { CategoryName="Saturday Night" });
+                unitofwork.ShiftCategoryRepository.Insert(new ShiftCategory() { CategoryName= "Banquets < 100" });
                 unitofwork.Save();
             }
         }

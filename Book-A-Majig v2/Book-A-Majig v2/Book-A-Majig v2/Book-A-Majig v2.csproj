@@ -359,6 +359,7 @@
     <Compile Include="Views\Rostering\Management\ViewStaffMemberHours.Designer.cs">
       <DependentUpon>ViewStaffMemberHours.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Rostering\ReusableControls\InputBox.cs" />
     <Compile Include="Views\Rostering\ReusableControls\RosterDay.cs">
       <SubType>UserControl</SubType>
     </Compile>

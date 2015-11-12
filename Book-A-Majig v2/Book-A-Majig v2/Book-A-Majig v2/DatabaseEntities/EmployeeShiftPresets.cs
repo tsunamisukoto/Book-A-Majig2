@@ -15,11 +15,10 @@ namespace Book_A_Majig_v2.DatabaseEntities
     public partial class EmployeeShiftPresets
     {
         public int Id { get; set; }
-        public int DayOfWeek { get; set; }
         public System.DateTime StartTime { get; set; }
         public Nullable<System.DateTime> FinishTime { get; set; }
     
-        public virtual EmployeeLevelCategory EmployeeShiftCategory { get; set; }
+        public virtual EmployeeLevelCategory EmployeeLevelCategory { get; set; }
         public virtual ShiftCategory ShiftCategory { get; set; }
     }
 }
