@@ -108,6 +108,7 @@ namespace Book_A_Majig_v2
             else
             {
                 currentBooking = GetFields(currentBooking);
+                currentBooking.BookingNotes.Add(new BookingNote() { EmployeeId= user.Id, Severity=0, Note="Modified By: " + user.FullName, DateAdded=DateTime.Now });
                 unitOfWork.BookingRepository.Update(currentBooking);
                 DialogResult = DialogResult.OK;
 

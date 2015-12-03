@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,7 +42,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(927, 353);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(516, 353);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
@@ -54,11 +56,21 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(536, 13);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(376, 353);
+            this.richTextBox1.TabIndex = 2;
+            this.richTextBox1.Text = "";
+            // 
             // ViewStaffMemberHours
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 448);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ViewStaffMemberHours";
@@ -73,5 +85,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

@@ -83,7 +83,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            dtpEndTime.Enabled = cbEndTime.Checked;
+            dtpEndTime.Enabled = !cbEndTime.Checked;
         }
     }
 }

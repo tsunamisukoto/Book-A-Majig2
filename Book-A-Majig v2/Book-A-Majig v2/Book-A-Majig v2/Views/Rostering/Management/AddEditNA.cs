@@ -40,6 +40,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             {
                 cbEmployees.SelectedValue = EditedUser.Id;
                 cbEmployees.Enabled = false;    
+
             }
         }
 
@@ -82,14 +83,26 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
                 ena.EndDate = ena.EndDate.Date.AddDays(1).AddTicks(-1);
             }
             ena.SubmittedBy= unitOfWork.EmpoyeeRepository.GetByID(User.Id);
+          
             ena.SubmittedDate = DateTime.Today;
             ena.Notes = tbNotes.Text;
+            
             return ena;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void cbEndTime_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpEndTime.Enabled = cbEndTime.Checked;
+        }
+
+        private void cbStartTime_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpStartTime.Enabled = cbStartTime.Checked;
         }
     }
 }

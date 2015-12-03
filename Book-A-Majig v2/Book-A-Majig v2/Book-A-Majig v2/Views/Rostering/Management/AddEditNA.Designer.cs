@@ -157,6 +157,7 @@
             this.cbEndTime.TabIndex = 14;
             this.cbEndTime.Text = "EndTime";
             this.cbEndTime.UseVisualStyleBackColor = true;
+            this.cbEndTime.CheckedChanged += new System.EventHandler(this.cbEndTime_CheckedChanged);
             // 
             // cbStartTime
             // 
@@ -167,6 +168,7 @@
             this.cbStartTime.TabIndex = 15;
             this.cbStartTime.Text = "Start Time";
             this.cbStartTime.UseVisualStyleBackColor = true;
+            this.cbStartTime.CheckedChanged += new System.EventHandler(this.cbStartTime_CheckedChanged);
             // 
             // AddEditNA
             // 

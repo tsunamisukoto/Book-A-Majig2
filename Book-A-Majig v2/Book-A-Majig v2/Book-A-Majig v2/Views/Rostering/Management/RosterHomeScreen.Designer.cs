@@ -67,13 +67,14 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Delete NA";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dgvNAs
             // 
             this.dgvNAs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNAs.Location = new System.Drawing.Point(6, 19);
             this.dgvNAs.Name = "dgvNAs";
-            this.dgvNAs.Size = new System.Drawing.Size(314, 278);
+            this.dgvNAs.Size = new System.Drawing.Size(897, 278);
             this.dgvNAs.TabIndex = 4;
             // 
             // groupBox1
@@ -84,7 +85,7 @@
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Location = new System.Drawing.Point(12, 284);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(339, 332);
+            this.groupBox1.Size = new System.Drawing.Size(909, 332);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Upcoming NA\'s";

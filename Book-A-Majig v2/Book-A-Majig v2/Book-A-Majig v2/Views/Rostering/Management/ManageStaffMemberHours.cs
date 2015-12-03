@@ -33,6 +33,13 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             staffMemberDayAvailability7.btnModify.Click += B_Click;
             Rebind();
         }
+        private void RebindEmployeeNAs()
+        {
+            var unitOfWork = new UnitOfWork();
+            EmployeeNAs = unitOfWork.EmployeeNARepository.Get(x => x.EndDate > DateTime.Today && x.Employee.Id==EditedUserID, x => x.OrderBy(y => y.StartDate), includeProperties: "Employee").ToList();
+            dgvNAs.DataSource = EmployeeNAs.Select(x => new { StartDate = x.StartDate, EndDate = x.EndDate, Notes = x.Notes }).ToList();
+        }
+        List<EmployeeNA> EmployeeNAs = new List<EmployeeNA>();
         private void Rebind()
         {
             var newRestaurant = new Restaurant() { Capacity = 100, Name = "Rebellion", Location = "Sydney", RosteringStartDay = (int)DayOfWeek.Monday, RosteringWeekDuration = 1, RosteringWeekOffset = 0 };
@@ -88,6 +95,41 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             Rebind();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddEditNA aena = new AddEditNA() { User = User };
+            aena.ShowDialog();
+            if (aena.DialogResult == DialogResult.OK)
+            {
+                RebindEmployeeNAs();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dgvNAs.SelectedRows.Count > 0)
+            {
+                AddEditNA aena = new AddEditNA() { User = User };
+                aena.NAID = EmployeeNAs[dgvNAs.SelectedRows[0].Index].Id;
+                aena.ShowDialog();
+                if (aena.DialogResult == DialogResult.OK)
+                {
+                    RebindEmployeeNAs();
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dgvNAs.SelectedRows.Count > 0)
+            {
+                var unitofwork = new UnitOfWork();
+                unitofwork.EmployeeNARepository.Delete(EmployeeNAs[dgvNAs.SelectedRows[0].Index]);
+                unitofwork.Save();
+                RebindEmployeeNAs();
+            }
         }
     }
 }

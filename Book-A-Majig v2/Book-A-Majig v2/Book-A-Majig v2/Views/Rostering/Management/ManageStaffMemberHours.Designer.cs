@@ -33,6 +33,9 @@
             this.lblEmployeeName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.dgvNAs = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.staffMemberDayAvailability7 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.StaffMemberDayAvailability();
             this.staffMemberDayAvailability6 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.StaffMemberDayAvailability();
             this.staffMemberDayAvailability5 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.StaffMemberDayAvailability();
@@ -40,9 +43,6 @@
             this.staffMemberDayAvailability3 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.StaffMemberDayAvailability();
             this.staffMemberDayAvailability2 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.StaffMemberDayAvailability();
             this.staffMemberDayAvailability1 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.StaffMemberDayAvailability();
-            this.dgvNAs = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNAs)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,87 +83,91 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(594, 12);
+            this.button1.Location = new System.Drawing.Point(1182, 13);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
             this.button1.Text = "Add NA";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dgvNAs
+            // 
+            this.dgvNAs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNAs.Location = new System.Drawing.Point(802, 11);
+            this.dgvNAs.Name = "dgvNAs";
+            this.dgvNAs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvNAs.Size = new System.Drawing.Size(373, 137);
+            this.dgvNAs.TabIndex = 19;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1181, 42);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Edit NA";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1181, 71);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Delete NA";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // staffMemberDayAvailability7
             // 
-            this.staffMemberDayAvailability7.Location = new System.Drawing.Point(1094, 111);
+            this.staffMemberDayAvailability7.Location = new System.Drawing.Point(1101, 144);
             this.staffMemberDayAvailability7.Name = "staffMemberDayAvailability7";
             this.staffMemberDayAvailability7.Size = new System.Drawing.Size(177, 391);
             this.staffMemberDayAvailability7.TabIndex = 17;
             // 
             // staffMemberDayAvailability6
             // 
-            this.staffMemberDayAvailability6.Location = new System.Drawing.Point(911, 111);
+            this.staffMemberDayAvailability6.Location = new System.Drawing.Point(918, 144);
             this.staffMemberDayAvailability6.Name = "staffMemberDayAvailability6";
             this.staffMemberDayAvailability6.Size = new System.Drawing.Size(177, 391);
             this.staffMemberDayAvailability6.TabIndex = 16;
             // 
             // staffMemberDayAvailability5
             // 
-            this.staffMemberDayAvailability5.Location = new System.Drawing.Point(728, 111);
+            this.staffMemberDayAvailability5.Location = new System.Drawing.Point(735, 144);
             this.staffMemberDayAvailability5.Name = "staffMemberDayAvailability5";
             this.staffMemberDayAvailability5.Size = new System.Drawing.Size(177, 391);
             this.staffMemberDayAvailability5.TabIndex = 15;
             // 
             // staffMemberDayAvailability4
             // 
-            this.staffMemberDayAvailability4.Location = new System.Drawing.Point(545, 111);
+            this.staffMemberDayAvailability4.Location = new System.Drawing.Point(552, 144);
             this.staffMemberDayAvailability4.Name = "staffMemberDayAvailability4";
             this.staffMemberDayAvailability4.Size = new System.Drawing.Size(177, 391);
             this.staffMemberDayAvailability4.TabIndex = 14;
             // 
             // staffMemberDayAvailability3
             // 
-            this.staffMemberDayAvailability3.Location = new System.Drawing.Point(362, 111);
+            this.staffMemberDayAvailability3.Location = new System.Drawing.Point(369, 144);
             this.staffMemberDayAvailability3.Name = "staffMemberDayAvailability3";
             this.staffMemberDayAvailability3.Size = new System.Drawing.Size(177, 391);
             this.staffMemberDayAvailability3.TabIndex = 13;
             // 
             // staffMemberDayAvailability2
             // 
-            this.staffMemberDayAvailability2.Location = new System.Drawing.Point(179, 111);
+            this.staffMemberDayAvailability2.Location = new System.Drawing.Point(186, 144);
             this.staffMemberDayAvailability2.Name = "staffMemberDayAvailability2";
             this.staffMemberDayAvailability2.Size = new System.Drawing.Size(177, 391);
             this.staffMemberDayAvailability2.TabIndex = 12;
             // 
             // staffMemberDayAvailability1
             // 
-            this.staffMemberDayAvailability1.Location = new System.Drawing.Point(-4, 111);
+            this.staffMemberDayAvailability1.Location = new System.Drawing.Point(3, 144);
             this.staffMemberDayAvailability1.Name = "staffMemberDayAvailability1";
             this.staffMemberDayAvailability1.Size = new System.Drawing.Size(177, 391);
             this.staffMemberDayAvailability1.TabIndex = 11;
-            // 
-            // dgvNAs
-            // 
-            this.dgvNAs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNAs.Location = new System.Drawing.Point(348, 11);
-            this.dgvNAs.Name = "dgvNAs";
-            this.dgvNAs.Size = new System.Drawing.Size(240, 94);
-            this.dgvNAs.TabIndex = 19;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(594, 42);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Edit NA";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(595, 72);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "Delete NA";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // ManageStaffMemberHours
             // 

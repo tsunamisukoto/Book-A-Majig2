@@ -38,11 +38,11 @@ namespace Book_A_Majig_v2
             checkedListBox1.SetItemChecked(3, true);
             states[3] = true;
 
-            checkedListBox1.SetItemChecked(4, true);
-            states[4] = true;
+            checkedListBox1.SetItemChecked(4, false);
+            states[4] = false;
 
-            checkedListBox1.SetItemChecked(5, false);
-            states[5] = false;
+            checkedListBox1.SetItemChecked(5, true);
+            states[5] = true;
             var unitofWork = new UnitOfWork();
             allclassifications = unitofWork.BookingClassificationRepository.Get().ToList();
             classes = new bool[allclassifications.Count];
@@ -214,8 +214,12 @@ namespace Book_A_Majig_v2
                 {
                     int workingIndex = dataGridView1.SelectedRows[0].Index;
                     var booking = ListOfBookings[workingIndex];
-                    booking.DateInactive = DateTime.Now;
-                    booking.DeletedByID = User.Id;
+                    if(booking.DateInactive==null)
+                    {
+                        booking.DateInactive = DateTime.Now;
+                        booking.DeletedByID = User.Id;
+                    }
+                   
 
                 }
                 unitOfWork.Save();
@@ -235,6 +239,7 @@ namespace Book_A_Majig_v2
                 {
                     int workingIndex = dataGridView1.SelectedRows[0].Index;
                     var booking = ListOfBookings[workingIndex];
+                    if(booking.BookingConfirmations.Count==0)
                     booking.BookingConfirmations.Add(new BookingConfirmation() { ConfirmationDate = DateTime.Today, EmployeeId = User.Id });
 
                 }
@@ -309,6 +314,7 @@ namespace Book_A_Majig_v2
                 {
                     int workingIndex = dataGridView1.SelectedRows[0].Index;
                     var booking = ListOfBookings[workingIndex];
+                    if(booking.ArrivedDate==null)
                     booking.ArrivedDate = DateTime.Now;
 
                 }
