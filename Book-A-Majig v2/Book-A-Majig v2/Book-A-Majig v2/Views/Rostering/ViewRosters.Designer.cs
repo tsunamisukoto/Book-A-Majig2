@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lblWeekOfYear = new System.Windows.Forms.Label();
             this.rosterDay7 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.RosterDay();
             this.rosterDay6 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.RosterDay();
             this.rosterDay5 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.RosterDay();
@@ -36,7 +37,6 @@
             this.rosterDay3 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.RosterDay();
             this.rosterDay2 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.RosterDay();
             this.rosterDay1 = new Book_A_Majig_v2.Views.Rostering.ReusableControls.RosterDay();
-            this.lblWeekOfYear = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -46,6 +46,15 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 0;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // lblWeekOfYear
+            // 
+            this.lblWeekOfYear.AutoSize = true;
+            this.lblWeekOfYear.Location = new System.Drawing.Point(280, 13);
+            this.lblWeekOfYear.Name = "lblWeekOfYear";
+            this.lblWeekOfYear.Size = new System.Drawing.Size(35, 13);
+            this.lblWeekOfYear.TabIndex = 8;
+            this.lblWeekOfYear.Text = "label1";
             // 
             // rosterDay7
             // 
@@ -109,15 +118,6 @@
             this.rosterDay1.Name = "rosterDay1";
             this.rosterDay1.Size = new System.Drawing.Size(176, 440);
             this.rosterDay1.TabIndex = 1;
-            // 
-            // lblWeekOfYear
-            // 
-            this.lblWeekOfYear.AutoSize = true;
-            this.lblWeekOfYear.Location = new System.Drawing.Point(280, 13);
-            this.lblWeekOfYear.Name = "lblWeekOfYear";
-            this.lblWeekOfYear.Size = new System.Drawing.Size(35, 13);
-            this.lblWeekOfYear.TabIndex = 8;
-            this.lblWeekOfYear.Text = "label1";
             // 
             // ViewRosters
             // 

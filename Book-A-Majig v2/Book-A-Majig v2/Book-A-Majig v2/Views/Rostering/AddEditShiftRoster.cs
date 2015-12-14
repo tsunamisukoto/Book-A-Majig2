@@ -49,14 +49,40 @@ namespace Book_A_Majig_v2.Views.Rostering
         {
             var unitofwork = new UnitOfWork();
             RebindPresets();
-            WorkingShift = unitofwork.ShiftRepository.Get(x => x.DayOfTheWeek == DayOfWeek && x.RosterId == RosterId, includeProperties: "EmployeeShifts").FirstOrDefault();
+            WorkingShift = unitofwork.ShiftRepository.Get(x => x.DayOfTheWeek == DayOfWeek && x.RosterId == RosterId, includeProperties: "EmployeeShifts.EmployeeShiftAssignments").FirstOrDefault();
 
             if (WorkingShift != null)
             {
                 ShiftSlots = WorkingShift.EmployeeShifts.ToList();
                 txtNotes.Text = WorkingShift.Notes;
                 RebindShiftSlots();
+
             }
+            RebindBookingInformation();
+        }
+        void RebindBookingInformation()
+        {
+            var unitofwork = new UnitOfWork();
+            txtBookingInformation.AppendBoldLine("Total Number of Covers: ");
+            var ListOfBookings = unitofwork.BookingRepository.Get(x =>
+              x.BookingDate.Year == dateTimePicker1.Value.Year &&
+              x.BookingDate.Month == dateTimePicker1.Value.Month &&
+              x.BookingDate.Day == dateTimePicker1.Value.Day
+              && x.DateInactive==null
+              , y => y.OrderBy(q => q.BookingDate) ).ToList();
+            txtBookingInformation.AppendLine(ListOfBookings.Count.ToString());
+            var classifications = unitofwork.BookingClassificationRepository.Get();
+
+            foreach( var classification in classifications)
+            {
+                var countofbookings = ListOfBookings.Where(x => x.BookingClasificationId1 == classification.Id).Count();
+                if(countofbookings>0)
+                {
+                    txtBookingInformation.AppendBoldLine(classification.ClassificationName);
+                    txtBookingInformation.AppendLine(countofbookings.ToString());
+                }
+            }
+
         }
         void RebindPresets()
         {
@@ -76,6 +102,7 @@ namespace Book_A_Majig_v2.Views.Rostering
             s.EmployeeShifts = ShiftSlots;
             s.Notes = txtNotes.Text;
             s.RosterId = RosterId;
+            
             return s;
 
         }
@@ -123,7 +150,8 @@ namespace Book_A_Majig_v2.Views.Rostering
         {
             if (dgvAvailableUsers.SelectedRows.Count > 0 && dgvSlotsToFill.SelectedRows.Count > 0)
             {
-                ShiftSlots[dgvSlotsToFill.SelectedRows[0].Index].Employee = AvailableEmployees[dgvAvailableUsers.SelectedRows[0].Index];
+                ShiftSlots[dgvSlotsToFill.SelectedRows[0].Index].EmployeeShiftAssignments.Add(new EmployeeShiftAssignment() { Employee = AvailableEmployees[dgvAvailableUsers.SelectedRows[0].Index] , Reason=""});
+                ShiftSlots[dgvSlotsToFill.SelectedRows[0].Index].EmployeeAssignedDate = DateTime.Now;
                 RebindShiftSlots();
             }
         }
@@ -175,10 +203,86 @@ namespace Book_A_Majig_v2.Views.Rostering
         private void button9_Click(object sender, EventArgs e)
         {
             var unitofwork = new UnitOfWork();
-            var workingobject = unitofwork.ShiftCategoryRepository.Get(x => x.Id == (int)cbPresetShifts.SelectedValue, includeProperties: "EmployeeShiftPresets").FirstOrDefault();
+            var workingobject = unitofwork.ShiftCategoryRepository.Get(x => x.Id == (int)cbPresetShifts.SelectedValue).FirstOrDefault();
             workingobject.EmployeeShiftPresets = ShiftSlots.Select(x => ConvertShiftToShiftPreset(x)).ToList();
             unitofwork.Save();
             RebindShiftSlots();
         }
+
+        private void dgvSlotsToFill_DragOver(object sender, DragEventArgs e)
+        {
+
+            e.Effect = DragDropEffects.Move;
+        }
+        private Rectangle dragBoxFromMouseDown;
+        private int rowIndexFromMouseDown;
+        private int rowIndexOfItemUnderMouseToDrop;
+        private void dgvSlotsToFill_DragDrop(object sender, DragEventArgs e)
+        {
+            // The mouse locations are relative to the screen, so they must be 
+            // converted to client coordinates.
+            Point clientPoint = dgvSlotsToFill.PointToClient(new Point(e.X, e.Y));
+
+            // Get the row index of the item the mouse is below. 
+            rowIndexOfItemUnderMouseToDrop =
+                dgvSlotsToFill.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            // If the drag operation was a move then remove and insert the row.
+            if (e.Effect == DragDropEffects.Move)
+            {
+                if(rowIndexOfItemUnderMouseToDrop!=-1 && rowIndexFromMouseDown!=-1)
+                {
+                    ShiftSlots[rowIndexOfItemUnderMouseToDrop].EmployeeShiftAssignments.Add(new EmployeeShiftAssignment() { Employee = AvailableEmployees[rowIndexFromMouseDown], Reason="" });
+                    ShiftSlots[rowIndexOfItemUnderMouseToDrop].EmployeeAssignedDate = DateTime.Now;
+                }
+                RebindShiftSlots();
+           
+
+            }
+        }
+
+        private void dgvAvailableUsers_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                // If the mouse moves outside the rectangle, start the drag.
+                if (dragBoxFromMouseDown != Rectangle.Empty &&
+                    !dragBoxFromMouseDown.Contains(e.X, e.Y))
+                {
+
+                    // Proceed with the drag and drop, passing in the list item.                    
+                    DragDropEffects dropEffect = dgvAvailableUsers.DoDragDrop(
+                    dgvAvailableUsers.Rows[rowIndexFromMouseDown],
+                    DragDropEffects.Move);
+                }
+            }
+        }
+
+        private void dgvAvailableUsers_MouseDown(object sender, MouseEventArgs e)
+        {
+            rowIndexFromMouseDown = dgvAvailableUsers.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndexFromMouseDown != -1)
+            {
+                // Remember the point where the mouse down occurred. 
+                // The DragSize indicates the size that the mouse can move 
+                // before a drag event should be started.                
+                Size dragSize = SystemInformation.DragSize;
+
+                // Create a rectangle using the DragSize, with the mouse position being
+                // at the center of the rectangle.
+                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2),
+                                                               e.Y - (dragSize.Height / 2)),
+                                    dragSize);
+            }
+            else
+                // Reset the rectangle if the mouse is not over an item in the ListBox.
+                dragBoxFromMouseDown = Rectangle.Empty;
+        }
+
+        private void dgvAvailableUsers_DragOver(object sender, DragEventArgs e)
+        {
+
+        }
     }
-}
+    }
+

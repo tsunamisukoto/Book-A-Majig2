@@ -21,10 +21,10 @@ namespace Book_A_Majig_v2.DatabaseEntities
             this.BookingNotes = new HashSet<BookingNote>();
             this.EmployeeAvailabilityDays = new HashSet<EmployeeAvailabilityDay>();
             this.EmployeeNAs = new HashSet<EmployeeNA>();
-            this.EmployeeShifts = new HashSet<EmployeeShift>();
             this.Restaurants = new HashSet<Restaurant>();
             this.EmployeeAvailabilityHoursRequests = new HashSet<EmployeeAvailabilityHoursRequest>();
             this.EmployeeCommendations = new HashSet<EmployeeCommendation>();
+            this.EmployeeShiftAssignments = new HashSet<EmployeeShiftAssignment>();
         }
     
         public int Id { get; set; }
@@ -45,12 +45,12 @@ namespace Book_A_Majig_v2.DatabaseEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeNA> EmployeeNAs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeShift> EmployeeShifts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Restaurant> Restaurants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeAvailabilityHoursRequest> EmployeeAvailabilityHoursRequests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeCommendation> EmployeeCommendations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeShiftAssignment> EmployeeShiftAssignments { get; set; }
     }
 }

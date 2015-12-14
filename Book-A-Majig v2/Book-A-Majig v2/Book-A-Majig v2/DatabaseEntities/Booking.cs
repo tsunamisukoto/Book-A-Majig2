@@ -24,7 +24,6 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public string ContactNumber { get; set; }
-        public int BookingClasificationId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> ArrivedDate { get; set; }

@@ -36,7 +36,7 @@ namespace Book_A_Majig_v2.Views.Rostering.ReusableControls
         public void BindRoster(Roster workingRoster)
         {
             var unitOfWork = new UnitOfWork();
-           UsersOnShift= unitOfWork.ShiftRepository.Get(x => x.DayOfTheWeek == _day && x.RosterId==workingRoster.Id,includeProperties:"EmployeeShifts.Employee").SelectMany(x=> x.EmployeeShifts).ToList();
+           UsersOnShift= unitOfWork.ShiftRepository.Get(x => x.DayOfTheWeek == _day && x.RosterId==workingRoster.Id,includeProperties: "EmployeeShifts.EmployeeShiftAssignments").SelectMany(x=> x.EmployeeShifts).ToList();
             dataGridView1.DataSource = UsersOnShift.Select(x => new { Employee = x.Employee==null?"": x.Employee.FullName, ShiftTime = x.StartTime }).ToList();
         }
     }

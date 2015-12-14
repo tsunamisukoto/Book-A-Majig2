@@ -14,14 +14,25 @@ namespace Book_A_Majig_v2.DatabaseEntities
     
     public partial class EmployeeShift
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EmployeeShift()
+        {
+            this.PreferredSkillCategories = new HashSet<SkillCategory>();
+            this.EmployeeShiftAssignments = new HashSet<EmployeeShiftAssignment>();
+        }
+    
         public int Id { get; set; }
         public int ShiftId { get; set; }
         public System.DateTime StartTime { get; set; }
         public Nullable<System.DateTime> EndTime { get; set; }
         public int EmployeeShiftCategoryId { get; set; }
+        public System.DateTime EmployeeAssignedDate { get; set; }
     
         public virtual Shift Shift { get; set; }
-        public virtual Employee Employee { get; set; }
         public virtual EmployeeLevelCategory EmployeeShiftCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SkillCategory> PreferredSkillCategories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeShiftAssignment> EmployeeShiftAssignments { get; set; }
     }
 }

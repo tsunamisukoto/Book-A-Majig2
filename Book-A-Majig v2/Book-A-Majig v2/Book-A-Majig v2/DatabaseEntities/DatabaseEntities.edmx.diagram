@@ -4,18 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="656da68b7d7249a39590ba66ac7d6d80" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="656da68b7d7249a39590ba66ac7d6d80" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="DatabaseModel.AccessLevel" Width="1.5" PointX="6.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.BookingClasification" Width="1.5" PointX="14.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.BookingConfirmation" Width="1.5" PointX="19.375" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.BookingNote" Width="1.5" PointX="14.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.Booking" Width="1.5" PointX="16.5" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.Employee" Width="1.5" PointX="10" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Employee" Width="2" PointX="10" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.LockOutDate" Width="1.5" PointX="10.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.LockOutTime" Width="1.5" PointX="8.5" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.Restaurant" Width="1.5" PointX="11.5" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="DatabaseModel.FK_EmployeeAccessLevel" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.FK_BookingBookingClasification" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_BookingBookingClasification" ManuallyRouted="true" >
+          <ConnectorPoint PointX="15.75" PointY="5.4802864583333326" />
+          <ConnectorPoint PointX="16.125" PointY="19.186137828233484" />
+          <ConnectorPoint PointX="16.125" PointY="163.14575349710219" />
+          <ConnectorPoint PointX="16.5" PointY="6.0667122395833326" />
+        </AssociationConnector>
         <AssociationConnector Association="DatabaseModel.FK_BookingConfirmationBooking" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_BookingNotesBooking" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_EmployeeBooking" ManuallyRouted="false" />
@@ -27,24 +32,23 @@
         <AssociationConnector Association="DatabaseModel.BookingClasificationLockOutDate" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeAvailabilityDay" Width="2.625" PointX="3.875" PointY="9.125" />
         <AssociationConnector Association="DatabaseModel.EmployeeAvailabilityDayEmployee" />
-        <EntityTypeShape EntityType="DatabaseModel.EmployeeNA" Width="1.5" PointX="12.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DatabaseModel.EmployeeNA" Width="1.5" PointX="13.375" PointY="9.5" />
         <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee" />
         <EntityTypeShape EntityType="DatabaseModel.Shift" Width="1.5" PointX="7.5" PointY="12" />
-        <EntityTypeShape EntityType="DatabaseModel.EmployeeShift" Width="1.5" PointX="10.875" PointY="12.375" />
+        <EntityTypeShape EntityType="DatabaseModel.EmployeeShift" Width="2.125" PointX="10.5" PointY="12.75" />
         <AssociationConnector Association="DatabaseModel.ShiftEmployeeShift" />
-        <AssociationConnector Association="DatabaseModel.EmployeeShiftEmployee" />
         <AssociationConnector Association="DatabaseModel.EmployeeRestaurant" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeAvailabilityHoursRequest" Width="1.5" PointX="16.125" PointY="9" />
         <AssociationConnector Association="DatabaseModel.EmployeeAvailabilityHoursRequestEmployee" />
         <EntityTypeShape EntityType="DatabaseModel.Permissions" Width="1.5" PointX="4" PointY="4.375" />
         <AssociationConnector Association="DatabaseModel.PermissionsAccessLevel" />
-        <EntityTypeShape EntityType="DatabaseModel.Roster" Width="1.5" PointX="5.25" PointY="14.5" />
+        <EntityTypeShape EntityType="DatabaseModel.Roster" Width="1.5" PointX="4.875" PointY="13.75" />
         <AssociationConnector Association="DatabaseModel.RosterShift" />
         <AssociationConnector Association="DatabaseModel.RosterRestaurant" />
-        <EntityTypeShape EntityType="DatabaseModel.EmployeeCommendation" Width="1.5" PointX="15" PointY="15.125" />
+        <EntityTypeShape EntityType="DatabaseModel.EmployeeCommendation" Width="1.5" PointX="16" PointY="14.75" />
         <AssociationConnector Association="DatabaseModel.EmployeeCommendationEmployee" />
         <AssociationConnector Association="DatabaseModel.EmployeeCommendationShift" />
-        <EntityTypeShape EntityType="DatabaseModel.EmployeeCommendationClassification" Width="1.5" PointX="17" PointY="14.25" />
+        <EntityTypeShape EntityType="DatabaseModel.EmployeeCommendationClassification" Width="1.5" PointX="15" PointY="19.125" />
         <AssociationConnector Association="DatabaseModel.EmployeeCommendationEmployeeCommendationClassification" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeLevelCategory" Width="2.25" PointX="9" PointY="15.75" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeShiftPresets" Width="2.875" PointX="10.375" PointY="18.125" />
@@ -61,6 +65,15 @@
         <AssociationConnector Association="DatabaseModel.DateNoteRestaurant" />
         <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee1" />
         <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee2" />
+        <EntityTypeShape EntityType="DatabaseModel.TeamCommendation" Width="1.5" PointX="14" PointY="16.75" />
+        <AssociationConnector Association="DatabaseModel.ShiftTeamCommendation" />
+        <AssociationConnector Association="DatabaseModel.TeamCommendationEmployeeCommendationClassification" />
+        <EntityTypeShape EntityType="DatabaseModel.SkillCategory" Width="1.5" PointX="18.25" PointY="16.5" />
+        <AssociationConnector Association="DatabaseModel.SkillCategoryEmployeeCommendationClassification" />
+        <AssociationConnector Association="DatabaseModel.SkillCategoryEmployeeShift" />
+        <EntityTypeShape EntityType="DatabaseModel.EmployeeShiftAssignment" Width="2.125" PointX="13.375" PointY="13.875" />
+        <AssociationConnector Association="DatabaseModel.EmployeeShiftAssignmentEmployee" />
+        <AssociationConnector Association="DatabaseModel.EmployeeShiftAssignmentEmployeeShift" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -74,7 +74,7 @@
             this.dgvNAs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNAs.Location = new System.Drawing.Point(6, 19);
             this.dgvNAs.Name = "dgvNAs";
-            this.dgvNAs.Size = new System.Drawing.Size(897, 278);
+            this.dgvNAs.Size = new System.Drawing.Size(432, 278);
             this.dgvNAs.TabIndex = 4;
             // 
             // groupBox1
@@ -85,7 +85,7 @@
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Location = new System.Drawing.Point(12, 284);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(909, 332);
+            this.groupBox1.Size = new System.Drawing.Size(444, 332);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Upcoming NA\'s";

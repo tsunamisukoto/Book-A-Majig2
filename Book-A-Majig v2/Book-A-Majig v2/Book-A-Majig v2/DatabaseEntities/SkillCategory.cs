@@ -12,24 +12,21 @@ namespace Book_A_Majig_v2.DatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class EmployeeCommendationClassification
+    public partial class SkillCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EmployeeCommendationClassification()
+        public SkillCategory()
         {
-            this.TeamCommendations = new HashSet<TeamCommendation>();
-            this.SkillCategories = new HashSet<SkillCategory>();
+            this.EmployeeCommendationClassifications = new HashSet<EmployeeCommendationClassification>();
+            this.EmployeeShifts = new HashSet<EmployeeShift>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Weighting { get; set; }
-        public bool AvailableOnTeam { get; set; }
-        public bool AvailableOnUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamCommendation> TeamCommendations { get; set; }
+        public virtual ICollection<EmployeeCommendationClassification> EmployeeCommendationClassifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SkillCategory> SkillCategories { get; set; }
+        public virtual ICollection<EmployeeShift> EmployeeShifts { get; set; }
     }
 }

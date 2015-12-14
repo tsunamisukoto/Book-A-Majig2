@@ -49,5 +49,8 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public virtual DbSet<EmployeeShiftPresets> EmployeeShiftPresets { get; set; }
         public virtual DbSet<ShiftCategory> ShiftCategories { get; set; }
         public virtual DbSet<DateNote> DateNotes { get; set; }
+        public virtual DbSet<TeamCommendation> TeamCommendations { get; set; }
+        public virtual DbSet<SkillCategory> SkillCategories { get; set; }
+        public virtual DbSet<EmployeeShiftAssignment> EmployeeShiftAssignments { get; set; }
     }
 }

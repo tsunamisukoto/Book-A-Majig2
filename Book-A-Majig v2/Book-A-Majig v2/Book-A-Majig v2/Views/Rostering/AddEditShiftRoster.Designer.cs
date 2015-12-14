@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.cbPresetShifts = new System.Windows.Forms.ComboBox();
@@ -42,17 +41,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.cbEmployeeRequirementCategory = new System.Windows.Forms.ComboBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.dgvAvailableUsers = new System.Windows.Forms.DataGridView();
             this.dgvSlotsToFill = new System.Windows.Forms.DataGridView();
             this.button8 = new System.Windows.Forms.Button();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
+            this.txtBookingInformation = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailableUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSlotsToFill)).BeginInit();
@@ -75,15 +75,6 @@
             this.label2.Size = new System.Drawing.Size(191, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Available Users For Selected Shift Slot:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(745, 189);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(365, 430);
-            this.textBox1.TabIndex = 4;
             // 
             // label3
             // 
@@ -196,26 +187,6 @@
             this.dateTimePicker3.Size = new System.Drawing.Size(85, 20);
             this.dateTimePicker3.TabIndex = 16;
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(279, 415);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(93, 23);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "Load Most Suitable Users";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(388, 423);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(139, 23);
-            this.button7.TabIndex = 15;
-            this.button7.Text = "Save Slots As New Preset";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -243,8 +214,29 @@
             this.cbEmployeeRequirementCategory.TabIndex = 13;
             this.cbEmployeeRequirementCategory.Text = "Employee Requirement Category";
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(279, 415);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(93, 23);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "Load Most Suitable Users";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(388, 423);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(139, 23);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "Save Slots As New Preset";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // dgvAvailableUsers
             // 
+            this.dgvAvailableUsers.AllowDrop = true;
             this.dgvAvailableUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAvailableUsers.Location = new System.Drawing.Point(17, 439);
             this.dgvAvailableUsers.Name = "dgvAvailableUsers";
@@ -252,9 +244,13 @@
             this.dgvAvailableUsers.Size = new System.Drawing.Size(362, 180);
             this.dgvAvailableUsers.TabIndex = 16;
             this.dgvAvailableUsers.SelectionChanged += new System.EventHandler(this.dgvAvailableUsers_SelectionChanged);
+            this.dgvAvailableUsers.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvAvailableUsers_DragOver);
+            this.dgvAvailableUsers.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvAvailableUsers_MouseDown);
+            this.dgvAvailableUsers.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvAvailableUsers_MouseMove);
             // 
             // dgvSlotsToFill
             // 
+            this.dgvSlotsToFill.AllowDrop = true;
             this.dgvSlotsToFill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSlotsToFill.Location = new System.Drawing.Point(7, 186);
             this.dgvSlotsToFill.Name = "dgvSlotsToFill";
@@ -262,6 +258,8 @@
             this.dgvSlotsToFill.Size = new System.Drawing.Size(372, 202);
             this.dgvSlotsToFill.TabIndex = 17;
             this.dgvSlotsToFill.SelectionChanged += new System.EventHandler(this.dgvSlotsToFill_SelectionChanged);
+            this.dgvSlotsToFill.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvSlotsToFill_DragDrop);
+            this.dgvSlotsToFill.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvSlotsToFill_DragOver);
             // 
             // button8
             // 
@@ -300,11 +298,22 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // txtBookingInformation
+            // 
+            this.txtBookingInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBookingInformation.Location = new System.Drawing.Point(751, 186);
+            this.txtBookingInformation.Name = "txtBookingInformation";
+            this.txtBookingInformation.ReadOnly = true;
+            this.txtBookingInformation.Size = new System.Drawing.Size(419, 433);
+            this.txtBookingInformation.TabIndex = 22;
+            this.txtBookingInformation.Text = "";
+            // 
             // AddEditShiftRoster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 660);
+            this.Controls.Add(this.txtBookingInformation);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNotes);
@@ -320,7 +329,6 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.cbPresetShifts);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddEditShiftRoster";
@@ -338,7 +346,6 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbPresetShifts;
@@ -361,5 +368,6 @@
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.RichTextBox txtBookingInformation;
     }
 }

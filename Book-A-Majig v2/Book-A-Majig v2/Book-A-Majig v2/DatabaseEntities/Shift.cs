@@ -19,6 +19,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
         {
             this.EmployeeShifts = new HashSet<EmployeeShift>();
             this.EmployeeCommendations = new HashSet<EmployeeCommendation>();
+            this.TeamCommendations = new HashSet<TeamCommendation>();
         }
     
         public int Id { get; set; }
@@ -33,5 +34,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeCommendation> EmployeeCommendations { get; set; }
         public virtual ShiftCategory ShiftCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamCommendation> TeamCommendations { get; set; }
     }
 }

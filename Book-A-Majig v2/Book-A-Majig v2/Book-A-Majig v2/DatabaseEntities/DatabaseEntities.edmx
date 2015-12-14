@@ -29,9 +29,14 @@
     <EntitySet Name="EmployeeShiftPresets" EntityType="DatabaseModel.Store.EmployeeShiftPresets" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ShiftCategories" EntityType="DatabaseModel.Store.ShiftCategories" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DateNotes" EntityType="DatabaseModel.Store.DateNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TeamCommendations" EntityType="DatabaseModel.Store.TeamCommendations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SkillCategories" EntityType="DatabaseModel.Store.SkillCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeShiftAssignments" EntityType="DatabaseModel.Store.EmployeeShiftAssignments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BookingClasificationLockOutDate" EntityType="DatabaseModel.Store.BookingClasificationLockOutDate" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="EmployeeRestaurant" EntityType="DatabaseModel.Store.EmployeeRestaurant" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="EmployeeCommendationEmployee" EntityType="DatabaseModel.Store.EmployeeCommendationEmployee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SkillCategoryEmployeeCommendationClassification" EntityType="DatabaseModel.Store.SkillCategoryEmployeeCommendationClassification" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SkillCategoryEmployeeShift" EntityType="DatabaseModel.Store.SkillCategoryEmployeeShift" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_EmployeeAccessLevel" Association="DatabaseModel.Store.FK_EmployeeAccessLevel">
       <End Role="AccessLevels" EntitySet="AccessLevels" />
       <End Role="Employees" EntitySet="Employees" />
@@ -87,10 +92,6 @@
     <AssociationSet Name="ShiftEmployeeShift" Association="DatabaseModel.Store.ShiftEmployeeShift">
       <End Role="Shift" EntitySet="Shifts" />
       <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
-    </AssociationSet>
-    <AssociationSet Name="EmployeeShiftEmployee" Association="DatabaseModel.Store.EmployeeShiftEmployee">
-      <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
-      <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
     <AssociationSet Name="FK_EmployeeRestaurant_Employee" Association="DatabaseModel.Store.FK_EmployeeRestaurant_Employee">
       <End Role="Employee" EntitySet="Employees" />
@@ -176,6 +177,38 @@
       <End Role="EmployeeNA" EntitySet="EmployeeNAs" />
       <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
+    <AssociationSet Name="ShiftTeamCommendation" Association="DatabaseModel.Store.ShiftTeamCommendation">
+      <End Role="Shift" EntitySet="Shifts" />
+      <End Role="TeamCommendation" EntitySet="TeamCommendations" />
+    </AssociationSet>
+    <AssociationSet Name="TeamCommendationEmployeeCommendationClassification" Association="DatabaseModel.Store.TeamCommendationEmployeeCommendationClassification">
+      <End Role="TeamCommendation" EntitySet="TeamCommendations" />
+      <End Role="EmployeeCommendationClassification" EntitySet="EmployeeCommendationClassifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkillCategoryEmployeeCommendationClassification_SkillCategory" Association="DatabaseModel.Store.FK_SkillCategoryEmployeeCommendationClassification_SkillCategory">
+      <End Role="SkillCategory" EntitySet="SkillCategories" />
+      <End Role="SkillCategoryEmployeeCommendationClassification" EntitySet="SkillCategoryEmployeeCommendationClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkillCategoryEmployeeCommendationClassification_EmployeeCommendationClassification" Association="DatabaseModel.Store.FK_SkillCategoryEmployeeCommendationClassification_EmployeeCommendationClassification">
+      <End Role="EmployeeCommendationClassification" EntitySet="EmployeeCommendationClassifications" />
+      <End Role="SkillCategoryEmployeeCommendationClassification" EntitySet="SkillCategoryEmployeeCommendationClassification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkillCategoryEmployeeShift_SkillCategory" Association="DatabaseModel.Store.FK_SkillCategoryEmployeeShift_SkillCategory">
+      <End Role="SkillCategory" EntitySet="SkillCategories" />
+      <End Role="SkillCategoryEmployeeShift" EntitySet="SkillCategoryEmployeeShift" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkillCategoryEmployeeShift_EmployeeShift" Association="DatabaseModel.Store.FK_SkillCategoryEmployeeShift_EmployeeShift">
+      <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+      <End Role="SkillCategoryEmployeeShift" EntitySet="SkillCategoryEmployeeShift" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeShiftAssignmentEmployee" Association="DatabaseModel.Store.EmployeeShiftAssignmentEmployee">
+      <End Role="EmployeeShiftAssignment" EntitySet="EmployeeShiftAssignments" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeShiftAssignmentEmployeeShift" Association="DatabaseModel.Store.EmployeeShiftAssignmentEmployeeShift">
+      <End Role="EmployeeShiftAssignment" EntitySet="EmployeeShiftAssignments" />
+      <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="AccessLevels">
     <Key>
@@ -221,7 +254,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EmployeeId" Type="int" Nullable="false" />
     <Property Name="ContactNumber" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="BookingClasificationId" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ArrivedDate" Type="datetime" Nullable="true" />
@@ -315,6 +347,7 @@
     <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SubmittedDate" Type="datetime" Nullable="false" />
+    <Property Name="ApprovedDate" Type="datetime" Nullable="true" />
     <Property Name="Employee_Id" Type="int" Nullable="false" />
     <Property Name="SubmittedBy_Id" Type="int" Nullable="true" />
     <Property Name="ApprovedBy_Id" Type="int" Nullable="true" />
@@ -338,7 +371,7 @@
     <Property Name="StartTime" Type="datetime" Nullable="false" />
     <Property Name="EndTime" Type="datetime" Nullable="true" />
     <Property Name="EmployeeShiftCategoryId" Type="int" Nullable="false" />
-    <Property Name="Employee_Id" Type="int" Nullable="true" />
+    <Property Name="EmployeeAssignedDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="EmployeeAvailabilityHoursRequests">
     <Key>
@@ -388,6 +421,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Weighting" Type="int" Nullable="false" />
+    <Property Name="AvailableOnTeam" Type="bit" Nullable="false" />
+    <Property Name="AvailableOnUser" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="EmployeeLevelCategories">
     <Key>
@@ -428,6 +463,33 @@
     <Property Name="DateCreated" Type="datetime" Nullable="false" />
     <Property Name="Restaurant_Id" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="TeamCommendations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Shift_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeCommendationClassification_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SkillCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeShiftAssignments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateInactive" Type="datetime" Nullable="true" />
+    <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CancelReason" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeShift_Id" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="BookingClasificationLockOutDate">
     <Key>
       <PropertyRef Name="BookingClasifications_Id" />
@@ -451,6 +513,22 @@
     </Key>
     <Property Name="EmployeeCommendations_Id" Type="int" Nullable="false" />
     <Property Name="RecievingEmployee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SkillCategoryEmployeeCommendationClassification">
+    <Key>
+      <PropertyRef Name="SkillCategories_Id" />
+      <PropertyRef Name="EmployeeCommendationClassifications_Id" />
+    </Key>
+    <Property Name="SkillCategories_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeCommendationClassifications_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SkillCategoryEmployeeShift">
+    <Key>
+      <PropertyRef Name="PreferredSkillCategories_Id" />
+      <PropertyRef Name="EmployeeShifts_Id" />
+    </Key>
+    <Property Name="PreferredSkillCategories_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeShifts_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_EmployeeAccessLevel">
     <End Role="AccessLevels" Type="DatabaseModel.Store.AccessLevels" Multiplicity="1" />
@@ -593,18 +671,6 @@
       </Principal>
       <Dependent Role="EmployeeShift">
         <PropertyRef Name="ShiftId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="EmployeeShiftEmployee">
-    <End Role="EmployeeShift" Type="DatabaseModel.Store.EmployeeShifts" Multiplicity="*" />
-    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="EmployeeShift">
-        <PropertyRef Name="Employee_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -812,6 +878,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ShiftTeamCommendation">
+    <End Role="Shift" Type="DatabaseModel.Store.Shifts" Multiplicity="1" />
+    <End Role="TeamCommendation" Type="DatabaseModel.Store.TeamCommendations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeamCommendation">
+        <PropertyRef Name="Shift_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TeamCommendationEmployeeCommendationClassification">
+    <End Role="TeamCommendation" Type="DatabaseModel.Store.TeamCommendations" Multiplicity="*" />
+    <End Role="EmployeeCommendationClassification" Type="DatabaseModel.Store.EmployeeCommendationClassifications" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeCommendationClassification">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeamCommendation">
+        <PropertyRef Name="EmployeeCommendationClassification_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeShiftAssignmentEmployee">
+    <End Role="EmployeeShiftAssignment" Type="DatabaseModel.Store.EmployeeShiftAssignments" Multiplicity="*" />
+    <End Role="Employee" Type="DatabaseModel.Store.Employees" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeShiftAssignment">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeShiftAssignmentEmployeeShift">
+    <End Role="EmployeeShiftAssignment" Type="DatabaseModel.Store.EmployeeShiftAssignments" Multiplicity="*" />
+    <End Role="EmployeeShift" Type="DatabaseModel.Store.EmployeeShifts" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeShift">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeShiftAssignment">
+        <PropertyRef Name="EmployeeShift_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BookingClasificationLockOutDate_BookingClasification">
     <End Role="BookingClasification" Type="DatabaseModel.Store.BookingClasifications" Multiplicity="1" />
     <End Role="BookingClasificationLockOutDate" Type="DatabaseModel.Store.BookingClasificationLockOutDate" Multiplicity="*" />
@@ -884,6 +998,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SkillCategoryEmployeeCommendationClassification_SkillCategory">
+    <End Role="SkillCategory" Type="DatabaseModel.Store.SkillCategories" Multiplicity="1" />
+    <End Role="SkillCategoryEmployeeCommendationClassification" Type="DatabaseModel.Store.SkillCategoryEmployeeCommendationClassification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SkillCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SkillCategoryEmployeeCommendationClassification">
+        <PropertyRef Name="SkillCategories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SkillCategoryEmployeeCommendationClassification_EmployeeCommendationClassification">
+    <End Role="SkillCategoryEmployeeCommendationClassification" Type="DatabaseModel.Store.SkillCategoryEmployeeCommendationClassification" Multiplicity="*" />
+    <End Role="EmployeeCommendationClassification" Type="DatabaseModel.Store.EmployeeCommendationClassifications" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeCommendationClassification">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SkillCategoryEmployeeCommendationClassification">
+        <PropertyRef Name="EmployeeCommendationClassifications_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SkillCategoryEmployeeShift_SkillCategory">
+    <End Role="SkillCategory" Type="DatabaseModel.Store.SkillCategories" Multiplicity="1" />
+    <End Role="SkillCategoryEmployeeShift" Type="DatabaseModel.Store.SkillCategoryEmployeeShift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SkillCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SkillCategoryEmployeeShift">
+        <PropertyRef Name="PreferredSkillCategories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SkillCategoryEmployeeShift_EmployeeShift">
+    <End Role="SkillCategoryEmployeeShift" Type="DatabaseModel.Store.SkillCategoryEmployeeShift" Multiplicity="*" />
+    <End Role="EmployeeShift" Type="DatabaseModel.Store.EmployeeShifts" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeShift">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SkillCategoryEmployeeShift">
+        <PropertyRef Name="EmployeeShifts_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -940,7 +1102,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
           <Property Name="ContactNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BookingClasificationId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ArrivedDate" Type="DateTime" Precision="3" Nullable="true" />
@@ -976,12 +1137,12 @@
           <NavigationProperty Name="BookingNotes" Relationship="DatabaseModel.BookingNoteEmployee" FromRole="Employee" ToRole="BookingNote" />
           <NavigationProperty Name="EmployeeAvailabilityDays" Relationship="DatabaseModel.EmployeeAvailabilityDayEmployee" FromRole="Employee" ToRole="EmployeeAvailabilityDay" />
           <NavigationProperty Name="EmployeeNAs" Relationship="DatabaseModel.EmployeeNAEmployee" FromRole="Employee" ToRole="EmployeeNA" />
-          <NavigationProperty Name="EmployeeShifts" Relationship="DatabaseModel.EmployeeShiftEmployee" FromRole="Employee" ToRole="EmployeeShift" />
           <NavigationProperty Name="Restaurants" Relationship="DatabaseModel.EmployeeRestaurant" FromRole="Employee" ToRole="Restaurant" />
           <NavigationProperty Name="EmployeeAvailabilityHoursRequests" Relationship="DatabaseModel.EmployeeAvailabilityHoursRequestEmployee" FromRole="Employee" ToRole="EmployeeAvailabilityHoursRequest" />
           <NavigationProperty Name="EmployeeCommendations" Relationship="DatabaseModel.EmployeeCommendationEmployee" FromRole="Employee" ToRole="EmployeeCommendation" />
           <Property Name="Email" Type="String" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" />
+          <NavigationProperty Name="EmployeeShiftAssignments" Relationship="DatabaseModel.EmployeeShiftAssignmentEmployee" FromRole="Employee" ToRole="EmployeeShiftAssignment" />
         </EntityType>
         <EntityType Name="LockOutDate">
           <Key>
@@ -1189,10 +1350,6 @@
             <End Role="Shift" EntitySet="Shifts" />
             <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
           </AssociationSet>
-          <AssociationSet Name="EmployeeShiftEmployee" Association="DatabaseModel.EmployeeShiftEmployee">
-            <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
           <AssociationSet Name="EmployeeRestaurant" Association="DatabaseModel.EmployeeRestaurant">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Restaurant" EntitySet="Restaurants" />
@@ -1278,6 +1435,33 @@
             <End Role="EmployeeNA" EntitySet="EmployeeNAs" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <EntitySet Name="TeamCommendations" EntityType="DatabaseModel.TeamCommendation" />
+          <AssociationSet Name="ShiftTeamCommendation" Association="DatabaseModel.ShiftTeamCommendation">
+            <End Role="Shift" EntitySet="Shifts" />
+            <End Role="TeamCommendation" EntitySet="TeamCommendations" />
+          </AssociationSet>
+          <AssociationSet Name="TeamCommendationEmployeeCommendationClassification" Association="DatabaseModel.TeamCommendationEmployeeCommendationClassification">
+            <End Role="TeamCommendation" EntitySet="TeamCommendations" />
+            <End Role="EmployeeCommendationClassification" EntitySet="EmployeeCommendationClassifications" />
+          </AssociationSet>
+          <EntitySet Name="SkillCategories" EntityType="DatabaseModel.SkillCategory" />
+          <AssociationSet Name="SkillCategoryEmployeeCommendationClassification" Association="DatabaseModel.SkillCategoryEmployeeCommendationClassification">
+            <End Role="SkillCategory" EntitySet="SkillCategories" />
+            <End Role="EmployeeCommendationClassification" EntitySet="EmployeeCommendationClassifications" />
+          </AssociationSet>
+          <AssociationSet Name="SkillCategoryEmployeeShift" Association="DatabaseModel.SkillCategoryEmployeeShift">
+            <End Role="SkillCategory" EntitySet="SkillCategories" />
+            <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeShiftAssignments" EntityType="DatabaseModel.EmployeeShiftAssignment" />
+          <AssociationSet Name="EmployeeShiftAssignmentEmployee" Association="DatabaseModel.EmployeeShiftAssignmentEmployee">
+            <End Role="EmployeeShiftAssignment" EntitySet="EmployeeShiftAssignments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeShiftAssignmentEmployeeShift" Association="DatabaseModel.EmployeeShiftAssignmentEmployeeShift">
+            <End Role="EmployeeShiftAssignment" EntitySet="EmployeeShiftAssignments" />
+            <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="PresetNote">
           <Key>
@@ -1333,6 +1517,7 @@
           <NavigationProperty Name="SubmittedBy" Relationship="DatabaseModel.EmployeeNAEmployee1" FromRole="EmployeeNA" ToRole="Employee" />
           <NavigationProperty Name="ApprovedBy" Relationship="DatabaseModel.EmployeeNAEmployee2" FromRole="EmployeeNA" ToRole="Employee" />
           <Property Name="SubmittedDate" Type="DateTime" Nullable="false" />
+          <Property Name="ApprovedDate" Type="DateTime" Nullable="true" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </EntityType>
         <Association Name="EmployeeNAEmployee">
           <End Type="DatabaseModel.EmployeeNA" Role="EmployeeNA" Multiplicity="*" />
@@ -1351,6 +1536,7 @@
           <NavigationProperty Name="ShiftCategory" Relationship="DatabaseModel.ShiftCategoryShift" FromRole="Shift" ToRole="ShiftCategory" />
           <Property Name="ShiftCategoryId" Type="Int32" Nullable="false" />
           <Property Name="DayOfTheWeek" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TeamCommendations" Relationship="DatabaseModel.ShiftTeamCommendation" FromRole="Shift" ToRole="TeamCommendation" />
         </EntityType>
         <EntityType Name="EmployeeShift">
           <Key>
@@ -1359,11 +1545,13 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Shift" Relationship="DatabaseModel.ShiftEmployeeShift" FromRole="EmployeeShift" ToRole="Shift" />
           <Property Name="ShiftId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="DatabaseModel.EmployeeShiftEmployee" FromRole="EmployeeShift" ToRole="Employee" />
           <Property Name="StartTime" Type="DateTime" Nullable="false" />
           <Property Name="EndTime" Type="DateTime" Nullable="true" />
           <NavigationProperty Name="EmployeeShiftCategory" Relationship="DatabaseModel.EmployeeShiftCategoryEmployeeShift" FromRole="EmployeeShift" ToRole="EmployeeShiftCategory" />
           <Property Name="EmployeeShiftCategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PreferredSkillCategories" Relationship="DatabaseModel.SkillCategoryEmployeeShift" FromRole="EmployeeShift" ToRole="SkillCategory" />
+          <Property Name="EmployeeAssignedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="EmployeeShiftAssignments" Relationship="DatabaseModel.EmployeeShiftAssignmentEmployeeShift" FromRole="EmployeeShift" ToRole="EmployeeShiftAssignment" />
         </EntityType>
         <Association Name="ShiftEmployeeShift">
           <End Type="DatabaseModel.Shift" Role="Shift" Multiplicity="1" />
@@ -1376,10 +1564,6 @@
               <PropertyRef Name="ShiftId" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="EmployeeShiftEmployee">
-          <End Type="DatabaseModel.EmployeeShift" Role="EmployeeShift" Multiplicity="*" />
-          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="0..1" />
         </Association>
         <Association Name="EmployeeRestaurant">
           <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="*" />
@@ -1467,6 +1651,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Weighting" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TeamCommendations" Relationship="DatabaseModel.TeamCommendationEmployeeCommendationClassification" FromRole="EmployeeCommendationClassification" ToRole="TeamCommendation" />
+          <Property Name="AvailableOnTeam" Type="Boolean" Nullable="false" />
+          <Property Name="AvailableOnUser" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SkillCategories" Relationship="DatabaseModel.SkillCategoryEmployeeCommendationClassification" FromRole="EmployeeCommendationClassification" ToRole="SkillCategory" />
         </EntityType>
         <Association Name="EmployeeCommendationEmployeeCommendationClassification">
           <End Type="DatabaseModel.EmployeeCommendation" Role="EmployeeCommendation" Multiplicity="*" />
@@ -1589,6 +1777,59 @@
           <End Type="DatabaseModel.EmployeeNA" Role="EmployeeNA" Multiplicity="*" />
           <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="0..1" />
         </Association>
+        <EntityType Name="TeamCommendation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Shift" Relationship="DatabaseModel.ShiftTeamCommendation" FromRole="TeamCommendation" ToRole="Shift" />
+          <Property Name="Reason" Type="String" Nullable="false" />
+          <NavigationProperty Name="EmployeeCommendationClassification" Relationship="DatabaseModel.TeamCommendationEmployeeCommendationClassification" FromRole="TeamCommendation" ToRole="EmployeeCommendationClassification" />
+        </EntityType>
+        <Association Name="ShiftTeamCommendation">
+          <End Type="DatabaseModel.Shift" Role="Shift" Multiplicity="1" />
+          <End Type="DatabaseModel.TeamCommendation" Role="TeamCommendation" Multiplicity="*" />
+        </Association>
+        <Association Name="TeamCommendationEmployeeCommendationClassification">
+          <End Type="DatabaseModel.TeamCommendation" Role="TeamCommendation" Multiplicity="*" />
+          <End Type="DatabaseModel.EmployeeCommendationClassification" Role="EmployeeCommendationClassification" Multiplicity="1" />
+        </Association>
+        <EntityType Name="SkillCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="EmployeeCommendationClassifications" Relationship="DatabaseModel.SkillCategoryEmployeeCommendationClassification" FromRole="SkillCategory" ToRole="EmployeeCommendationClassification" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="EmployeeShifts" Relationship="DatabaseModel.SkillCategoryEmployeeShift" FromRole="SkillCategory" ToRole="EmployeeShift" />
+        </EntityType>
+        <Association Name="SkillCategoryEmployeeCommendationClassification">
+          <End Type="DatabaseModel.SkillCategory" Role="SkillCategory" Multiplicity="*" />
+          <End Type="DatabaseModel.EmployeeCommendationClassification" Role="EmployeeCommendationClassification" Multiplicity="*" />
+        </Association>
+        <Association Name="SkillCategoryEmployeeShift">
+          <End Type="DatabaseModel.SkillCategory" Role="SkillCategory" Multiplicity="*" />
+          <End Type="DatabaseModel.EmployeeShift" Role="EmployeeShift" Multiplicity="*" />
+        </Association>
+        <EntityType Name="EmployeeShiftAssignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateInactive" Type="DateTime" Nullable="true" />
+          <Property Name="Reason" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="DatabaseModel.EmployeeShiftAssignmentEmployee" FromRole="EmployeeShiftAssignment" ToRole="Employee" />
+          <NavigationProperty Name="EmployeeShift" Relationship="DatabaseModel.EmployeeShiftAssignmentEmployeeShift" FromRole="EmployeeShiftAssignment" ToRole="EmployeeShift" />
+          <Property Name="CancelReason" Type="String" Nullable="true" />
+        </EntityType>
+        <Association Name="EmployeeShiftAssignmentEmployee">
+          <End Type="DatabaseModel.EmployeeShiftAssignment" Role="EmployeeShiftAssignment" Multiplicity="*" />
+          <End Type="DatabaseModel.Employee" Role="Employee" Multiplicity="1" />
+        </Association>
+        <Association Name="EmployeeShiftAssignmentEmployeeShift">
+          <End Type="DatabaseModel.EmployeeShiftAssignment" Role="EmployeeShiftAssignment" Multiplicity="*" />
+          <End Type="DatabaseModel.EmployeeShift" Role="EmployeeShift" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1642,7 +1883,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
           <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
-          <ScalarProperty Name="BookingClasificationId" ColumnName="BookingClasificationId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
@@ -1741,6 +1981,7 @@
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
+          <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1763,6 +2004,7 @@
           <ScalarProperty Name="StartTime" ColumnName="StartTime" />
           <ScalarProperty Name="EndTime" ColumnName="EndTime" />
           <ScalarProperty Name="EmployeeShiftCategoryId" ColumnName="EmployeeShiftCategoryId" />
+          <ScalarProperty Name="EmployeeAssignedDate" ColumnName="EmployeeAssignedDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1811,6 +2053,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Weighting" ColumnName="Weighting" />
+          <ScalarProperty Name="AvailableOnTeam" ColumnName="AvailableOnTeam" />
+          <ScalarProperty Name="AvailableOnUser" ColumnName="AvailableOnUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1854,6 +2098,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TeamCommendations">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.TeamCommendation)">
+        <MappingFragment StoreEntitySet="TeamCommendations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SkillCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.SkillCategory)">
+        <MappingFragment StoreEntitySet="SkillCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeShiftAssignments">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.EmployeeShiftAssignment)">
+        <MappingFragment StoreEntitySet="EmployeeShiftAssignments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateInactive" ColumnName="DateInactive" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="CancelReason" ColumnName="CancelReason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="BookingClasificationLockOutDate" TypeName="DatabaseModel.BookingClasificationLockOutDate" StoreEntitySet="BookingClasificationLockOutDate">
       <EndProperty Name="BookingClasification">
         <ScalarProperty Name="Id" ColumnName="BookingClasifications_Id" />
@@ -1877,15 +2147,6 @@
       <EndProperty Name="EmployeeNA">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="EmployeeShiftEmployee" TypeName="DatabaseModel.EmployeeShiftEmployee" StoreEntitySet="EmployeeShifts">
-      <EndProperty Name="Employee">
-        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
-      </EndProperty>
-      <EndProperty Name="EmployeeShift">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Employee_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="EmployeeRestaurant" TypeName="DatabaseModel.EmployeeRestaurant" StoreEntitySet="EmployeeRestaurant">
       <EndProperty Name="Employee">
@@ -2002,6 +2263,54 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
       <Condition ColumnName="ApprovedBy_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ShiftTeamCommendation" TypeName="DatabaseModel.ShiftTeamCommendation" StoreEntitySet="TeamCommendations">
+      <EndProperty Name="Shift">
+        <ScalarProperty Name="Id" ColumnName="Shift_Id" />
+      </EndProperty>
+      <EndProperty Name="TeamCommendation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TeamCommendationEmployeeCommendationClassification" TypeName="DatabaseModel.TeamCommendationEmployeeCommendationClassification" StoreEntitySet="TeamCommendations">
+      <EndProperty Name="EmployeeCommendationClassification">
+        <ScalarProperty Name="Id" ColumnName="EmployeeCommendationClassification_Id" />
+      </EndProperty>
+      <EndProperty Name="TeamCommendation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SkillCategoryEmployeeCommendationClassification" TypeName="DatabaseModel.SkillCategoryEmployeeCommendationClassification" StoreEntitySet="SkillCategoryEmployeeCommendationClassification">
+      <EndProperty Name="SkillCategory">
+        <ScalarProperty Name="Id" ColumnName="SkillCategories_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeCommendationClassification">
+        <ScalarProperty Name="Id" ColumnName="EmployeeCommendationClassifications_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SkillCategoryEmployeeShift" TypeName="DatabaseModel.SkillCategoryEmployeeShift" StoreEntitySet="SkillCategoryEmployeeShift">
+      <EndProperty Name="SkillCategory">
+        <ScalarProperty Name="Id" ColumnName="PreferredSkillCategories_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeShift">
+        <ScalarProperty Name="Id" ColumnName="EmployeeShifts_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeShiftAssignmentEmployee" TypeName="DatabaseModel.EmployeeShiftAssignmentEmployee" StoreEntitySet="EmployeeShiftAssignments">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeShiftAssignment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeShiftAssignmentEmployeeShift" TypeName="DatabaseModel.EmployeeShiftAssignmentEmployeeShift" StoreEntitySet="EmployeeShiftAssignments">
+      <EndProperty Name="EmployeeShift">
+        <ScalarProperty Name="Id" ColumnName="EmployeeShift_Id" />
+      </EndProperty>
+      <EndProperty Name="EmployeeShiftAssignment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>

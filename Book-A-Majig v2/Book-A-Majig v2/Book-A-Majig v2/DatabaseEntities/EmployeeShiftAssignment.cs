@@ -12,17 +12,14 @@ namespace Book_A_Majig_v2.DatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class EmployeeNA
+    public partial class EmployeeShiftAssignment
     {
         public int Id { get; set; }
-        public System.DateTime StartDate { get; set; }
-        public System.DateTime EndDate { get; set; }
-        public string Notes { get; set; }
-        public System.DateTime SubmittedDate { get; set; }
-        public Nullable<System.DateTime> ApprovedDate { get; set; }
+        public Nullable<System.DateTime> DateInactive { get; set; }
+        public string Reason { get; set; }
+        public string CancelReason { get; set; }
     
         public virtual Employee Employee { get; set; }
-        public virtual Employee SubmittedBy { get; set; }
-        public virtual Employee ApprovedBy { get; set; }
+        public virtual EmployeeShift EmployeeShift { get; set; }
     }
 }

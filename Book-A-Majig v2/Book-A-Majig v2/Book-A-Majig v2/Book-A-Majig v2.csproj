@@ -169,12 +169,16 @@
     <Compile Include="DatabaseEntities\EmployeeShift.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseEntities\EmployeeShiftAssignment.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseEntities\EmployeeShiftPresets.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseEntities\EntityPartialClasses\EmployeeAvailabilityDay.cs" />
     <Compile Include="DatabaseEntities\EntityPartialClasses\EmployeePermissions.cs" />
     <Compile Include="DatabaseEntities\EntityPartialClasses\Employee.cs" />
+    <Compile Include="DatabaseEntities\EntityPartialClasses\EmployeeShift.cs" />
     <Compile Include="DatabaseEntities\LockOutDate.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
@@ -197,6 +201,12 @@
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseEntities\ShiftCategory.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseEntities\SkillCategory.cs">
+      <DependentUpon>DatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseEntities\TeamCommendation.cs">
       <DependentUpon>DatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DatabaseEntities\UserInformation.cs">
@@ -317,6 +327,18 @@
     <Compile Include="Views\Common\EmployeeManagement\ViewEmployees.Designer.cs">
       <DependentUpon>ViewEmployees.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\EmployeeCommendations\AddEditStaffCommendation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeCommendations\AddEditStaffCommendation.Designer.cs">
+      <DependentUpon>AddEditStaffCommendation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeCommendations\AddEditTeamCommendation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeCommendations\AddEditTeamCommendation.Designer.cs">
+      <DependentUpon>AddEditTeamCommendation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeCommendations\ViewCommendations.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -371,6 +393,12 @@
     </Compile>
     <Compile Include="Views\Rostering\ReusableControls\StaffMemberDayAvailability.Designer.cs">
       <DependentUpon>StaffMemberDayAvailability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Rostering\ReusableControls\UserDropdown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Rostering\ReusableControls\UserDropdown.Designer.cs">
+      <DependentUpon>UserDropdown.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Rostering\ViewRosters.cs">
       <SubType>Form</SubType>
@@ -445,6 +473,12 @@
     <EmbeddedResource Include="Views\Common\AccessLevelManagement\AddEditAccessLevel.resx">
       <DependentUpon>AddEditAccessLevel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeCommendations\AddEditStaffCommendation.resx">
+      <DependentUpon>AddEditStaffCommendation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeCommendations\AddEditTeamCommendation.resx">
+      <DependentUpon>AddEditTeamCommendation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\EmployeeCommendations\ViewCommendations.resx">
       <DependentUpon>ViewCommendations.cs</DependentUpon>
     </EmbeddedResource>
@@ -471,6 +505,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\ReusableControls\StaffMemberDayAvailability.resx">
       <DependentUpon>StaffMemberDayAvailability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Rostering\ReusableControls\UserDropdown.resx">
+      <DependentUpon>UserDropdown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Rostering\ViewRosters.resx">
       <DependentUpon>ViewRosters.cs</DependentUpon>
