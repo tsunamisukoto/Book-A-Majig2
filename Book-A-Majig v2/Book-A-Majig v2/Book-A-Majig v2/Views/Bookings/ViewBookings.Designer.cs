@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.databaseDataSet = new Book_A_Majig_v2.DatabaseEntities.DatabaseDataSet();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnAddBooking = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -51,25 +50,20 @@
             this.button5 = new System.Windows.Forms.Button();
             this.lblMoreDetails = new System.Windows.Forms.RichTextBox();
             this.userInformation1 = new Book_A_Majig_v2.DatabaseEntities.UserInformation();
-            this.bookingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
+            this.stylesSheetManager1 = new Sb.Windows.Forms.StylesSheet.StylesSheetManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(39, 12);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.stylesSheetManager1.SetStyle(this.dateTimePicker1, "");
             this.dateTimePicker1.TabIndex = 1;
             this.dateTimePicker1.Value = new System.DateTime(2015, 8, 12, 14, 35, 17, 0);
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
@@ -79,6 +73,7 @@
             this.btnAddBooking.Location = new System.Drawing.Point(32, 552);
             this.btnAddBooking.Name = "btnAddBooking";
             this.btnAddBooking.Size = new System.Drawing.Size(119, 23);
+            this.stylesSheetManager1.SetStyle(this.btnAddBooking, "");
             this.btnAddBooking.TabIndex = 2;
             this.btnAddBooking.Text = "Add Booking";
             this.btnAddBooking.UseVisualStyleBackColor = true;
@@ -91,6 +86,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(920, 408);
+            this.stylesSheetManager1.SetStyle(this.dataGridView1, "");
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -100,6 +96,7 @@
             this.button1.Location = new System.Drawing.Point(148, 552);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
+            this.stylesSheetManager1.SetStyle(this.button1, "");
             this.button1.TabIndex = 4;
             this.button1.Text = "Edit";
             this.button1.UseVisualStyleBackColor = true;
@@ -110,6 +107,7 @@
             this.button2.Location = new System.Drawing.Point(245, 9);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
+            this.stylesSheetManager1.SetStyle(this.button2, "");
             this.button2.TabIndex = 5;
             this.button2.Text = "Today";
             this.button2.UseVisualStyleBackColor = true;
@@ -120,6 +118,7 @@
             this.button3.Location = new System.Drawing.Point(218, 552);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
+            this.stylesSheetManager1.SetStyle(this.button3, "DeleteButton");
             this.button3.TabIndex = 6;
             this.button3.Text = "Cancel";
             this.button3.UseVisualStyleBackColor = true;
@@ -130,6 +129,7 @@
             this.button4.Location = new System.Drawing.Point(286, 552);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
+            this.stylesSheetManager1.SetStyle(this.button4, "");
             this.button4.TabIndex = 7;
             this.button4.Text = "Confirm";
             this.button4.UseVisualStyleBackColor = true;
@@ -146,6 +146,7 @@
             this.groupBox1.Location = new System.Drawing.Point(39, 38);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(802, 94);
+            this.stylesSheetManager1.SetStyle(this.groupBox1, "");
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
@@ -156,6 +157,7 @@
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(279, 87);
+            this.stylesSheetManager1.SetStyle(this.richTextBox2, "");
             this.richTextBox2.TabIndex = 5;
             this.richTextBox2.Text = "";
             // 
@@ -165,6 +167,7 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(269, 87);
+            this.stylesSheetManager1.SetStyle(this.richTextBox1, "");
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
@@ -174,6 +177,7 @@
             this.lblNumCovers.Location = new System.Drawing.Point(10, 73);
             this.lblNumCovers.Name = "lblNumCovers";
             this.lblNumCovers.Size = new System.Drawing.Size(35, 13);
+            this.stylesSheetManager1.SetStyle(this.lblNumCovers, "");
             this.lblNumCovers.TabIndex = 3;
             this.lblNumCovers.Text = "label3";
             // 
@@ -183,6 +187,7 @@
             this.label2.Location = new System.Drawing.Point(6, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 13);
+            this.stylesSheetManager1.SetStyle(this.label2, "");
             this.label2.TabIndex = 2;
             this.label2.Text = "Number Of Covers";
             // 
@@ -192,6 +197,7 @@
             this.lblNumBookings.Location = new System.Drawing.Point(10, 37);
             this.lblNumBookings.Name = "lblNumBookings";
             this.lblNumBookings.Size = new System.Drawing.Size(83, 13);
+            this.stylesSheetManager1.SetStyle(this.lblNumBookings, "");
             this.lblNumBookings.TabIndex = 1;
             this.lblNumBookings.Text = "lblNumBookings";
             // 
@@ -201,6 +207,7 @@
             this.label1.Location = new System.Drawing.Point(7, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 13);
+            this.stylesSheetManager1.SetStyle(this.label1, "");
             this.label1.TabIndex = 0;
             this.label1.Text = "Number Of Bookings:";
             // 
@@ -218,6 +225,7 @@
             this.checkedListBox1.Location = new System.Drawing.Point(6, 19);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(142, 94);
+            this.stylesSheetManager1.SetStyle(this.checkedListBox1, "");
             this.checkedListBox1.TabIndex = 9;
             this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
             this.checkedListBox1.Click += new System.EventHandler(this.checkedListBox1_Click);
@@ -229,6 +237,7 @@
             this.groupBox2.Location = new System.Drawing.Point(847, 9);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(154, 123);
+            this.stylesSheetManager1.SetStyle(this.groupBox2, "");
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Show";
@@ -239,6 +248,7 @@
             this.groupBox3.Location = new System.Drawing.Point(1007, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(200, 120);
+            this.stylesSheetManager1.SetStyle(this.groupBox3, "");
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Classifications";
@@ -250,6 +260,7 @@
             this.ShownClassificationListBox.Location = new System.Drawing.Point(0, 16);
             this.ShownClassificationListBox.Name = "ShownClassificationListBox";
             this.ShownClassificationListBox.Size = new System.Drawing.Size(194, 94);
+            this.stylesSheetManager1.SetStyle(this.ShownClassificationListBox, "");
             this.ShownClassificationListBox.TabIndex = 0;
             this.ShownClassificationListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ShownClassificationListBox_ItemCheck);
             this.ShownClassificationListBox.SelectedIndexChanged += new System.EventHandler(this.ShownClassificationListBox_SelectedIndexChanged);
@@ -259,6 +270,7 @@
             this.button5.Location = new System.Drawing.Point(356, 552);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
+            this.stylesSheetManager1.SetStyle(this.button5, "");
             this.button5.TabIndex = 12;
             this.button5.Text = "Arrived";
             this.button5.UseVisualStyleBackColor = true;
@@ -271,6 +283,7 @@
             this.lblMoreDetails.Name = "lblMoreDetails";
             this.lblMoreDetails.ReadOnly = true;
             this.lblMoreDetails.Size = new System.Drawing.Size(500, 408);
+            this.stylesSheetManager1.SetStyle(this.lblMoreDetails, "");
             this.lblMoreDetails.TabIndex = 13;
             this.lblMoreDetails.Text = "";
             // 
@@ -279,12 +292,9 @@
             this.userInformation1.Location = new System.Drawing.Point(1213, 26);
             this.userInformation1.Name = "userInformation1";
             this.userInformation1.Size = new System.Drawing.Size(245, 98);
+            this.stylesSheetManager1.SetStyle(this.userInformation1, "");
             this.userInformation1.TabIndex = 14;
             this.userInformation1.UserID = null;
-            // 
-            // bookingBindingSource
-            // 
-            this.bookingBindingSource.DataSource = typeof(Book_A_Majig_v2.DatabaseEntities.Booking);
             // 
             // ViewBookings
             // 
@@ -305,22 +315,20 @@
             this.Controls.Add(this.btnAddBooking);
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "ViewBookings";
+            this.stylesSheetManager1.SetStyle(this, "");
             this.Text = "ViewBookings";
             this.Load += new System.EventHandler(this.ViewBookings_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private DatabaseEntities.DatabaseDataSet databaseDataSet;
-        private System.Windows.Forms.BindingSource bookingBindingSource;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnAddBooking;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -342,5 +350,6 @@
         private DatabaseEntities.UserInformation userInformation1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
+        private Sb.Windows.Forms.StylesSheet.StylesSheetManager stylesSheetManager1;
     }
 }

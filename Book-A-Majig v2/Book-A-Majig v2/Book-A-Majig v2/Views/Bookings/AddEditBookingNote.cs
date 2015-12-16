@@ -40,6 +40,8 @@ namespace Book_A_Majig_v2.Views.Bookings
             }
             presetNotes = unitOfWork.PresetNoteRepository.Get().ToList();
             dataGridView1.DataSource = presetNotes;
+            stylesSheetManager1.ApplyStyles();
+
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

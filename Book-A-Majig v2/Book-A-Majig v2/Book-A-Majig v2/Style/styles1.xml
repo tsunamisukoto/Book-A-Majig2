@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StylesSheetFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Styles>
+		<Style Name="SaveButton">
+			<Properties>
+				<Property Name="BackColor" Value="DarkGreen"/>	
+				<Property Name="ForeColor" Value="ControlLight"/>
+        <Property Name="FlatStyle" Value="Flat"/>
+      </Properties>
+		</Style>
+    <Style Name="CancelButton">
+      <Properties>
+        <Property Name="BackColor" Value="64, 64, 64"/>
+        <Property Name="ForeColor" Value="ControlLight"/>
+        <Property Name="FlatStyle" Value="Flat"/>
+      </Properties>
+    </Style>
+    <Style Name="DeleteButton">
+      <Properties>
+        <Property Name="BackColor" Value="192,0 ,0 "/>
+        <Property Name="ForeColor" Value="ControlLight"/>
+        <Property Name="FlatStyle" Value="Flat"/>
+        
+      </Properties>
+    </Style>
+	</Styles>
+</StylesSheetFile>

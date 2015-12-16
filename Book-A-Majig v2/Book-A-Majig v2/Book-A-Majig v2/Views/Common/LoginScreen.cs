@@ -22,6 +22,7 @@ namespace Book_A_Majig_v2
             {
                 InteractiveViews.SetViewCacheFactory(ctx, new FileViewCacheFactory(Environment.CurrentDirectory + @"\EFCache\EFCache.xml"));
             }
+           stylesSheetManager1.ApplyStyles();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -65,6 +66,11 @@ namespace Book_A_Majig_v2
                 MessageBox.Show(ex4.Message + " " + string.Join(", ", ex4.EntityValidationErrors.SelectMany(x => x.ValidationErrors.SelectMany(y => y.ErrorMessage))));
             }
           
+        }
+
+        private void LoginScreen_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

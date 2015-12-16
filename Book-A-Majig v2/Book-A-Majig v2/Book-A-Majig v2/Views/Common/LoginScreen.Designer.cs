@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tbUserId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.stylesSheetManager1 = new Sb.Windows.Forms.StylesSheet.StylesSheetManager(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -80,6 +83,8 @@
             this.Controls.Add(this.btnLogin);
             this.Name = "LoginScreen";
             this.Text = "LoginScreen";
+            this.Load += new System.EventHandler(this.LoginScreen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,5 +96,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox tbUserId;
         private System.Windows.Forms.Label label1;
+        private Sb.Windows.Forms.StylesSheet.StylesSheetManager stylesSheetManager1;
     }
 }

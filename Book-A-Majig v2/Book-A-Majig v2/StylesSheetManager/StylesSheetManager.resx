@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -112,12 +112,35 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="stylesSheetManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="PropertyNotFoundException" xml:space="preserve">
+    <value>An error has been encountered  because  an invalid property ('{1}') has been defined for the '{0}' control.</value>
+  </data>
+  <data name="StylesSheetFileNotFoundException" xml:space="preserve">
+    <value>The styles sheet file (defined in the app.config) hasn' been found. Please, checks its path : '{0}'</value>
+  </data>
+  <data name="StyleNotPresentInStylesSheetFileException" xml:space="preserve">
+    <value>The '{0}' style applied to the '{1}' control hasn't been found in the styles sheet file.</value>
+  </data>
+  <data name="IndexedPropertyNotCorrectlyDefinedException" xml:space="preserve">
+    <value>An error has been encountered when set '{2}' to the '{1}' property of the '{0}' control. 
+Only the indexed properties which implement the IList interface are supported. Moreover, the indexed properties must be defined like the following : control_name[index].property = value.</value>
+  </data>
+  <data name="PropertyValueTagNotFoundException" xml:space="preserve">
+    <value>An error has been encountered  when reading the value of the '{1}' property of the '{0}' style. The 'Value' tag seems not to be present or not named correctly for this property.</value>
+  </data>
+  <data name="PropertyNameTagNotFoundException" xml:space="preserve">
+    <value>An error has been encountered when reading one of the properties of the '{0}' style. The 'Name' tag seems not to be present or not named correctly for this property.</value>
+  </data>
+  <data name="UnexpectedException" xml:space="preserve">
+    <value>The following error has been encountered : 
+{1}</value>
+  </data>
+  <data name="StylesSheetFileNameNotDefinedInAppConfigException" xml:space="preserve">
+    <value>The 'StylesSheetFilename' key hasn't been found in the app.config file. Please, create this key (in the appSettings section) and set it to the (absolute) path of the styles sheet file to use.</value>
+  </data>
 </root>
