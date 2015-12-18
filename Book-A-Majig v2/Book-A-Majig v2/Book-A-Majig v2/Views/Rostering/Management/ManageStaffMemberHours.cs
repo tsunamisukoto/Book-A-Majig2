@@ -32,6 +32,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             staffMemberDayAvailability6.btnModify.Click += B_Click;
             staffMemberDayAvailability7.btnModify.Click += B_Click;
             Rebind();
+            RebindEmployeeNAs();
         }
         private void RebindEmployeeNAs()
         {

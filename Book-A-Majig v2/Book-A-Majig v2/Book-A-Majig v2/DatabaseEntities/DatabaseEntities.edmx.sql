@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/14/2015 23:46:56
+-- Date Created: 12/18/2015 23:05:39
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -514,7 +514,8 @@ GO
 -- Creating table 'SkillCategories'
 CREATE TABLE [dbo].[SkillCategories] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL
+    [Name] nvarchar(max)  NOT NULL,
+    [Paremt_Id] int  NOT NULL
 );
 GO
 
@@ -1371,6 +1372,21 @@ GO
 CREATE INDEX [IX_FK_EmployeeShiftAssignmentEmployeeShift]
 ON [dbo].[EmployeeShiftAssignments]
     ([EmployeeShift_Id]);
+GO
+
+-- Creating foreign key on [Paremt_Id] in table 'SkillCategories'
+ALTER TABLE [dbo].[SkillCategories]
+ADD CONSTRAINT [FK_SkillCategorySkillCategory]
+    FOREIGN KEY ([Paremt_Id])
+    REFERENCES [dbo].[SkillCategories]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SkillCategorySkillCategory'
+CREATE INDEX [IX_FK_SkillCategorySkillCategory]
+ON [dbo].[SkillCategories]
+    ([Paremt_Id]);
 GO
 
 -- --------------------------------------------------

@@ -51,6 +51,7 @@
             this.lblMoreDetails = new System.Windows.Forms.RichTextBox();
             this.userInformation1 = new Book_A_Majig_v2.DatabaseEntities.UserInformation();
             this.stylesSheetManager1 = new Sb.Windows.Forms.StylesSheet.StylesSheetManager(this.components);
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -115,13 +116,16 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button3.Location = new System.Drawing.Point(218, 552);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.stylesSheetManager1.SetStyle(this.button3, "DeleteButton");
             this.button3.TabIndex = 6;
             this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
@@ -296,11 +300,23 @@
             this.userInformation1.TabIndex = 14;
             this.userInformation1.UserID = null;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(429, 552);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(84, 23);
+            this.stylesSheetManager1.SetStyle(this.button6, "");
+            this.button6.TabIndex = 15;
+            this.button6.Text = "Administration";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // ViewBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1483, 587);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.userInformation1);
             this.Controls.Add(this.lblMoreDetails);
             this.Controls.Add(this.button5);
@@ -351,5 +367,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private Sb.Windows.Forms.StylesSheet.StylesSheetManager stylesSheetManager1;
+        private System.Windows.Forms.Button button6;
     }
 }

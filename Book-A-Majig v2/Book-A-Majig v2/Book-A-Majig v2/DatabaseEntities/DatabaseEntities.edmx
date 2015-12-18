@@ -209,6 +209,10 @@
       <End Role="EmployeeShiftAssignment" EntitySet="EmployeeShiftAssignments" />
       <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
     </AssociationSet>
+    <AssociationSet Name="SkillCategorySkillCategory" Association="DatabaseModel.Store.SkillCategorySkillCategory">
+      <End Role="SkillCategory" EntitySet="SkillCategories" />
+      <End Role="SkillCategory1" EntitySet="SkillCategories" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="AccessLevels">
     <Key>
@@ -478,6 +482,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Paremt_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="EmployeeShiftAssignments">
     <Key>
@@ -923,6 +928,18 @@
       </Principal>
       <Dependent Role="EmployeeShiftAssignment">
         <PropertyRef Name="EmployeeShift_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SkillCategorySkillCategory">
+    <End Role="SkillCategory" Type="DatabaseModel.Store.SkillCategories" Multiplicity="1" />
+    <End Role="SkillCategory1" Type="DatabaseModel.Store.SkillCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SkillCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SkillCategory1">
+        <PropertyRef Name="Paremt_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1462,6 +1479,10 @@
             <End Role="EmployeeShiftAssignment" EntitySet="EmployeeShiftAssignments" />
             <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
           </AssociationSet>
+          <AssociationSet Name="SkillCategorySkillCategory" Association="DatabaseModel.SkillCategorySkillCategory">
+            <End Role="SkillCategory" EntitySet="SkillCategories" />
+            <End Role="SkillCategory1" EntitySet="SkillCategories" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="PresetNote">
           <Key>
@@ -1802,6 +1823,8 @@
           <NavigationProperty Name="EmployeeCommendationClassifications" Relationship="DatabaseModel.SkillCategoryEmployeeCommendationClassification" FromRole="SkillCategory" ToRole="EmployeeCommendationClassification" />
           <Property Name="Name" Type="String" Nullable="false" />
           <NavigationProperty Name="EmployeeShifts" Relationship="DatabaseModel.SkillCategoryEmployeeShift" FromRole="SkillCategory" ToRole="EmployeeShift" />
+          <NavigationProperty Name="Children" Relationship="DatabaseModel.SkillCategorySkillCategory" FromRole="SkillCategory" ToRole="SkillCategory1" />
+          <NavigationProperty Name="Paremt" Relationship="DatabaseModel.SkillCategorySkillCategory" FromRole="SkillCategory1" ToRole="SkillCategory" />
         </EntityType>
         <Association Name="SkillCategoryEmployeeCommendationClassification">
           <End Type="DatabaseModel.SkillCategory" Role="SkillCategory" Multiplicity="*" />
@@ -1829,6 +1852,10 @@
         <Association Name="EmployeeShiftAssignmentEmployeeShift">
           <End Type="DatabaseModel.EmployeeShiftAssignment" Role="EmployeeShiftAssignment" Multiplicity="*" />
           <End Type="DatabaseModel.EmployeeShift" Role="EmployeeShift" Multiplicity="1" />
+        </Association>
+        <Association Name="SkillCategorySkillCategory">
+          <End Type="DatabaseModel.SkillCategory" Role="SkillCategory" Multiplicity="1" />
+          <End Type="DatabaseModel.SkillCategory" Role="SkillCategory1" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -2309,6 +2336,14 @@
         <ScalarProperty Name="Id" ColumnName="EmployeeShift_Id" />
       </EndProperty>
       <EndProperty Name="EmployeeShiftAssignment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SkillCategorySkillCategory" TypeName="DatabaseModel.SkillCategorySkillCategory" StoreEntitySet="SkillCategories">
+      <EndProperty Name="SkillCategory">
+        <ScalarProperty Name="Id" ColumnName="Paremt_Id" />
+      </EndProperty>
+      <EndProperty Name="SkillCategory1">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

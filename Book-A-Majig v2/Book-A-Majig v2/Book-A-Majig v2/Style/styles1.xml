@@ -23,5 +23,13 @@
         
       </Properties>
     </Style>
+    <Style Name="PrimaryButton">
+      <Properties>
+        <Property Name="BackColor" Value="Navy"/>
+        <Property Name="ForeColor" Value="ControlLight"/>
+        <Property Name="FlatStyle" Value="Flat"/>
+
+      </Properties>
+    </Style>
 	</Styles>
 </StylesSheetFile>

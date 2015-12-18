@@ -53,6 +53,7 @@
             this.radioButton1.Location = new System.Drawing.Point(3, 20);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(55, 17);
+            this.stylesSheetManager1.SetStyle(this.radioButton1, "");
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Preset";
@@ -65,6 +66,7 @@
             this.radioButton2.Location = new System.Drawing.Point(109, 20);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(60, 17);
+            this.stylesSheetManager1.SetStyle(this.radioButton2, "");
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Custom";
@@ -76,6 +78,7 @@
             this.label1.Location = new System.Drawing.Point(15, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
+            this.stylesSheetManager1.SetStyle(this.label1, "");
             this.label1.TabIndex = 2;
             this.label1.Text = "Severity";
             // 
@@ -84,6 +87,7 @@
             this.nmudSeverity.Location = new System.Drawing.Point(18, 85);
             this.nmudSeverity.Name = "nmudSeverity";
             this.nmudSeverity.Size = new System.Drawing.Size(120, 20);
+            this.stylesSheetManager1.SetStyle(this.nmudSeverity, "");
             this.nmudSeverity.TabIndex = 3;
             // 
             // label2
@@ -92,6 +96,7 @@
             this.label2.Location = new System.Drawing.Point(15, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
+            this.stylesSheetManager1.SetStyle(this.label2, "");
             this.label2.TabIndex = 4;
             this.label2.Text = "Note";
             // 
@@ -101,6 +106,7 @@
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(553, 213);
+            this.stylesSheetManager1.SetStyle(this.tbNote, "");
             this.tbNote.TabIndex = 5;
             // 
             // dataGridView1
@@ -113,28 +119,35 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(550, 253);
+            this.stylesSheetManager1.SetStyle(this.dataGridView1, "");
             this.dataGridView1.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(18, 362);
+            this.button1.BackColor = System.Drawing.Color.DarkGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.Location = new System.Drawing.Point(12, 442);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.stylesSheetManager1.SetStyle(this.button1, "SaveButton");
             this.button1.TabIndex = 7;
             this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(100, 362);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button2.Location = new System.Drawing.Point(93, 442);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.stylesSheetManager1.SetStyle(this.button2, "CancelButton");
             this.button2.TabIndex = 8;
             this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -144,6 +157,7 @@
             this.groupBox1.Location = new System.Drawing.Point(18, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(547, 50);
+            this.stylesSheetManager1.SetStyle(this.groupBox1, "");
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Note Type";
@@ -153,6 +167,7 @@
             this.button3.Location = new System.Drawing.Point(175, 14);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
+            this.stylesSheetManager1.SetStyle(this.button3, "");
             this.button3.TabIndex = 10;
             this.button3.Text = "Load Preset";
             this.button3.UseVisualStyleBackColor = true;
@@ -162,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 398);
+            this.ClientSize = new System.Drawing.Size(578, 477);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

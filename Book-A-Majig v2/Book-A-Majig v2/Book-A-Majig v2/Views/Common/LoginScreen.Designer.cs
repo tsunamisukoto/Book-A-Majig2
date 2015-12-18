@@ -42,6 +42,7 @@
             this.btnLogin.Location = new System.Drawing.Point(12, 410);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.stylesSheetManager1.SetStyle(this.btnLogin, "");
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -52,6 +53,7 @@
             this.btnCancel.Location = new System.Drawing.Point(93, 410);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.stylesSheetManager1.SetStyle(this.btnCancel, "");
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -61,6 +63,7 @@
             this.tbUserId.Location = new System.Drawing.Point(12, 244);
             this.tbUserId.Name = "tbUserId";
             this.tbUserId.Size = new System.Drawing.Size(273, 20);
+            this.stylesSheetManager1.SetStyle(this.tbUserId, "");
             this.tbUserId.TabIndex = 2;
             // 
             // label1
@@ -69,6 +72,7 @@
             this.label1.Location = new System.Drawing.Point(12, 228);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
+            this.stylesSheetManager1.SetStyle(this.label1, "");
             this.label1.TabIndex = 3;
             this.label1.Text = "User ID:";
             // 
@@ -82,6 +86,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Name = "LoginScreen";
+            this.stylesSheetManager1.SetStyle(this, "");
             this.Text = "LoginScreen";
             this.Load += new System.EventHandler(this.LoginScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).EndInit();

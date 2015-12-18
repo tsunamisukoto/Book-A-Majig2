@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="656da68b7d7249a39590ba66ac7d6d80" Name="Diagram1" ZoomLevel="29">
+      <Diagram DiagramId="656da68b7d7249a39590ba66ac7d6d80" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="DatabaseModel.AccessLevel" Width="1.5" PointX="6.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.BookingClasification" Width="1.5" PointX="14.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.BookingConfirmation" Width="1.5" PointX="19.375" PointY="5.5" IsExpanded="true" />
@@ -16,10 +16,8 @@
         <EntityTypeShape EntityType="DatabaseModel.Restaurant" Width="1.5" PointX="11.5" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="DatabaseModel.FK_EmployeeAccessLevel" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_BookingBookingClasification" ManuallyRouted="true" >
-          <ConnectorPoint PointX="15.75" PointY="5.4802864583333326" />
-          <ConnectorPoint PointX="16.125" PointY="19.186137828233484" />
-          <ConnectorPoint PointX="16.125" PointY="163.14575349710219" />
-          <ConnectorPoint PointX="16.5" PointY="6.0667122395833326" />
+          <ConnectorPoint PointX="15.75" PointY="4.5096707069618205" />
+          <ConnectorPoint PointX="16.5" PointY="3.3482701462657216" />
         </AssociationConnector>
         <AssociationConnector Association="DatabaseModel.FK_BookingConfirmationBooking" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_BookingNotesBooking" ManuallyRouted="false" />
@@ -65,7 +63,7 @@
         <AssociationConnector Association="DatabaseModel.DateNoteRestaurant" />
         <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee1" />
         <AssociationConnector Association="DatabaseModel.EmployeeNAEmployee2" />
-        <EntityTypeShape EntityType="DatabaseModel.TeamCommendation" Width="1.5" PointX="14" PointY="16.75" />
+        <EntityTypeShape EntityType="DatabaseModel.TeamCommendation" Width="1.5" PointX="13.375" PointY="16.5" />
         <AssociationConnector Association="DatabaseModel.ShiftTeamCommendation" />
         <AssociationConnector Association="DatabaseModel.TeamCommendationEmployeeCommendationClassification" />
         <EntityTypeShape EntityType="DatabaseModel.SkillCategory" Width="1.5" PointX="18.25" PointY="16.5" />
@@ -74,6 +72,7 @@
         <EntityTypeShape EntityType="DatabaseModel.EmployeeShiftAssignment" Width="2.125" PointX="13.375" PointY="13.875" />
         <AssociationConnector Association="DatabaseModel.EmployeeShiftAssignmentEmployee" />
         <AssociationConnector Association="DatabaseModel.EmployeeShiftAssignmentEmployeeShift" />
+        <AssociationConnector Association="DatabaseModel.SkillCategorySkillCategory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

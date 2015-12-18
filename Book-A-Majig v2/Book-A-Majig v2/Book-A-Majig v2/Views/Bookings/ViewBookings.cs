@@ -1,5 +1,6 @@
 ﻿using Book_A_Majig_v2.DatabaseEntities;
 using Book_A_Majig_v2.Services;
+using Book_A_Majig_v2.Views.Bookings.Administration;
 using LinqKit;
 using System;
 using System.Collections.Generic;
@@ -344,6 +345,13 @@ namespace Book_A_Majig_v2
         {
             classes[e.Index] = (e.NewValue == CheckState.Checked);
             Rebind();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            BookingAdministrationHome v = new BookingAdministrationHome() { User = User };
+            v.ShowDialog();
         }
     }
 }

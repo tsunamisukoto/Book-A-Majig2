@@ -36,7 +36,7 @@ namespace Sb.Windows.Forms.StylesSheet
 
             foreach (ProjectItem item in activeProject.ProjectItems)
             {
-                if (item.Name.Equals("app.config"))
+                if (item.Name.Equals("App.Config"))
                 {
                     System.IO.FileInfo info = new System.IO.FileInfo(activeProject.FullName);
                     return info.Directory.FullName + "\\" + item.Name;

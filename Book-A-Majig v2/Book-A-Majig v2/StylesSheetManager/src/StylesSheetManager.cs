@@ -165,9 +165,10 @@ namespace Sb.Windows.Forms.StylesSheet
             get
             {
                 string filename = null;
-         
-                    filename = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()))+ "\\Style\\styles1.xml";
-
+                if (DesignMode)
+                    filename = "C:\\Users\\Scott\\Source\\Repos\\Book-A-Majig2\\Book-A-Majig v2\\Book-A-Majig v2\\Book-A-Majig v2\\"+ GetAppSettingsValue("StylesSheetFilename");
+                else
+                    filename =Directory.GetCurrentDirectory()+ ConfigurationManager.AppSettings["StylesSheetFilename"];
 
                 if (String.IsNullOrEmpty(filename))
                     throw new StylesSheetException(StylesSheetException.ExceptionType.StylesSheetFileNameNotDefinedInAppConfig);

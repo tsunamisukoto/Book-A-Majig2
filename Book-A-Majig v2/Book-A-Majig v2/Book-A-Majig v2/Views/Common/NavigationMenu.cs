@@ -60,5 +60,10 @@ namespace Book_A_Majig_v2.Views.Common
            ViewAccessLevels v = new ViewAccessLevels() { User = User };
             v.ShowDialog();
         }
+
+        private void NavigationMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
