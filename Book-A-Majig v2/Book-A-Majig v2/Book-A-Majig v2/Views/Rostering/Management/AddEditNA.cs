@@ -25,7 +25,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
         private void AddEditNA_Load(object sender, EventArgs e)
         {
             var unitofwork = new UnitOfWork();
-            AllEmployees =unitofwork.EmpoyeeRepository.Get(x => x.DateInactive == null).ToList();
+            AllEmployees =unitofwork.EmployeeRepository.Get(x => x.DateInactive == null).ToList();
             cbEmployees.DataSource = AllEmployees.ToList();
             cbEmployees.ValueMember="Id";
             cbEmployees.DisplayMember = "FullName";
@@ -63,7 +63,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
         private EmployeeNA GetFields(EmployeeNA ena)
         {
             var unitOfWork = new UnitOfWork();
-            ena.Employee = unitOfWork.EmpoyeeRepository.GetByID(cbEmployees.SelectedValue);
+            ena.Employee = unitOfWork.EmployeeRepository.GetByID(cbEmployees.SelectedValue);
             ena.StartDate = dtpStartDate.Value;
             ena.EndDate = dtpEndDate.Value;
             if(cbStartTime.Checked)
@@ -82,7 +82,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             {
                 ena.EndDate = ena.EndDate.Date.AddDays(1).AddTicks(-1);
             }
-            ena.SubmittedBy= unitOfWork.EmpoyeeRepository.GetByID(User.Id);
+            ena.SubmittedBy= unitOfWork.EmployeeRepository.GetByID(User.Id);
           
             ena.SubmittedDate = DateTime.Today;
             ena.Notes = tbNotes.Text;

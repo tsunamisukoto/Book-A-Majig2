@@ -28,12 +28,17 @@ namespace Book_A_Majig_v2.DatabaseEntities
                 uID = value;
                 if(value!=null)
                 {
-                    var user = new UnitOfWork().EmpoyeeRepository.Get(x => x.Id == uID, includeProperties: "AccessLevel").FirstOrDefault();
+                    var user = new UnitOfWork().EmployeeRepository.Get(x => x.Id == uID, includeProperties: "AccessLevel").FirstOrDefault();
                     lblFullName.Text = user.FullName;
                     lblAccessLevel.Text = user.AccessLevel.Name;
                 }
              
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

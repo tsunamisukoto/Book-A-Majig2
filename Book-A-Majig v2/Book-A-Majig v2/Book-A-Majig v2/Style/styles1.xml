@@ -8,6 +8,21 @@
         <Property Name="FlatStyle" Value="Flat"/>
       </Properties>
 		</Style>
+    <Style Name="AddButton">
+      <Properties>
+        <Property Name="BackColor" Value="DarkTurquoise"/>
+        <Property Name="ForeColor" Value="ControlLight"/>
+        <Property Name="FlatStyle" Value="Flat"/>
+      </Properties>
+    </Style>
+    <Style Name="EditButton">
+      <Properties>
+        <Property Name="BackColor" Value="DarkCyan"/>
+        <Property Name="ForeColor" Value="ControlLight"/>
+        <Property Name="FlatStyle" Value="Flat"/>
+      </Properties>
+    </Style>
+
     <Style Name="CancelButton">
       <Properties>
         <Property Name="BackColor" Value="64, 64, 64"/>

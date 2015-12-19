@@ -28,7 +28,7 @@ namespace Book_A_Majig_v2.Views.Common
         private void Rebind()
         {
             var unitOfWork = new UnitOfWork();
-            employees = unitOfWork.EmpoyeeRepository.Get(x => x.DateInactive == null,null, "AccessLevel").ToList();
+            employees = unitOfWork.EmployeeRepository.Get(x => x.DateInactive == null,null, "AccessLevel").ToList();
             dataGridView1.DataSource = employees.Select(x => new {ID=x.Id, FullName = x.FullName, AccessLevel= x.AccessLevel.Name }).ToList() ;
             dataGridView1.ClearSelection();
         }

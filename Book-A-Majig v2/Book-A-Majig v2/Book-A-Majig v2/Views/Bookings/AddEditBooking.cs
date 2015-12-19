@@ -57,7 +57,6 @@ namespace Book_A_Majig_v2
                 newbookingNotes = currentBooking.BookingNotes.Where(x => x.DateInactive == null).ToList();
             }
             RebindNotes();
-            stylesSheetManager1.ApplyStyles();
 
         }
 

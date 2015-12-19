@@ -137,7 +137,7 @@ namespace Book_A_Majig_v2.Views.Rostering
             var unitofwork = new UnitOfWork();
 
             var listofemployeeidsinuse = ShiftSlots.Where(y => y.Employee != null).Select(y => y.Employee.Id).ToList();
-            AvailableEmployees = unitofwork.EmpoyeeRepository.Get(x => !listofemployeeidsinuse.Contains(x.Id)).ToList();
+            AvailableEmployees = unitofwork.EmployeeRepository.Get(x => !listofemployeeidsinuse.Contains(x.Id)).ToList();
             dgvAvailableUsers.DataSource = AvailableEmployees.Select(x => new { EmployeeName = x.FullName, Suitability = 0 }).ToList();
         }
 

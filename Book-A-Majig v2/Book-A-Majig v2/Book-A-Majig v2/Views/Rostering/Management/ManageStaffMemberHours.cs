@@ -54,7 +54,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             BuildButton(newRestaurant.RosteringStartDay + 5, staffMemberDayAvailability6);
             BuildButton(newRestaurant.RosteringStartDay + 6, staffMemberDayAvailability7);
 
-            lblEmployeeName.Text = unitofwork.EmpoyeeRepository.GetByID(EditedUserID).FullName;
+            lblEmployeeName.Text = unitofwork.EmployeeRepository.GetByID(EditedUserID).FullName;
         }
         private void BuildButton( int day, StaffMemberDayAvailability b)
         {

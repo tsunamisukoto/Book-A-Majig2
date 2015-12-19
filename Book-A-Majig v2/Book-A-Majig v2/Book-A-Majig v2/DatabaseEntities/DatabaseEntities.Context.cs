@@ -52,5 +52,6 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public virtual DbSet<TeamCommendation> TeamCommendations { get; set; }
         public virtual DbSet<SkillCategory> SkillCategories { get; set; }
         public virtual DbSet<EmployeeShiftAssignment> EmployeeShiftAssignments { get; set; }
+        public virtual DbSet<EmployeeCommendationSkillCategory> EmployeeCommendationSkillCategories { get; set; }
     }
 }

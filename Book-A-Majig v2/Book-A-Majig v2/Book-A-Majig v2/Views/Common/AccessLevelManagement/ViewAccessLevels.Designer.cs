@@ -48,6 +48,7 @@
             this.dgvAccessLevels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAccessLevels.Size = new System.Drawing.Size(260, 350);
             this.dgvAccessLevels.TabIndex = 0;
+            this.dgvAccessLevels.SelectionChanged += new System.EventHandler(this.dgvAccessLevels_SelectionChanged);
             // 
             // tbMoreDetails
             // 

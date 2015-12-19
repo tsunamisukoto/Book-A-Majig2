@@ -55,7 +55,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(166, 20);
             this.stylesSheetManager1.SetStyle(this.tbFirstName, "");
-            this.tbFirstName.TabIndex = 0;
+            this.tbFirstName.TabIndex = 1;
             // 
             // tbLastName
             // 
@@ -63,7 +63,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(166, 20);
             this.stylesSheetManager1.SetStyle(this.tbLastName, "");
-            this.tbLastName.TabIndex = 1;
+            this.tbLastName.TabIndex = 2;
             // 
             // label1
             // 
@@ -72,7 +72,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.stylesSheetManager1.SetStyle(this.label1, "");
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 7;
             this.label1.Text = "First Name:";
             // 
             // label2
@@ -82,7 +82,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.stylesSheetManager1.SetStyle(this.label2, "");
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 8;
             this.label2.Text = "Last Name:";
             // 
             // comboBox1
@@ -92,7 +92,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(163, 21);
             this.stylesSheetManager1.SetStyle(this.comboBox1, "");
-            this.comboBox1.TabIndex = 4;
+            this.comboBox1.TabIndex = 5;
             // 
             // label3
             // 
@@ -101,29 +101,35 @@ namespace Book_A_Majig_v2.Views.Common
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.stylesSheetManager1.SetStyle(this.label3, "");
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 11;
             this.label3.Text = "Access Level:";
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.DarkGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button1.Location = new System.Drawing.Point(12, 330);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.stylesSheetManager1.SetStyle(this.button1, "SaveButton");
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 12;
             this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button2.Location = new System.Drawing.Point(94, 329);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.stylesSheetManager1.SetStyle(this.button2, "CancelButton");
-            this.button2.TabIndex = 7;
+            this.button2.TabIndex = 13;
             this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -132,7 +138,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.stylesSheetManager1.SetStyle(this.label4, "");
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 9;
             this.label4.Text = "Phone Number";
             // 
             // label5
@@ -142,7 +148,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.stylesSheetManager1.SetStyle(this.label5, "");
-            this.label5.TabIndex = 9;
+            this.label5.TabIndex = 10;
             this.label5.Text = "Email";
             // 
             // tbPhoneNumber
@@ -151,7 +157,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(160, 20);
             this.stylesSheetManager1.SetStyle(this.tbPhoneNumber, "");
-            this.tbPhoneNumber.TabIndex = 10;
+            this.tbPhoneNumber.TabIndex = 3;
             // 
             // tbEmail
             // 
@@ -159,7 +165,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(160, 20);
             this.stylesSheetManager1.SetStyle(this.tbEmail, "");
-            this.tbEmail.TabIndex = 11;
+            this.tbEmail.TabIndex = 4;
             // 
             // tbID
             // 
@@ -167,7 +173,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.tbID.Name = "tbID";
             this.tbID.Size = new System.Drawing.Size(163, 20);
             this.stylesSheetManager1.SetStyle(this.tbID, "");
-            this.tbID.TabIndex = 12;
+            this.tbID.TabIndex = 0;
             // 
             // label6
             // 
@@ -176,7 +182,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 13);
             this.stylesSheetManager1.SetStyle(this.label6, "");
-            this.label6.TabIndex = 13;
+            this.label6.TabIndex = 6;
             this.label6.Text = "User Logon ID";
             // 
             // AddEditEmployee

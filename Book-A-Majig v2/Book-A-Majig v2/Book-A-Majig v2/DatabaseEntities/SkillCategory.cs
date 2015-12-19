@@ -17,20 +17,20 @@ namespace Book_A_Majig_v2.DatabaseEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SkillCategory()
         {
-            this.EmployeeCommendationClassifications = new HashSet<EmployeeCommendationClassification>();
             this.EmployeeShifts = new HashSet<EmployeeShift>();
             this.Children = new HashSet<SkillCategory>();
+            this.EmployeeCommendationSkillCategories = new HashSet<EmployeeCommendationSkillCategory>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeCommendationClassification> EmployeeCommendationClassifications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeShift> EmployeeShifts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SkillCategory> Children { get; set; }
         public virtual SkillCategory Paremt { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeCommendationSkillCategory> EmployeeCommendationSkillCategories { get; set; }
     }
 }

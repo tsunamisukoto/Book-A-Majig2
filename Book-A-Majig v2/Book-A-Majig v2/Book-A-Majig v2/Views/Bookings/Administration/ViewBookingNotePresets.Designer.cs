@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvPresetNotes = new System.Windows.Forms.DataGridView();
             this.tbMoreDetails = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.stylesSheetManager1 = new Sb.Windows.Forms.StylesSheet.StylesSheetManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPresetNotes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPresetNotes
@@ -46,6 +49,7 @@
             this.dgvPresetNotes.ReadOnly = true;
             this.dgvPresetNotes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPresetNotes.Size = new System.Drawing.Size(260, 350);
+            this.stylesSheetManager1.SetStyle(this.dgvPresetNotes, "");
             this.dgvPresetNotes.TabIndex = 0;
             // 
             // tbMoreDetails
@@ -55,6 +59,7 @@
             this.tbMoreDetails.Name = "tbMoreDetails";
             this.tbMoreDetails.ReadOnly = true;
             this.tbMoreDetails.Size = new System.Drawing.Size(441, 350);
+            this.stylesSheetManager1.SetStyle(this.tbMoreDetails, "");
             this.tbMoreDetails.TabIndex = 1;
             // 
             // button1
@@ -62,6 +67,7 @@
             this.button1.Location = new System.Drawing.Point(12, 369);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 23);
+            this.stylesSheetManager1.SetStyle(this.button1, "AddButton");
             this.button1.TabIndex = 2;
             this.button1.Text = "Add Preset";
             this.button1.UseVisualStyleBackColor = true;
@@ -72,6 +78,7 @@
             this.button2.Location = new System.Drawing.Point(139, 369);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(122, 23);
+            this.stylesSheetManager1.SetStyle(this.button2, "EditButton");
             this.button2.TabIndex = 3;
             this.button2.Text = "Edit Preset";
             this.button2.UseVisualStyleBackColor = true;
@@ -82,6 +89,7 @@
             this.button3.Location = new System.Drawing.Point(267, 369);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(145, 23);
+            this.stylesSheetManager1.SetStyle(this.button3, "DeleteButton");
             this.button3.TabIndex = 4;
             this.button3.Text = "Delete Preset";
             this.button3.UseVisualStyleBackColor = true;
@@ -98,9 +106,11 @@
             this.Controls.Add(this.tbMoreDetails);
             this.Controls.Add(this.dgvPresetNotes);
             this.Name = "ViewBookingNotePresets";
+            this.stylesSheetManager1.SetStyle(this, "");
             this.Text = "ViewAccessLevels";
             this.Load += new System.EventHandler(this.ViewBookingNotePresets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPresetNotes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +123,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private Sb.Windows.Forms.StylesSheet.StylesSheetManager stylesSheetManager1;
     }
 }

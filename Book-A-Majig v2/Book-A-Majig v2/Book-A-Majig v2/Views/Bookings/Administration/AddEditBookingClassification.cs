@@ -35,7 +35,7 @@ namespace Book_A_Majig_v2.Views.Bookings.Administration
                 tbNote.Text = WorkingNote.ClassificationName;
                 
             }
-            stylesSheetManager1.ApplyStyles();
+            //stylesSheetManager1.ApplyStyles();
 
         }
         
@@ -66,6 +66,7 @@ namespace Book_A_Majig_v2.Views.Bookings.Administration
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
 
         }
     }

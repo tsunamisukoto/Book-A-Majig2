@@ -12,15 +12,11 @@ namespace Book_A_Majig_v2.DatabaseEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class EmployeeCommendation
+    public partial class EmployeeCommendationSkillCategory
     {
         public int Id { get; set; }
-        public string Notes { get; set; }
-        public System.DateTime DateCreated { get; set; }
     
-        public virtual Employee RecievingEmployee { get; set; }
-        public virtual Shift Shift { get; set; }
+        public virtual SkillCategory SkillCategory { get; set; }
         public virtual EmployeeCommendationClassification EmployeeCommendationClassification { get; set; }
-        public virtual Employee CommendedBy { get; set; }
     }
 }

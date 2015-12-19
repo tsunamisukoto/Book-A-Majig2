@@ -40,6 +40,58 @@ namespace Book_A_Majig_v2.Services
         private GenericRepository<DatabaseEntities.Roster>rosterRepository;
         private GenericRepository<DatabaseEntities.Shift>shiftRepository;
         private GenericRepository<DatabaseEntities.ShiftCategory>shiftcategoryRepository;
+        private GenericRepository<DatabaseEntities.SkillCategory>skillcategoryRepository;
+        private GenericRepository<DatabaseEntities.EmployeeCommendation>employeecommendationRepository;
+        private GenericRepository<DatabaseEntities.TeamCommendation>teamcommendationRepository;
+        private GenericRepository<DatabaseEntities.EmployeeCommendationClassification>teamcommendationclassificationRepository;
+        public GenericRepository<DatabaseEntities.EmployeeCommendationClassification> TeamCommendationClassificationRepository
+        {
+            get
+            {
+
+                if (this.teamcommendationclassificationRepository == null)
+                {
+                    this.teamcommendationclassificationRepository = new GenericRepository<DatabaseEntities.EmployeeCommendationClassification>(context);
+                }
+                return teamcommendationclassificationRepository;
+            }
+        }
+        public GenericRepository<DatabaseEntities.TeamCommendation> TeamCommendationRepository
+        {
+            get
+            {
+
+                if (this.teamcommendationRepository == null)
+                {
+                    this.teamcommendationRepository = new GenericRepository<DatabaseEntities.TeamCommendation>(context);
+                }
+                return teamcommendationRepository;
+            }
+        }
+        public GenericRepository<DatabaseEntities.EmployeeCommendation> EmployeeCommendationRepository
+        {
+            get
+            {
+
+                if (this.employeecommendationRepository == null)
+                {
+                    this.employeecommendationRepository = new GenericRepository<DatabaseEntities.EmployeeCommendation>(context);
+                }
+                return employeecommendationRepository;
+            }
+        }
+        public GenericRepository<DatabaseEntities.SkillCategory> SkillCategoryRepository
+        {
+            get
+            {
+
+                if (this.shiftcategoryRepository == null)
+                {
+                    this.skillcategoryRepository = new GenericRepository<DatabaseEntities.SkillCategory>(context);
+                }
+                return skillcategoryRepository;
+            }
+        }
         public GenericRepository<DatabaseEntities.ShiftCategory> ShiftCategoryRepository
         {
             get
@@ -177,7 +229,7 @@ namespace Book_A_Majig_v2.Services
             }
         }
 
-        public GenericRepository<DatabaseEntities.Employee> EmpoyeeRepository
+        public GenericRepository<DatabaseEntities.Employee> EmployeeRepository
         {
             get
             {

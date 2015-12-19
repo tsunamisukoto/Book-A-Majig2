@@ -38,7 +38,7 @@ namespace Book_A_Majig_v2.Views.Rostering.ReusableControls
         private void UserDropdown_Load(object sender, EventArgs e)
         {
             var unitofwork = new UnitOfWork();
-            EmployeeList = unitofwork.EmpoyeeRepository.Get(Filter, x => x.OrderBy(y => y.FullName)).ToList();
+            EmployeeList = unitofwork.EmployeeRepository.Get(Filter, x => x.OrderBy(y => y.FullName)).ToList();
             ddlUsers.DisplayMember = "FullName";
             ddlUsers.ValueMember = "Id";
             ddlUsers.DataSource = EmployeeList;

@@ -55,7 +55,7 @@ namespace Book_A_Majig_v2.Views.Rostering.Management
             ead.Notes = tbNotes.Text;
             ead.DateAdded = DateTime.Now;
             var unitOfWork = new UnitOfWork();
-            ead.Employee = unitOfWork.EmpoyeeRepository.GetByID(EditedUserID);
+            ead.Employee = unitOfWork.EmployeeRepository.GetByID(EditedUserID);
             return ead;
         }
         private void button1_Click(object sender, EventArgs e)

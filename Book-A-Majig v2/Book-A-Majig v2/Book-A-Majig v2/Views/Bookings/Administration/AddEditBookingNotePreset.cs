@@ -66,6 +66,11 @@ namespace Book_A_Majig_v2.Views.Bookings.Administration
             unitOfWork.Save();
             DialogResult = DialogResult.OK;
         }
-        
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+
+        }
     }
 }

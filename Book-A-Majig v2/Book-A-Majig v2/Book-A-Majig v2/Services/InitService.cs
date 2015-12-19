@@ -12,7 +12,7 @@ namespace Book_A_Majig_v2.Services
         {
             var unitofwork = new UnitOfWork();
 
-            if (unitofwork.EmpoyeeRepository.Get().Count() == 0)
+            if (unitofwork.EmployeeRepository.Get().Count() == 0)
             {
                 unitofwork.BookingClassificationRepository.Insert(new BookingClasification() { ClassificationName = "Class 1", DisplayOrder = 1 });
                 unitofwork.BookingClassificationRepository.Insert(new BookingClasification() { ClassificationName = "Class 2", DisplayOrder = 1 });
@@ -39,7 +39,7 @@ namespace Book_A_Majig_v2.Services
                 unitofwork.AccessLevelRepository.Insert(new AccessLevel() { Name = "Level 2", Level = 2 });
                 unitofwork.AccessLevelRepository.Insert(new AccessLevel() { Name = "Level 3", Level = 3 });
                 unitofwork.AccessLevelRepository.Insert(new AccessLevel() { Name = "Level 4", Level = 4 });
-                unitofwork.EmpoyeeRepository.Insert(newemployee);
+                unitofwork.EmployeeRepository.Insert(newemployee);
                 unitofwork.PresetNoteRepository.Insert(new PresetNote() { Name = "Gluten Free", Severity = 5 });
                 unitofwork.PresetNoteRepository.Insert(new PresetNote() { Name = "Dairy Free", Severity = 5 });
                 unitofwork.PresetNoteRepository.Insert(new PresetNote() { Name = "Window Seat", Severity = 2 });

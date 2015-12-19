@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/18/2015 23:05:39
+-- Date Created: 12/19/2015 16:35:21
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -128,12 +128,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_TeamCommendationEmployeeCommendationClassification]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TeamCommendations] DROP CONSTRAINT [FK_TeamCommendationEmployeeCommendationClassification];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SkillCategoryEmployeeCommendationClassification_SkillCategory]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SkillCategoryEmployeeCommendationClassification] DROP CONSTRAINT [FK_SkillCategoryEmployeeCommendationClassification_SkillCategory];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SkillCategoryEmployeeCommendationClassification_EmployeeCommendationClassification]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SkillCategoryEmployeeCommendationClassification] DROP CONSTRAINT [FK_SkillCategoryEmployeeCommendationClassification_EmployeeCommendationClassification];
-GO
 IF OBJECT_ID(N'[dbo].[FK_SkillCategoryEmployeeShift_SkillCategory]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SkillCategoryEmployeeShift] DROP CONSTRAINT [FK_SkillCategoryEmployeeShift_SkillCategory];
 GO
@@ -145,6 +139,15 @@ IF OBJECT_ID(N'[dbo].[FK_EmployeeShiftAssignmentEmployee]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_EmployeeShiftAssignmentEmployeeShift]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[EmployeeShiftAssignments] DROP CONSTRAINT [FK_EmployeeShiftAssignmentEmployeeShift];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SkillCategorySkillCategory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SkillCategories] DROP CONSTRAINT [FK_SkillCategorySkillCategory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmployeeCommendationSkillCategorySkillCategory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EmployeeCommendationSkillCategories] DROP CONSTRAINT [FK_EmployeeCommendationSkillCategorySkillCategory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmployeeCommendationSkillCategoryEmployeeCommendationClassification]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EmployeeCommendationSkillCategories] DROP CONSTRAINT [FK_EmployeeCommendationSkillCategoryEmployeeCommendationClassification];
 GO
 
 -- --------------------------------------------------
@@ -229,6 +232,9 @@ GO
 IF OBJECT_ID(N'[dbo].[EmployeeShiftAssignments]', 'U') IS NOT NULL
     DROP TABLE [dbo].[EmployeeShiftAssignments];
 GO
+IF OBJECT_ID(N'[dbo].[EmployeeCommendationSkillCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EmployeeCommendationSkillCategories];
+GO
 IF OBJECT_ID(N'[dbo].[BookingClasificationLockOutDate]', 'U') IS NOT NULL
     DROP TABLE [dbo].[BookingClasificationLockOutDate];
 GO
@@ -237,9 +243,6 @@ IF OBJECT_ID(N'[dbo].[EmployeeRestaurant]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[EmployeeCommendationEmployee]', 'U') IS NOT NULL
     DROP TABLE [dbo].[EmployeeCommendationEmployee];
-GO
-IF OBJECT_ID(N'[dbo].[SkillCategoryEmployeeCommendationClassification]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SkillCategoryEmployeeCommendationClassification];
 GO
 IF OBJECT_ID(N'[dbo].[SkillCategoryEmployeeShift]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SkillCategoryEmployeeShift];
@@ -447,6 +450,7 @@ CREATE TABLE [dbo].[EmployeeCommendations] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Notes] nvarchar(max)  NOT NULL,
     [DateCreated] datetime  NOT NULL,
+    [RecievingEmployee_Id] int  NOT NULL,
     [Shift_Id] int  NULL,
     [EmployeeCommendationClassification_Id] int  NOT NULL,
     [CommendedBy_Id] int  NOT NULL
@@ -530,6 +534,14 @@ CREATE TABLE [dbo].[EmployeeShiftAssignments] (
 );
 GO
 
+-- Creating table 'EmployeeCommendationSkillCategories'
+CREATE TABLE [dbo].[EmployeeCommendationSkillCategories] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [SkillCategory_Id] int  NOT NULL,
+    [EmployeeCommendationClassification_Id] int  NOT NULL
+);
+GO
+
 -- Creating table 'BookingClasificationLockOutDate'
 CREATE TABLE [dbo].[BookingClasificationLockOutDate] (
     [BookingClasifications_Id] int  NOT NULL,
@@ -541,20 +553,6 @@ GO
 CREATE TABLE [dbo].[EmployeeRestaurant] (
     [Employees_Id] int  NOT NULL,
     [Restaurants_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'EmployeeCommendationEmployee'
-CREATE TABLE [dbo].[EmployeeCommendationEmployee] (
-    [EmployeeCommendations_Id] int  NOT NULL,
-    [RecievingEmployee_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'SkillCategoryEmployeeCommendationClassification'
-CREATE TABLE [dbo].[SkillCategoryEmployeeCommendationClassification] (
-    [SkillCategories_Id] int  NOT NULL,
-    [EmployeeCommendationClassifications_Id] int  NOT NULL
 );
 GO
 
@@ -725,6 +723,12 @@ ADD CONSTRAINT [PK_EmployeeShiftAssignments]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'EmployeeCommendationSkillCategories'
+ALTER TABLE [dbo].[EmployeeCommendationSkillCategories]
+ADD CONSTRAINT [PK_EmployeeCommendationSkillCategories]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- Creating primary key on [BookingClasifications_Id], [LockOutDates_Id] in table 'BookingClasificationLockOutDate'
 ALTER TABLE [dbo].[BookingClasificationLockOutDate]
 ADD CONSTRAINT [PK_BookingClasificationLockOutDate]
@@ -735,18 +739,6 @@ GO
 ALTER TABLE [dbo].[EmployeeRestaurant]
 ADD CONSTRAINT [PK_EmployeeRestaurant]
     PRIMARY KEY CLUSTERED ([Employees_Id], [Restaurants_Id] ASC);
-GO
-
--- Creating primary key on [EmployeeCommendations_Id], [RecievingEmployee_Id] in table 'EmployeeCommendationEmployee'
-ALTER TABLE [dbo].[EmployeeCommendationEmployee]
-ADD CONSTRAINT [PK_EmployeeCommendationEmployee]
-    PRIMARY KEY CLUSTERED ([EmployeeCommendations_Id], [RecievingEmployee_Id] ASC);
-GO
-
--- Creating primary key on [SkillCategories_Id], [EmployeeCommendationClassifications_Id] in table 'SkillCategoryEmployeeCommendationClassification'
-ALTER TABLE [dbo].[SkillCategoryEmployeeCommendationClassification]
-ADD CONSTRAINT [PK_SkillCategoryEmployeeCommendationClassification]
-    PRIMARY KEY CLUSTERED ([SkillCategories_Id], [EmployeeCommendationClassifications_Id] ASC);
 GO
 
 -- Creating primary key on [PreferredSkillCategories_Id], [EmployeeShifts_Id] in table 'SkillCategoryEmployeeShift'
@@ -1047,27 +1039,18 @@ ON [dbo].[Rosters]
     ([Restaurant_Id]);
 GO
 
--- Creating foreign key on [EmployeeCommendations_Id] in table 'EmployeeCommendationEmployee'
-ALTER TABLE [dbo].[EmployeeCommendationEmployee]
-ADD CONSTRAINT [FK_EmployeeCommendationEmployee_EmployeeCommendation]
-    FOREIGN KEY ([EmployeeCommendations_Id])
-    REFERENCES [dbo].[EmployeeCommendations]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [RecievingEmployee_Id] in table 'EmployeeCommendationEmployee'
-ALTER TABLE [dbo].[EmployeeCommendationEmployee]
-ADD CONSTRAINT [FK_EmployeeCommendationEmployee_Employee]
+-- Creating foreign key on [RecievingEmployee_Id] in table 'EmployeeCommendations'
+ALTER TABLE [dbo].[EmployeeCommendations]
+ADD CONSTRAINT [FK_EmployeeCommendationEmployee]
     FOREIGN KEY ([RecievingEmployee_Id])
     REFERENCES [dbo].[Employees]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_EmployeeCommendationEmployee_Employee'
-CREATE INDEX [IX_FK_EmployeeCommendationEmployee_Employee]
-ON [dbo].[EmployeeCommendationEmployee]
+-- Creating non-clustered index for FOREIGN KEY 'FK_EmployeeCommendationEmployee'
+CREATE INDEX [IX_FK_EmployeeCommendationEmployee]
+ON [dbo].[EmployeeCommendations]
     ([RecievingEmployee_Id]);
 GO
 
@@ -1296,30 +1279,6 @@ ON [dbo].[TeamCommendations]
     ([EmployeeCommendationClassification_Id]);
 GO
 
--- Creating foreign key on [SkillCategories_Id] in table 'SkillCategoryEmployeeCommendationClassification'
-ALTER TABLE [dbo].[SkillCategoryEmployeeCommendationClassification]
-ADD CONSTRAINT [FK_SkillCategoryEmployeeCommendationClassification_SkillCategory]
-    FOREIGN KEY ([SkillCategories_Id])
-    REFERENCES [dbo].[SkillCategories]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [EmployeeCommendationClassifications_Id] in table 'SkillCategoryEmployeeCommendationClassification'
-ALTER TABLE [dbo].[SkillCategoryEmployeeCommendationClassification]
-ADD CONSTRAINT [FK_SkillCategoryEmployeeCommendationClassification_EmployeeCommendationClassification]
-    FOREIGN KEY ([EmployeeCommendationClassifications_Id])
-    REFERENCES [dbo].[EmployeeCommendationClassifications]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SkillCategoryEmployeeCommendationClassification_EmployeeCommendationClassification'
-CREATE INDEX [IX_FK_SkillCategoryEmployeeCommendationClassification_EmployeeCommendationClassification]
-ON [dbo].[SkillCategoryEmployeeCommendationClassification]
-    ([EmployeeCommendationClassifications_Id]);
-GO
-
 -- Creating foreign key on [PreferredSkillCategories_Id] in table 'SkillCategoryEmployeeShift'
 ALTER TABLE [dbo].[SkillCategoryEmployeeShift]
 ADD CONSTRAINT [FK_SkillCategoryEmployeeShift_SkillCategory]
@@ -1387,6 +1346,36 @@ GO
 CREATE INDEX [IX_FK_SkillCategorySkillCategory]
 ON [dbo].[SkillCategories]
     ([Paremt_Id]);
+GO
+
+-- Creating foreign key on [SkillCategory_Id] in table 'EmployeeCommendationSkillCategories'
+ALTER TABLE [dbo].[EmployeeCommendationSkillCategories]
+ADD CONSTRAINT [FK_EmployeeCommendationSkillCategorySkillCategory]
+    FOREIGN KEY ([SkillCategory_Id])
+    REFERENCES [dbo].[SkillCategories]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EmployeeCommendationSkillCategorySkillCategory'
+CREATE INDEX [IX_FK_EmployeeCommendationSkillCategorySkillCategory]
+ON [dbo].[EmployeeCommendationSkillCategories]
+    ([SkillCategory_Id]);
+GO
+
+-- Creating foreign key on [EmployeeCommendationClassification_Id] in table 'EmployeeCommendationSkillCategories'
+ALTER TABLE [dbo].[EmployeeCommendationSkillCategories]
+ADD CONSTRAINT [FK_EmployeeCommendationSkillCategoryEmployeeCommendationClassification]
+    FOREIGN KEY ([EmployeeCommendationClassification_Id])
+    REFERENCES [dbo].[EmployeeCommendationClassifications]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EmployeeCommendationSkillCategoryEmployeeCommendationClassification'
+CREATE INDEX [IX_FK_EmployeeCommendationSkillCategoryEmployeeCommendationClassification]
+ON [dbo].[EmployeeCommendationSkillCategories]
+    ([EmployeeCommendationClassification_Id]);
 GO
 
 -- --------------------------------------------------

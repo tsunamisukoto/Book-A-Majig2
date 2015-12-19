@@ -18,7 +18,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public EmployeeCommendationClassification()
         {
             this.TeamCommendations = new HashSet<TeamCommendation>();
-            this.SkillCategories = new HashSet<SkillCategory>();
+            this.EmployeeCommendationSkillCategories = new HashSet<EmployeeCommendationSkillCategory>();
         }
     
         public int Id { get; set; }
@@ -30,6 +30,6 @@ namespace Book_A_Majig_v2.DatabaseEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeamCommendation> TeamCommendations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SkillCategory> SkillCategories { get; set; }
+        public virtual ICollection<EmployeeCommendationSkillCategory> EmployeeCommendationSkillCategories { get; set; }
     }
 }

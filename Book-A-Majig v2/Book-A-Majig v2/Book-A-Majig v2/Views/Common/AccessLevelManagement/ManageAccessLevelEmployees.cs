@@ -35,7 +35,7 @@ namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
         {
             EmployeesAssigned = accessLevel.Employees.ToList();
             var employees = EmployeesAssigned.Select(x => x.Id);
-            var user = unitOfWork.EmpoyeeRepository.Get( includeProperties:"AccessLevel").ToList();
+            var user = unitOfWork.EmployeeRepository.Get( includeProperties:"AccessLevel").ToList();
             EmployeesUnassigned = user.Where(x =>! employees.Contains(x.Id)).ToList();
             dataGridView2.DataSource = EmployeesAssigned.Select(x => new { Name = x.FullName, CurrentAccessLevel=x.AccessLevel.Name }).ToList() ;
             dataGridView1.DataSource = EmployeesUnassigned.Select(x => new { Name = x.FullName, CurrentAccessLevel = x.AccessLevel.Name }).ToList();

@@ -35,7 +35,7 @@ namespace Book_A_Majig_v2
                 var unitofwork = new UnitOfWork();
 
                 int userID = int.Parse(tbUserId.Text);
-                var user = unitofwork.EmpoyeeRepository.Get(x => x.Id == userID).FirstOrDefault();
+                var user = unitofwork.EmployeeRepository.Get(x => x.Id == userID).FirstOrDefault();
                 if (user == null)
                 {
                     throw new NullReferenceException();

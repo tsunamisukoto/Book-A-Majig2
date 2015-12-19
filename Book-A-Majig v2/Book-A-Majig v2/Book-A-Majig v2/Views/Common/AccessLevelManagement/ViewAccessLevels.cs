@@ -88,5 +88,10 @@ namespace Book_A_Majig_v2.Views.Common.AccessLevelManagement
                 }
             }
         }
+
+        private void dgvAccessLevels_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

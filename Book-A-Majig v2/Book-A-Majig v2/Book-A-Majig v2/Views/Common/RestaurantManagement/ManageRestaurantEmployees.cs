@@ -35,7 +35,7 @@ namespace Book_A_Majig_v2.Views.Common.RestaurantManagement
         {
             EmployeesAssigned = Restaurant.Employees.ToList();
             var employees = EmployeesAssigned.Select(x => x.Id);
-            var user = unitOfWork.EmpoyeeRepository.Get().ToList();
+            var user = unitOfWork.EmployeeRepository.Get().ToList();
             EmployeesUnassigned = user.Where(x =>! employees.Contains(x.Id)).ToList();
             dataGridView2.DataSource = EmployeesAssigned.Select(x => new { Name = x.FullName }).ToList() ;
             dataGridView1.DataSource = EmployeesUnassigned.Select(x => new { Name = x.FullName }).ToList();

@@ -31,7 +31,7 @@ namespace Book_A_Majig_v2.Views.Common
             comboBox1.DataSource = unitOfWork.AccessLevelRepository.Get();
             if (currentEmployeeId != null)
             {
-                currentUser = unitOfWork.EmpoyeeRepository.Get(x => x.Id == currentEmployeeId.Value, null, "AccessLevel").FirstOrDefault();
+                currentUser = unitOfWork.EmployeeRepository.Get(x => x.Id == currentEmployeeId.Value, null, "AccessLevel").FirstOrDefault();
                 tbFirstName.Text = currentUser.FirstName;
                 tbLastName.Text = currentUser.LastName;
                 tbEmail.Text = currentUser.Email;
@@ -61,14 +61,14 @@ namespace Book_A_Majig_v2.Views.Common
                 newUser = GetFields(new Employee());
                
 
-                unitOfWork.EmpoyeeRepository.Insert(newUser);
+                unitOfWork.EmployeeRepository.Insert(newUser);
                 unitOfWork.Save();
                 DialogResult = DialogResult.OK;
             }
             else
             {
                 currentUser = GetFields(currentUser);
-                unitOfWork.EmpoyeeRepository.Update(currentUser);
+                unitOfWork.EmployeeRepository.Update(currentUser);
                 DialogResult = DialogResult.OK;
 
             }

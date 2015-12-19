@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tbName = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,13 +56,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.stylesSheetManager1 = new Sb.Windows.Forms.StylesSheet.StylesSheetManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbName
@@ -72,7 +69,6 @@
             this.tbName.Location = new System.Drawing.Point(10, 28);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(282, 22);
-            this.stylesSheetManager1.SetStyle(this.tbName, "");
             this.tbName.TabIndex = 0;
             // 
             // btnSave
@@ -84,8 +80,7 @@
             this.btnSave.Location = new System.Drawing.Point(26, 601);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.stylesSheetManager1.SetStyle(this.btnSave, "SaveButton");
-            this.btnSave.TabIndex = 1;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -97,8 +92,7 @@
             this.label1.Location = new System.Drawing.Point(10, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
-            this.stylesSheetManager1.SetStyle(this.label1, "");
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Name";
             // 
             // label2
@@ -108,8 +102,7 @@
             this.label2.Location = new System.Drawing.Point(23, 251);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
-            this.stylesSheetManager1.SetStyle(this.label2, "");
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 15;
             this.label2.Text = "Contact Number";
             // 
             // tbContactNumber
@@ -118,8 +111,7 @@
             this.tbContactNumber.Location = new System.Drawing.Point(23, 268);
             this.tbContactNumber.Name = "tbContactNumber";
             this.tbContactNumber.Size = new System.Drawing.Size(216, 22);
-            this.stylesSheetManager1.SetStyle(this.tbContactNumber, "");
-            this.tbContactNumber.TabIndex = 4;
+            this.tbContactNumber.TabIndex = 2;
             // 
             // btnCancel
             // 
@@ -130,8 +122,7 @@
             this.btnCancel.Location = new System.Drawing.Point(100, 601);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.stylesSheetManager1.SetStyle(this.btnCancel, "CancelButton");
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.button1_Click);
@@ -144,8 +135,7 @@
             this.dtpBookingTime.Location = new System.Drawing.Point(12, 70);
             this.dtpBookingTime.Name = "dtpBookingTime";
             this.dtpBookingTime.Size = new System.Drawing.Size(280, 22);
-            this.stylesSheetManager1.SetStyle(this.dtpBookingTime, "");
-            this.dtpBookingTime.TabIndex = 6;
+            this.dtpBookingTime.TabIndex = 1;
             this.dtpBookingTime.ValueChanged += new System.EventHandler(this.dtpBookingTime_ValueChanged);
             // 
             // label3
@@ -155,8 +145,7 @@
             this.label3.Location = new System.Drawing.Point(25, 345);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
-            this.stylesSheetManager1.SetStyle(this.label3, "");
-            this.label3.TabIndex = 8;
+            this.label3.TabIndex = 23;
             this.label3.Text = "Notes";
             // 
             // tbEmail
@@ -165,8 +154,7 @@
             this.tbEmail.Location = new System.Drawing.Point(261, 268);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(250, 22);
-            this.stylesSheetManager1.SetStyle(this.tbEmail, "");
-            this.tbEmail.TabIndex = 9;
+            this.tbEmail.TabIndex = 3;
             // 
             // label4
             // 
@@ -175,8 +163,7 @@
             this.label4.Location = new System.Drawing.Point(258, 252);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
-            this.stylesSheetManager1.SetStyle(this.label4, "");
-            this.label4.TabIndex = 10;
+            this.label4.TabIndex = 16;
             this.label4.Text = "Email";
             // 
             // label5
@@ -186,20 +173,19 @@
             this.label5.Location = new System.Drawing.Point(12, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
-            this.stylesSheetManager1.SetStyle(this.label5, "");
             this.label5.TabIndex = 11;
             this.label5.Text = "Date / Time";
             // 
             // cbType
             // 
             this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbType.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbType.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbType.FormattingEnabled = true;
             this.cbType.Location = new System.Drawing.Point(261, 310);
             this.cbType.Name = "cbType";
             this.cbType.Size = new System.Drawing.Size(250, 21);
-            this.stylesSheetManager1.SetStyle(this.cbType, "");
-            this.cbType.TabIndex = 12;
+            this.cbType.TabIndex = 7;
             // 
             // label6
             // 
@@ -208,8 +194,7 @@
             this.label6.Location = new System.Drawing.Point(258, 291);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 13);
-            this.stylesSheetManager1.SetStyle(this.label6, "");
-            this.label6.TabIndex = 13;
+            this.label6.TabIndex = 21;
             this.label6.Text = "Classification";
             // 
             // numericUpDown1
@@ -219,8 +204,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.ReadOnly = true;
             this.numericUpDown1.Size = new System.Drawing.Size(49, 22);
-            this.stylesSheetManager1.SetStyle(this.numericUpDown1, "");
-            this.numericUpDown1.TabIndex = 14;
+            this.numericUpDown1.TabIndex = 22;
             // 
             // numericUpDown2
             // 
@@ -233,8 +217,7 @@
             0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(49, 22);
-            this.stylesSheetManager1.SetStyle(this.numericUpDown2, "");
-            this.numericUpDown2.TabIndex = 15;
+            this.numericUpDown2.TabIndex = 4;
             this.numericUpDown2.Value = new decimal(new int[] {
             2,
             0,
@@ -247,8 +230,7 @@
             this.numericUpDown3.Location = new System.Drawing.Point(135, 310);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(49, 22);
-            this.stylesSheetManager1.SetStyle(this.numericUpDown3, "");
-            this.numericUpDown3.TabIndex = 16;
+            this.numericUpDown3.TabIndex = 5;
             // 
             // numericUpDown4
             // 
@@ -256,8 +238,7 @@
             this.numericUpDown4.Location = new System.Drawing.Point(190, 310);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(49, 22);
-            this.stylesSheetManager1.SetStyle(this.numericUpDown4, "");
-            this.numericUpDown4.TabIndex = 17;
+            this.numericUpDown4.TabIndex = 6;
             // 
             // label7
             // 
@@ -266,8 +247,7 @@
             this.label7.Location = new System.Drawing.Point(25, 291);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 13);
-            this.stylesSheetManager1.SetStyle(this.label7, "");
-            this.label7.TabIndex = 18;
+            this.label7.TabIndex = 17;
             this.label7.Text = "Total";
             // 
             // label8
@@ -277,8 +257,7 @@
             this.label8.Location = new System.Drawing.Point(80, 291);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
-            this.stylesSheetManager1.SetStyle(this.label8, "");
-            this.label8.TabIndex = 19;
+            this.label8.TabIndex = 18;
             this.label8.Text = "Adults";
             // 
             // label9
@@ -288,8 +267,7 @@
             this.label9.Location = new System.Drawing.Point(135, 291);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(28, 13);
-            this.stylesSheetManager1.SetStyle(this.label9, "");
-            this.label9.TabIndex = 20;
+            this.label9.TabIndex = 19;
             this.label9.Text = "Kids";
             // 
             // label10
@@ -299,8 +277,7 @@
             this.label10.Location = new System.Drawing.Point(190, 291);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(59, 13);
-            this.stylesSheetManager1.SetStyle(this.label10, "");
-            this.label10.TabIndex = 21;
+            this.label10.TabIndex = 20;
             this.label10.Text = "HighChair";
             // 
             // label11
@@ -310,8 +287,7 @@
             this.label11.Location = new System.Drawing.Point(15, 97);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(142, 13);
-            this.stylesSheetManager1.SetStyle(this.label11, "");
-            this.label11.TabIndex = 22;
+            this.label11.TabIndex = 12;
             this.label11.Text = "Booking Date Information";
             // 
             // tbDateInformation
@@ -321,44 +297,49 @@
             this.tbDateInformation.Name = "tbDateInformation";
             this.tbDateInformation.ReadOnly = true;
             this.tbDateInformation.Size = new System.Drawing.Size(242, 135);
-            this.stylesSheetManager1.SetStyle(this.tbDateInformation, "");
-            this.tbDateInformation.TabIndex = 23;
+            this.tbDateInformation.TabIndex = 13;
             this.tbDateInformation.Text = "";
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.DarkCyan;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button1.Location = new System.Drawing.Point(23, 361);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.stylesSheetManager1.SetStyle(this.button1, "");
             this.button1.TabIndex = 24;
             this.button1.Text = "Add Note";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(94, 361);
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button2.Location = new System.Drawing.Point(93, 361);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.stylesSheetManager1.SetStyle(this.button2, "");
             this.button2.TabIndex = 25;
             this.button2.Text = "Edit Note";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(167, 361);
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button3.Location = new System.Drawing.Point(166, 361);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.stylesSheetManager1.SetStyle(this.button3, "");
             this.button3.TabIndex = 26;
             this.button3.Text = "Delete Note";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView1
@@ -371,7 +352,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(488, 214);
-            this.stylesSheetManager1.SetStyle(this.dataGridView1, "");
             this.dataGridView1.TabIndex = 27;
             // 
             // richTextBox1
@@ -380,8 +360,7 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(250, 135);
-            this.stylesSheetManager1.SetStyle(this.richTextBox1, "");
-            this.richTextBox1.TabIndex = 28;
+            this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
             // 
             // AddEditBooking
@@ -418,7 +397,6 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbName);
             this.Name = "AddEditBooking";
-            this.stylesSheetManager1.SetStyle(this, "");
             this.Text = "AddEditBooking";
             this.Load += new System.EventHandler(this.AddEditBooking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -426,7 +404,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,6 +439,5 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private Sb.Windows.Forms.StylesSheet.StylesSheetManager stylesSheetManager1;
     }
 }
