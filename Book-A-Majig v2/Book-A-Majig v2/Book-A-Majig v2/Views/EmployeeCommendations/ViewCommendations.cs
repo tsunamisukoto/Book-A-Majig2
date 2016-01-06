@@ -1,5 +1,6 @@
 ﻿using Book_A_Majig_v2.DatabaseEntities;
 using Book_A_Majig_v2.Services;
+using Book_A_Majig_v2.Views.EmployeeCommendations.Administration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,13 @@ namespace Book_A_Majig_v2.Views.EmployeeCommendations
 
         private void button1_Click(object sender, EventArgs e)
         {
+            AddEditStaffCommendation v = new AddEditStaffCommendation() { User = User };
+            v.ShowDialog();
+            if(v.DialogResult==DialogResult.OK)
+            {
+                RebindStaffCommendations();
 
+            }
         }
 
         private void ViewCommendations_Load(object sender, EventArgs e)
@@ -52,6 +59,19 @@ namespace Book_A_Majig_v2.Views.EmployeeCommendations
             var unitofwork = new UnitOfWork();
             employees = unitofwork.EmployeeRepository.Get().ToList();
             dgvTopStaff.DataSource = employees.Select(x => new { Name = x.FullName });
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddEditTeamCommendation v = new AddEditTeamCommendation() { User = User };
+            v.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CommendationAdministrationHome cah = new CommendationAdministrationHome();
+            cah.User = User;
+            cah.ShowDialog();
         }
     }
 }

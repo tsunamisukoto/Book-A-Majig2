@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvAccessLevels = new System.Windows.Forms.DataGridView();
-            this.tbMoreDetails = new System.Windows.Forms.TextBox();
+            this.lblMoreDetails = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -50,14 +50,14 @@
             this.dgvAccessLevels.TabIndex = 0;
             this.dgvAccessLevels.SelectionChanged += new System.EventHandler(this.dgvAccessLevels_SelectionChanged);
             // 
-            // tbMoreDetails
+            // lblMoreDetails
             // 
-            this.tbMoreDetails.Location = new System.Drawing.Point(280, 13);
-            this.tbMoreDetails.Multiline = true;
-            this.tbMoreDetails.Name = "tbMoreDetails";
-            this.tbMoreDetails.ReadOnly = true;
-            this.tbMoreDetails.Size = new System.Drawing.Size(441, 350);
-            this.tbMoreDetails.TabIndex = 1;
+            this.lblMoreDetails.Location = new System.Drawing.Point(280, 13);
+            this.lblMoreDetails.Multiline = true;
+            this.lblMoreDetails.Name = "lblMoreDetails";
+            this.lblMoreDetails.ReadOnly = true;
+            this.lblMoreDetails.Size = new System.Drawing.Size(441, 350);
+            this.lblMoreDetails.TabIndex = 1;
             // 
             // button1
             // 
@@ -108,7 +108,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.tbMoreDetails);
+            this.Controls.Add(this.lblMoreDetails);
             this.Controls.Add(this.dgvAccessLevels);
             this.Name = "ViewAccessLevels";
             this.Text = "ViewAccessLevels";
@@ -122,7 +122,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvAccessLevels;
-        private System.Windows.Forms.TextBox tbMoreDetails;
+        private System.Windows.Forms.RichTextBox lblMoreDetails;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

@@ -58,9 +58,11 @@
         <AssociationConnector Association="DatabaseModel.EmployeeCommendationEmployee1" ManuallyRouted="true" >
           <ConnectorPoint PointX="16.015625" PointY="14.75" />
           <ConnectorPoint PointX="16.015625" PointY="9.1404843633418214" />
+          <ConnectorPoint PointX="15.489583333333334" PointY="9.1404843633418214" />
+          <ConnectorPoint PointX="15.322916666666666" PointY="9.1404843633418214" />
           <ConnectorPoint PointX="12.144309515625" PointY="9.1404843633418214" />
-          <ConnectorPoint PointX="12.144309515625" PointY="8.90599859375" />
-          <ConnectorPoint PointX="12" PointY="8.90599859375" />
+          <ConnectorPoint PointX="12.144309515625" PointY="33.714276554683451" />
+          <ConnectorPoint PointX="12" PointY="12.220602213541666" />
         </AssociationConnector>
         <AssociationConnector Association="DatabaseModel.BookingEmployee" />
         <AssociationConnector Association="DatabaseModel.BookingConfirmationEmployee" ManuallyRouted="false" >

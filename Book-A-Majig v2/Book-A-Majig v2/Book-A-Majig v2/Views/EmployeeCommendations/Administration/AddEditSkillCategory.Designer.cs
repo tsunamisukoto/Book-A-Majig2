@@ -1,6 +1,6 @@
-﻿namespace Book_A_Majig_v2.Views.EmployeeCommendations
+﻿namespace Book_A_Majig_v2.Views.EmployeeCommendations.Administration
 {
-    partial class AddEditStaffCommendation
+    partial class AddEditSkillCategory
     {
         /// <summary>
         /// Required designer variable.
@@ -30,17 +30,17 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.cbEmployee = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbClassification = new System.Windows.Forms.ComboBox();
-            this.txtNotes = new System.Windows.Forms.RichTextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtNotes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblParent = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 415);
+            this.button1.Location = new System.Drawing.Point(16, 329);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -50,80 +50,81 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(95, 415);
+            this.button2.Location = new System.Drawing.Point(97, 329);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // cbEmployee
-            // 
-            this.cbEmployee.FormattingEnabled = true;
-            this.cbEmployee.Location = new System.Drawing.Point(13, 39);
-            this.cbEmployee.Name = "cbEmployee";
-            this.cbEmployee.Size = new System.Drawing.Size(257, 21);
-            this.cbEmployee.TabIndex = 2;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 20);
+            this.label1.Location = new System.Drawing.Point(13, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "User";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Category Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 67);
+            this.label2.Location = new System.Drawing.Point(22, 117);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Classification";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Notes";
             // 
-            // cbClassification
+            // txtName
             // 
-            this.cbClassification.FormattingEnabled = true;
-            this.cbClassification.Location = new System.Drawing.Point(13, 84);
-            this.cbClassification.Name = "cbClassification";
-            this.cbClassification.Size = new System.Drawing.Size(257, 21);
-            this.cbClassification.TabIndex = 5;
+            this.txtName.Location = new System.Drawing.Point(16, 94);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(439, 20);
+            this.txtName.TabIndex = 4;
             // 
             // txtNotes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(10, 127);
+            this.txtNotes.Location = new System.Drawing.Point(16, 133);
+            this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(257, 261);
-            this.txtNotes.TabIndex = 6;
-            this.txtNotes.Text = "";
+            this.txtNotes.Size = new System.Drawing.Size(439, 190);
+            this.txtNotes.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 108);
+            this.label3.Location = new System.Drawing.Point(13, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Note";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Parent Skill";
             // 
-            // AddEditStaffCommendation
+            // lblParent
+            // 
+            this.lblParent.AutoSize = true;
+            this.lblParent.Location = new System.Drawing.Point(22, 41);
+            this.lblParent.Name = "lblParent";
+            this.lblParent.Size = new System.Drawing.Size(35, 13);
+            this.lblParent.TabIndex = 7;
+            this.lblParent.Text = "label4";
+            // 
+            // AddEditSkillCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(291, 444);
+            this.ClientSize = new System.Drawing.Size(595, 370);
+            this.Controls.Add(this.lblParent);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNotes);
-            this.Controls.Add(this.cbClassification);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbEmployee);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "AddEditStaffCommendation";
-            this.Text = "AddEditStaffCommendation";
-            this.Load += new System.EventHandler(this.AddEditStaffCommendation_Load);
+            this.Name = "AddEditSkillCategory";
+            this.Text = "AddEditSkillCategory";
+            this.Load += new System.EventHandler(this.AddEditSkillCategory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,11 +134,11 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox cbEmployee;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbClassification;
-        private System.Windows.Forms.RichTextBox txtNotes;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblParent;
     }
 }

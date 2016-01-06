@@ -30,7 +30,7 @@ namespace Book_A_Majig_v2.Views.Common.AccessLevelManagement
         void Rebind()
         {
             var unitOfWork = new UnitOfWork();
-            accessLevels = unitOfWork.AccessLevelRepository.Get( includeProperties:"Employees").ToList();
+            accessLevels = unitOfWork.AccessLevelRepository.Get( includeProperties:"Employees,Permissions").ToList();
             dgvAccessLevels.DataSource = accessLevels.Select(x => new { Name = x.Name, AuthorityLevel = x.Level ,Employees = x.Employees.Where(y=> y.DateInactive== null).Count()}).ToList();
 
 
@@ -91,7 +91,27 @@ namespace Book_A_Majig_v2.Views.Common.AccessLevelManagement
 
         private void dgvAccessLevels_SelectionChanged(object sender, EventArgs e)
         {
+            if (dgvAccessLevels.SelectedRows.Count > 0)
+            {
+                var workingAccessLevel = accessLevels[dgvAccessLevels.SelectedRows[0].Index];
+                lblMoreDetails.Text = "";
+                lblMoreDetails.AppendBoldLine("Access Level Name:");
+                lblMoreDetails.AppendLine(workingAccessLevel.Name);
+                lblMoreDetails.AppendBoldLine("Permissions:");
+                foreach(var permission in workingAccessLevel.Permissions.Where(x=> x.PermissionValue))
+                {
+                    lblMoreDetails.AppendLine(permission.PermissionName);
+                }
+                lblMoreDetails.AppendBoldLine("Employees (" +workingAccessLevel.Employees.Count + "):" );
 
+                foreach (var note in workingAccessLevel.Employees)
+                {
+                    lblMoreDetails.AppendLine(note.FullName);
+
+
+                }
+
+            }
         }
     }
 }

@@ -8,21 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Book_A_Majig_v2.Views.EmployeeCommendations
+namespace Book_A_Majig_v2.Views.EmployeeCommendations.Administration
 {
-    public partial class AddEditTeamCommendation : Form
+    public partial class AddEditCommendationClassification : Form
     {
-        public AddEditTeamCommendation()
+        public AddEditCommendationClassification()
         {
             InitializeComponent();
         }
+        public Employee User { get; set; }
 
-        public Employee User
-        {
-            get;
-            set;
-        }
-        private void AddEditTeamCommendation_Load(object sender, EventArgs e)
+        private void AddEditCommendationClassification_Load(object sender, EventArgs e)
         {
 
         }

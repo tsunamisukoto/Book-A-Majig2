@@ -52,5 +52,10 @@ namespace Book_A_Majig_v2
                 tbCapacity.Value = Restaurant.Capacity;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
     }
 }

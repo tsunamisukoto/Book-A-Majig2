@@ -26,8 +26,50 @@ namespace Book_A_Majig_v2.Views.EmployeeCommendations.Administration
         void Rebind()
         {
             var unitofwork = new UnitOfWork();
-            Categories = unitofwork.SkillCategoryRepository.Get(includeProperties: "Parent,Children").ToList();
-            dataGridView1.DataSource = Categories.Select(x => new { Name = x.Name });
+            Categories = unitofwork.SkillCategoryRepository.Get(includeProperties: "Paremt,Children").ToList();
+            dataGridView1.DataSource = Categories.Select(x => new { Name = x.Name }).ToList();
+        }
+        public Employee User { get; set; }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddEditSkillCategory aesc = new AddEditSkillCategory();
+            aesc.User = User;
+            aesc.ShowDialog();
+            if(aesc.DialogResult==DialogResult.OK)
+            {
+                Rebind();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(dataGridView1.SelectedRows.Count>0)
+            {
+                AddEditSkillCategory aesc = new AddEditSkillCategory();
+                aesc.User = User;
+                aesc.currentSkillCategoryId = Categories[dataGridView1.SelectedRows[0].Index].Id;
+                aesc.ShowDialog();
+                if (aesc.DialogResult == DialogResult.OK)
+                {
+                    Rebind();
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                AddEditSkillCategory aesc = new AddEditSkillCategory();
+                aesc.User = User;
+                aesc.parentSkillCategoryId = Categories[dataGridView1.SelectedRows[0].Index].Id;
+                aesc.ShowDialog();
+                if (aesc.DialogResult == DialogResult.OK)
+                {
+                    Rebind();
+                }
+            }
         }
     }
 }

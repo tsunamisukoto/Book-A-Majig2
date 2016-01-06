@@ -43,17 +43,17 @@ namespace Book_A_Majig_v2.Services
         private GenericRepository<DatabaseEntities.SkillCategory>skillcategoryRepository;
         private GenericRepository<DatabaseEntities.EmployeeCommendation>employeecommendationRepository;
         private GenericRepository<DatabaseEntities.TeamCommendation>teamcommendationRepository;
-        private GenericRepository<DatabaseEntities.EmployeeCommendationClassification>teamcommendationclassificationRepository;
-        public GenericRepository<DatabaseEntities.EmployeeCommendationClassification> TeamCommendationClassificationRepository
+        private GenericRepository<DatabaseEntities.EmployeeCommendationClassification>employeecommendationclassificationRepository;
+        public GenericRepository<DatabaseEntities.EmployeeCommendationClassification> EmployeeCommendationClassificationRepository
         {
             get
             {
 
-                if (this.teamcommendationclassificationRepository == null)
+                if (this.employeecommendationclassificationRepository == null)
                 {
-                    this.teamcommendationclassificationRepository = new GenericRepository<DatabaseEntities.EmployeeCommendationClassification>(context);
+                    this.employeecommendationclassificationRepository = new GenericRepository<DatabaseEntities.EmployeeCommendationClassification>(context);
                 }
-                return teamcommendationclassificationRepository;
+                return employeecommendationclassificationRepository;
             }
         }
         public GenericRepository<DatabaseEntities.TeamCommendation> TeamCommendationRepository

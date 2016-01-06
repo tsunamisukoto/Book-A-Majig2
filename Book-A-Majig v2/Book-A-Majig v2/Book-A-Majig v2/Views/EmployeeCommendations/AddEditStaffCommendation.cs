@@ -20,7 +20,31 @@ namespace Book_A_Majig_v2.Views.EmployeeCommendations
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var unitOfWork = new UnitOfWork();
+            //TODO: Validate Inputs
+            if (currentCommendationId != null)
+            {
 
+                unitOfWork.EmployeeCommendationRepository.Update(GetFields(currentCommendation));
+
+            }
+            else
+            {
+                currentCommendation = GetFields(new EmployeeCommendation());
+                currentCommendation.DateCreated = DateTime.Now;
+
+                unitOfWork.EmployeeCommendationRepository.Insert(currentCommendation);
+            }
+            unitOfWork.Save();
+            this.DialogResult = DialogResult.OK;
+        }
+        EmployeeCommendation GetFields(EmployeeCommendation work)
+        {
+            work.CommendedBy = User;
+            work.RecievingEmployee = (Employee)cbEmployee.SelectedValue;
+            work.Notes = txtNotes.Text;
+            work.EmployeeCommendationClassification = (EmployeeCommendationClassification)cbClassification.SelectedValue;
+            return work;
         }
         public Employee User { get; set; }
         private EmployeeCommendation currentCommendation { get; set; }
@@ -28,7 +52,14 @@ namespace Book_A_Majig_v2.Views.EmployeeCommendations
         private void AddEditStaffCommendation_Load(object sender, EventArgs e)
         {
             var unitOfWork = new UnitOfWork();
+          
+            cbEmployee.DisplayMember = "FullName";
 
+            
+            cbClassification.DisplayMember = "Name";
+            cbEmployee.DataSource = unitOfWork.EmployeeRepository.Get(x => x.DateInactive == null).ToList();
+            cbClassification.DataSource = unitOfWork.EmployeeCommendationClassificationRepository.Get(x=> x.AvailableOnUser).ToList();
+            
             if (currentCommendationId!= null)
             {
                 currentCommendation = unitOfWork.EmployeeCommendationRepository.Get(x => x.Id == currentCommendationId).FirstOrDefault();

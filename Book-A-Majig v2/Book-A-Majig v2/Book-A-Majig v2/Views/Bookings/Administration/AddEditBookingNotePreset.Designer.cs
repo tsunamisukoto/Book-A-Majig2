@@ -118,7 +118,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddEditBookingNotePreset";
             this.stylesSheetManager1.SetStyle(this, "");
-            this.Text = "AddEditBookingNote";
+            this.Text = "Add Edit Booking Note Preset";
             this.Load += new System.EventHandler(this.AddEditBookingNote_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nmudSeverity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stylesSheetManager1)).EndInit();

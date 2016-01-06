@@ -376,6 +376,24 @@
     <Compile Include="Views\EmployeeCommendations\AddEditTeamCommendation.Designer.cs">
       <DependentUpon>AddEditTeamCommendation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\EmployeeCommendations\Administration\AddEditCommendationClassification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeCommendations\Administration\AddEditCommendationClassification.Designer.cs">
+      <DependentUpon>AddEditCommendationClassification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeCommendations\Administration\AddEditSkillCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeCommendations\Administration\AddEditSkillCategory.Designer.cs">
+      <DependentUpon>AddEditSkillCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeCommendations\Administration\CommendationAdministrationHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeCommendations\Administration\CommendationAdministrationHome.Designer.cs">
+      <DependentUpon>CommendationAdministrationHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeCommendations\Administration\ViewCommendationClassification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -542,6 +560,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EmployeeCommendations\AddEditTeamCommendation.resx">
       <DependentUpon>AddEditTeamCommendation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeCommendations\Administration\AddEditCommendationClassification.resx">
+      <DependentUpon>AddEditCommendationClassification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeCommendations\Administration\AddEditSkillCategory.resx">
+      <DependentUpon>AddEditSkillCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeCommendations\Administration\CommendationAdministrationHome.resx">
+      <DependentUpon>CommendationAdministrationHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeCommendations\Administration\ViewCommendationClassification.resx">
+      <DependentUpon>ViewCommendationClassification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EmployeeCommendations\Administration\ViewSkillCategories.resx">
       <DependentUpon>ViewSkillCategories.cs</DependentUpon>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/19/2015 16:35:21
+-- Date Created: 01/06/2016 22:21:22
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -77,11 +77,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_RosterRestaurant]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rosters] DROP CONSTRAINT [FK_RosterRestaurant];
 GO
-IF OBJECT_ID(N'[dbo].[FK_EmployeeCommendationEmployee_EmployeeCommendation]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EmployeeCommendationEmployee] DROP CONSTRAINT [FK_EmployeeCommendationEmployee_EmployeeCommendation];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmployeeCommendationEmployee_Employee]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EmployeeCommendationEmployee] DROP CONSTRAINT [FK_EmployeeCommendationEmployee_Employee];
+IF OBJECT_ID(N'[dbo].[FK_EmployeeCommendationEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EmployeeCommendations] DROP CONSTRAINT [FK_EmployeeCommendationEmployee];
 GO
 IF OBJECT_ID(N'[dbo].[FK_EmployeeCommendationShift]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[EmployeeCommendations] DROP CONSTRAINT [FK_EmployeeCommendationShift];
@@ -240,9 +237,6 @@ IF OBJECT_ID(N'[dbo].[BookingClasificationLockOutDate]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[EmployeeRestaurant]', 'U') IS NOT NULL
     DROP TABLE [dbo].[EmployeeRestaurant];
-GO
-IF OBJECT_ID(N'[dbo].[EmployeeCommendationEmployee]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[EmployeeCommendationEmployee];
 GO
 IF OBJECT_ID(N'[dbo].[SkillCategoryEmployeeShift]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SkillCategoryEmployeeShift];
@@ -519,7 +513,8 @@ GO
 CREATE TABLE [dbo].[SkillCategories] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Paremt_Id] int  NOT NULL
+    [Notes] nvarchar(max)  NOT NULL,
+    [Children_Id] int  NULL
 );
 GO
 
@@ -537,6 +532,7 @@ GO
 -- Creating table 'EmployeeCommendationSkillCategories'
 CREATE TABLE [dbo].[EmployeeCommendationSkillCategories] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [SkillWeighting] nvarchar(max)  NOT NULL,
     [SkillCategory_Id] int  NOT NULL,
     [EmployeeCommendationClassification_Id] int  NOT NULL
 );
@@ -1333,10 +1329,10 @@ ON [dbo].[EmployeeShiftAssignments]
     ([EmployeeShift_Id]);
 GO
 
--- Creating foreign key on [Paremt_Id] in table 'SkillCategories'
+-- Creating foreign key on [Children_Id] in table 'SkillCategories'
 ALTER TABLE [dbo].[SkillCategories]
 ADD CONSTRAINT [FK_SkillCategorySkillCategory]
-    FOREIGN KEY ([Paremt_Id])
+    FOREIGN KEY ([Children_Id])
     REFERENCES [dbo].[SkillCategories]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -1345,7 +1341,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_SkillCategorySkillCategory'
 CREATE INDEX [IX_FK_SkillCategorySkillCategory]
 ON [dbo].[SkillCategories]
-    ([Paremt_Id]);
+    ([Children_Id]);
 GO
 
 -- Creating foreign key on [SkillCategory_Id] in table 'EmployeeCommendationSkillCategories'

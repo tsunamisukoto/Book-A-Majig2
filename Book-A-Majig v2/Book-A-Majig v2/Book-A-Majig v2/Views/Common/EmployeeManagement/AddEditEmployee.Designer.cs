@@ -109,7 +109,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.button1.BackColor = System.Drawing.Color.DarkGreen;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.Location = new System.Drawing.Point(12, 330);
+            this.button1.Location = new System.Drawing.Point(12, 461);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.stylesSheetManager1.SetStyle(this.button1, "SaveButton");
@@ -123,7 +123,7 @@ namespace Book_A_Majig_v2.Views.Common
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.Location = new System.Drawing.Point(94, 329);
+            this.button2.Location = new System.Drawing.Point(94, 460);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.stylesSheetManager1.SetStyle(this.button2, "CancelButton");
@@ -189,7 +189,7 @@ namespace Book_A_Majig_v2.Views.Common
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 365);
+            this.ClientSize = new System.Drawing.Size(349, 496);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbID);
             this.Controls.Add(this.tbEmail);

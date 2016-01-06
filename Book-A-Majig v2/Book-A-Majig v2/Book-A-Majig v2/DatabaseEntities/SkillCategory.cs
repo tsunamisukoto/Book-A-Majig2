@@ -18,17 +18,16 @@ namespace Book_A_Majig_v2.DatabaseEntities
         public SkillCategory()
         {
             this.EmployeeShifts = new HashSet<EmployeeShift>();
-            this.Children = new HashSet<SkillCategory>();
             this.EmployeeCommendationSkillCategories = new HashSet<EmployeeCommendationSkillCategory>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Notes { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeShift> EmployeeShifts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SkillCategory> Children { get; set; }
+        public virtual SkillCategory Children { get; set; }
         public virtual SkillCategory Paremt { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeCommendationSkillCategory> EmployeeCommendationSkillCategories { get; set; }

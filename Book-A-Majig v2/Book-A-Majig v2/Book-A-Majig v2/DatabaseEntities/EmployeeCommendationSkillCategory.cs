@@ -15,6 +15,7 @@ namespace Book_A_Majig_v2.DatabaseEntities
     public partial class EmployeeCommendationSkillCategory
     {
         public int Id { get; set; }
+        public string SkillWeighting { get; set; }
     
         public virtual SkillCategory SkillCategory { get; set; }
         public virtual EmployeeCommendationClassification EmployeeCommendationClassification { get; set; }

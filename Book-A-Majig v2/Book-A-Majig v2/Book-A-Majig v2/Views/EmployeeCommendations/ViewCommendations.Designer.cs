@@ -36,6 +36,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvTeamCommendations = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaffCommentations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopStaff)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -67,12 +68,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(349, 579);
+            this.button2.Location = new System.Drawing.Point(366, 585);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(148, 23);
             this.button2.TabIndex = 3;
             this.button2.Text = "Commend Roster Team";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dgvTopStaff
             // 
@@ -107,7 +109,7 @@
             this.groupBox3.Controls.Add(this.dgvTeamCommendations);
             this.groupBox3.Location = new System.Drawing.Point(349, 288);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(299, 291);
+            this.groupBox3.Size = new System.Drawing.Size(449, 291);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Recent Team Commendations";
@@ -120,14 +122,25 @@
             this.dgvTeamCommendations.Location = new System.Drawing.Point(17, 19);
             this.dgvTeamCommendations.Name = "dgvTeamCommendations";
             this.dgvTeamCommendations.ReadOnly = true;
-            this.dgvTeamCommendations.Size = new System.Drawing.Size(240, 266);
+            this.dgvTeamCommendations.Size = new System.Drawing.Size(426, 266);
             this.dgvTeamCommendations.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(638, 13);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Admin";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // ViewCommendations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 665);
+            this.ClientSize = new System.Drawing.Size(847, 665);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -156,5 +169,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvTeamCommendations;
+        private System.Windows.Forms.Button button3;
     }
 }
