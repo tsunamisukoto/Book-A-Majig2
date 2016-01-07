@@ -80,6 +80,7 @@
             this.dgvLocked.Location = new System.Drawing.Point(3, 316);
             this.dgvLocked.Name = "dgvLocked";
             this.dgvLocked.ReadOnly = true;
+            this.dgvLocked.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLocked.Size = new System.Drawing.Size(724, 320);
             this.dgvLocked.TabIndex = 3;
             // 

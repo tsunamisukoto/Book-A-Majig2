@@ -376,6 +376,12 @@
     <Compile Include="Views\EmployeeCommendations\AddEditTeamCommendation.Designer.cs">
       <DependentUpon>AddEditTeamCommendation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\EmployeeCommendations\Administration\AddCommendationClassificationSkillCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeCommendations\Administration\AddCommendationClassificationSkillCategory.Designer.cs">
+      <DependentUpon>AddCommendationClassificationSkillCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeCommendations\Administration\AddEditCommendationClassification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -560,6 +566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EmployeeCommendations\AddEditTeamCommendation.resx">
       <DependentUpon>AddEditTeamCommendation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeCommendations\Administration\AddCommendationClassificationSkillCategory.resx">
+      <DependentUpon>AddCommendationClassificationSkillCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EmployeeCommendations\Administration\AddEditCommendationClassification.resx">
       <DependentUpon>AddEditCommendationClassification.cs</DependentUpon>

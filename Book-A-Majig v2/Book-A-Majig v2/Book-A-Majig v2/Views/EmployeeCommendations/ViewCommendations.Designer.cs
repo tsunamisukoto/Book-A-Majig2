@@ -53,6 +53,7 @@
             this.dgvStaffCommentations.Location = new System.Drawing.Point(6, 19);
             this.dgvStaffCommentations.Name = "dgvStaffCommentations";
             this.dgvStaffCommentations.ReadOnly = true;
+            this.dgvStaffCommentations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStaffCommentations.Size = new System.Drawing.Size(305, 266);
             this.dgvStaffCommentations.TabIndex = 0;
             // 
@@ -81,6 +82,7 @@
             this.dgvTopStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTopStaff.Location = new System.Drawing.Point(6, 19);
             this.dgvTopStaff.Name = "dgvTopStaff";
+            this.dgvTopStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTopStaff.Size = new System.Drawing.Size(589, 215);
             this.dgvTopStaff.TabIndex = 4;
             // 
@@ -122,6 +124,7 @@
             this.dgvTeamCommendations.Location = new System.Drawing.Point(17, 19);
             this.dgvTeamCommendations.Name = "dgvTeamCommendations";
             this.dgvTeamCommendations.ReadOnly = true;
+            this.dgvTeamCommendations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTeamCommendations.Size = new System.Drawing.Size(426, 266);
             this.dgvTeamCommendations.TabIndex = 0;
             // 

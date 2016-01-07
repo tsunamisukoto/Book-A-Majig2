@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/06/2016 22:21:22
+-- Date Created: 01/07/2016 20:11:50
 -- Generated from EDMX file: C:\Users\Scott\Source\Repos\Book-A-Majig2\Book-A-Majig v2\Book-A-Majig v2\Book-A-Majig v2\DatabaseEntities\DatabaseEntities.edmx
 -- --------------------------------------------------
 
@@ -532,7 +532,7 @@ GO
 -- Creating table 'EmployeeCommendationSkillCategories'
 CREATE TABLE [dbo].[EmployeeCommendationSkillCategories] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [SkillWeighting] nvarchar(max)  NOT NULL,
+    [SkillWeighting] int  NOT NULL,
     [SkillCategory_Id] int  NOT NULL,
     [EmployeeCommendationClassification_Id] int  NOT NULL
 );

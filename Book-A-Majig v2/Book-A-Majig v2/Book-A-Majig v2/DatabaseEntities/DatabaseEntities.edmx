@@ -497,7 +497,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SkillWeighting" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SkillWeighting" Type="int" Nullable="false" />
     <Property Name="SkillCategory_Id" Type="int" Nullable="false" />
     <Property Name="EmployeeCommendationClassification_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -1844,7 +1844,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="SkillCategory" Relationship="DatabaseModel.EmployeeCommendationSkillCategorySkillCategory" FromRole="EmployeeCommendationSkillCategory" ToRole="SkillCategory" />
           <NavigationProperty Name="EmployeeCommendationClassification" Relationship="DatabaseModel.EmployeeCommendationSkillCategoryEmployeeCommendationClassification" FromRole="EmployeeCommendationSkillCategory" ToRole="EmployeeCommendationClassification" />
-          <Property Name="SkillWeighting" Type="String" Nullable="false" />
+          <Property Name="SkillWeighting" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="EmployeeCommendationSkillCategorySkillCategory">
           <End Type="DatabaseModel.EmployeeCommendationSkillCategory" Role="EmployeeCommendationSkillCategory" Multiplicity="*" />

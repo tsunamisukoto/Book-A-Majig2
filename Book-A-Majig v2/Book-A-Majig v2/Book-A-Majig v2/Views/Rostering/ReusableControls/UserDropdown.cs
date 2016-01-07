@@ -25,20 +25,26 @@ namespace Book_A_Majig_v2.Views.Rostering.ReusableControls
         {
             get
             {
+                if(ddlUsers.SelectedValue!=null)
                 return EmployeeList[ddlUsers.SelectedIndex];
+                return null;
             }
             set
             {
                 _sEmployee = value;
-                if(ddlUsers!=null)
+                if(ddlUsers!=null&& value!=null)
                 ddlUsers.SelectedValue = value.Id;
             }
 
         }
         private void UserDropdown_Load(object sender, EventArgs e)
         {
+          
+        }
+        public void Rebind()
+        {
             var unitofwork = new UnitOfWork();
-            EmployeeList = unitofwork.EmployeeRepository.Get(Filter, x => x.OrderBy(y => y.FullName)).ToList();
+            EmployeeList = unitofwork.EmployeeRepository.Get(Filter, x => x.OrderBy(y => y.FirstName)).ToList();
             ddlUsers.DisplayMember = "FullName";
             ddlUsers.ValueMember = "Id";
             ddlUsers.DataSource = EmployeeList;

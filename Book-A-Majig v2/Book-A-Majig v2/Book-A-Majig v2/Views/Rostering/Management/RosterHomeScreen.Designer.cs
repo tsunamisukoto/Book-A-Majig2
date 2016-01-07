@@ -74,6 +74,7 @@
             this.dgvNAs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNAs.Location = new System.Drawing.Point(6, 19);
             this.dgvNAs.Name = "dgvNAs";
+            this.dgvNAs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNAs.Size = new System.Drawing.Size(432, 278);
             this.dgvNAs.TabIndex = 4;
             // 

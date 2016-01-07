@@ -41,7 +41,7 @@ namespace Book_A_Majig_v2.Views.EmployeeCommendations
         EmployeeCommendation GetFields(EmployeeCommendation work)
         {
             work.CommendedBy = User;
-            work.RecievingEmployee = (Employee)cbEmployee.SelectedValue;
+            work.RecievingEmployee = (Employee)cbEmployee.SelectedEmployee;
             work.Notes = txtNotes.Text;
             work.EmployeeCommendationClassification = (EmployeeCommendationClassification)cbClassification.SelectedValue;
             return work;
@@ -53,17 +53,17 @@ namespace Book_A_Majig_v2.Views.EmployeeCommendations
         {
             var unitOfWork = new UnitOfWork();
           
-            cbEmployee.DisplayMember = "FullName";
 
             
             cbClassification.DisplayMember = "Name";
-            cbEmployee.DataSource = unitOfWork.EmployeeRepository.Get(x => x.DateInactive == null).ToList();
+            cbEmployee.Rebind();
             cbClassification.DataSource = unitOfWork.EmployeeCommendationClassificationRepository.Get(x=> x.AvailableOnUser).ToList();
             
             if (currentCommendationId!= null)
             {
                 currentCommendation = unitOfWork.EmployeeCommendationRepository.Get(x => x.Id == currentCommendationId).FirstOrDefault();
-
+                txtNotes.Text = currentCommendation.Notes;
+                cbEmployee.SelectedEmployee = currentCommendation.RecievingEmployee;
             }
         }
     }
