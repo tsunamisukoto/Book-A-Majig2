@@ -1662,7 +1662,7 @@
         </EntityType>
         <Association Name="EmployeeCommendationEmployeeCommendationClassification">
           <End Type="DatabaseModel.EmployeeCommendation" Role="EmployeeCommendation" Multiplicity="*" />
-          <End Type="DatabaseModel.EmployeeCommendationClassification" Role="EmployeeCommendationClassification" Multiplicity="1" />
+          <End Type="DatabaseModel.EmployeeCommendationClassification" Role="EmployeeCommendationClassification" Multiplicity="1" ></End>
         </Association>
         <EntityType Name="EmployeeLevelCategory">
           <Key>

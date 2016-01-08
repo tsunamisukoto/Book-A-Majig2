@@ -9,7 +9,7 @@ namespace Book_A_Majig_v2.Services
 {
     class RosterService
     {
-        public Roster GetRosterForDate(DateTime d)
+        public Roster GetRosterForDate(DateTime d,string include="")
         {
             CultureInfo cul = CultureInfo.CurrentCulture;
             int weekOfYear = cul.Calendar.GetWeekOfYear(d, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
@@ -20,7 +20,7 @@ namespace Book_A_Majig_v2.Services
                 year += 1;
             }
             var unitofWork = new UnitOfWork();
-            var roster = unitofWork.RosterRepository.Get(x => x.WeekOfYear == weekOfYear && x.Year == year);
+            var roster = unitofWork.RosterRepository.Get(x => x.WeekOfYear == weekOfYear && x.Year == year,includeProperties: include);
             if (roster.FirstOrDefault() != null)
             {
                 return roster.FirstOrDefault();
@@ -30,7 +30,7 @@ namespace Book_A_Majig_v2.Services
                 Roster r = new Roster() { WeekOfYear = weekOfYear, Year = year, Notes = "NOTES", Restaurant = new UnitOfWork().RestaurantRepository.Get().FirstOrDefault() };
                 var q = unitofWork.RosterRepository.Insert(r);
                 unitofWork.Save();
-                return unitofWork.RosterRepository.Get(x => x.WeekOfYear == weekOfYear && x.Year == year).FirstOrDefault();
+                return unitofWork.RosterRepository.Get(x => x.WeekOfYear == weekOfYear && x.Year == year, includeProperties:include).FirstOrDefault();
             }
         }
     }

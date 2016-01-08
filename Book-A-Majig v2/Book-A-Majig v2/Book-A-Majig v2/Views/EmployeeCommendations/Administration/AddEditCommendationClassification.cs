@@ -37,6 +37,7 @@ namespace Book_A_Majig_v2.Views.EmployeeCommendations.Administration
                 workingClassification = new EmployeeCommendationClassification();
 
             }
+            RebindSkills();
         }
         private List<EmployeeCommendationSkillCategory> skills = new List<EmployeeCommendationSkillCategory>();
         private void RebindSkills()

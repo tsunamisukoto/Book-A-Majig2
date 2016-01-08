@@ -71,5 +71,20 @@ namespace Book_A_Majig_v2.Views.EmployeeCommendations.Administration
                 }
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var unitofwork = new UnitOfWork();
+                for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                {
+                    unitofwork.SkillCategoryRepository.Delete(Categories[dataGridView1.SelectedRows[i].Index]);
+                }
+                unitofwork.Save();
+                Rebind();
+
+            }
+        }
     }
 }

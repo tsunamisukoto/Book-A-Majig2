@@ -46,7 +46,7 @@
         <EntityTypeShape EntityType="DatabaseModel.EmployeeCommendation" Width="1.5" PointX="16" PointY="14.75" />
         <AssociationConnector Association="DatabaseModel.EmployeeCommendationEmployee" />
         <AssociationConnector Association="DatabaseModel.EmployeeCommendationShift" />
-        <EntityTypeShape EntityType="DatabaseModel.EmployeeCommendationClassification" Width="1.5" PointX="15.375" PointY="19.75" />
+        <EntityTypeShape EntityType="DatabaseModel.EmployeeCommendationClassification" Width="1.5" PointX="15.5" PointY="19.25" />
         <AssociationConnector Association="DatabaseModel.EmployeeCommendationEmployeeCommendationClassification" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeLevelCategory" Width="2.25" PointX="9" PointY="15.75" />
         <EntityTypeShape EntityType="DatabaseModel.EmployeeShiftPresets" Width="2.875" PointX="10.375" PointY="18.125" />
